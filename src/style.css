@@ -1,96 +1,99 @@
+@import url('https://fonts.googleapis.com/css2?family=Cutive&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap');
 :root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
+  --primary-color: #4b5b6a;
+  --secondary-color: #39c9c0;
+  --tertiary-color: #bbef4c;
+  --disable-color: #bababa;
+  --main-navbar-color: #F2F2F7;
+  --h-font: 'Cutive', monospace;
+  --p-font: 'Plus Jakarta Sans', sans-serif;
+  --btn-padding: 10px 20px;
+  --nv-bckg: #F2F2F7;
+  /* --h1-size:  */
+  --logo:url();
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
+  
 }
 
-body {
-  margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
+button{
+  padding: var(--btn-padding);
+  font-family: var(--h-font);
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
-}
+.btn-m{
+  background-color: var(--secondary-color);
+  color: white;
+  box-shadow: -5px 5px 5px rgba(0, 0, 0, 0.2);
+  border-color: var(--secondary-color);
+  border-radius: 5px;
+  border: 1px solid var(--secondary-color)
 
-#app {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+  
 }
-
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.vanilla:hover {
-  filter: drop-shadow(0 0 2em #f7df1eaa);
-}
-
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
-}
-
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
-}
-
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
+.btn-m:hover{
+    background-color: white;
+    color: var(--secondary-color);
+    padding: 10px 20px;
+    box-shadow: none;
+    border: 1px solid var(--secondary-color);
   }
-  a:hover {
-    color: #747bff;
+
+  button:disabled{
+    background-color: var(--disable-color);
+    padding: 10px 20px;
+    box-shadow: none;
+    color: #9C9B9D;
+    border: 1px solid var(--secondary-color);
   }
-  button {
-    background-color: #f9f9f9;
+
+  .link-st{
+    color:var(--secondary-color);
+    text-decoration: underline;
   }
-}
+
+  .link-st:hover{
+    color:var(--tertiary-color);
+    text-decoration: underline;
+    
+  }
+  .link-st:visited{
+    color:var(--primary-color);
+    text-decoration: underline;
+  }
+
+  .textField-m{
+    border: 1px solid var(--disable-color);
+    color: var(--disable-color);
+  }
+
+  .textField-a{
+    border: 1px solid black;
+    color: black;
+  }
+
+   .textField-e{
+    border: 1px solid red;
+    color:  black;
+  }
+
+  .text-box{
+  border: 2px solid var(--secondary-color);
+  padding: var(--btn-padding);
+  }
+
+  .ct-forum{
+  background-color: var(--secondary-color);
+  border-radius: 10px;
+  padding: var(--btn-padding);
+  a{
+    color: white;
+    text-decoration: none;
+  }
+  a:hover{
+    color: var(--tertiary-color);
+    }
+  a:visited{
+    color: var(--primary-color);
+  }
+  }
+

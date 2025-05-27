@@ -15,12 +15,10 @@
   --hero: url("/src/resources/img/hero.png");
 }
 
-.prueba{
-  background-image: var(--logo_small);
-  width: 200px;
-  height: 200px;
+#logo{
+  border: 2px solid red;
+  width: 100px;
 }
-
 button {
   padding: var(--btn-padding);
   font-family: var(--h-font);
@@ -122,5 +120,7 @@ button:disabled {
   border-radius: 50px;
 }
 
-
+h1, h2, h3{
+  font-family: var(--h-font);
+}
 

@@ -1,0 +1,56 @@
+#homeIcon,
+#linkIcon,
+#searchIcon,
+#videocamicon,
+#menuIcon,
+#descriptionIcon,
+#arrowIcon,
+#notificationIcon,
+#forumIcon {
+  color: var(--primary-color);
+}
+#homeIcon:hover,
+#linkIcon:hover,
+#searchIcon:hover,
+#videocamicon:hover,
+#menuIcon:hover,
+#descriptionIcon:hover,
+#arrowIcon:hover,
+#notificationsIcon:hover,
+#forumIcon:hover {
+  color: var(--secondary-color);
+}
+
+#closeIcon {
+  color: var(--tertiary-color);
+  background-color: var(--primary-color);
+  border-radius: 5px;
+}
+#closeIcon:hover {
+  background-color: var(--secondary-color);
+}
+
+#personIcon {
+  color: var(--tertiary-color);
+  background-color: var(--primary-color);
+  border-radius: 50px;
+}
+#personIcon:hover {
+  background-color: var(--secondary-color);
+}
+
+#favoriteIcon {
+  color: transparent;
+  -webkit-text-stroke: 1.5px white;
+}
+#favoriteIcon:hover {
+  color: var(--tertiary-color);
+}
+
+#favoriteUserIcon {
+  color: transparent;
+  -webkit-text-stroke: 1.5px var(--primary-color);
+}
+#favoriteUserIcon:hover {
+  color: var(--primary-color);
+}

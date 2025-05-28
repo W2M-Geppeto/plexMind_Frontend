@@ -5,3 +5,7 @@ h2,
 h3 {
   font-family: var(--h-font);
 }
+
+body{
+  font-family: var(--p-font);
+}

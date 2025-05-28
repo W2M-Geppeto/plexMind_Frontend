@@ -1,10 +1,7 @@
-button {
-  padding: var(--btn-padding);
-  font-family: var(--h-font);
-}
-
 .btn-m {
   background-color: var(--secondary-color);
+  padding: var(--btn-padding);
+  font-family: var(--h-font);
   color: white;
   box-shadow: -5px 5px 5px rgba(0, 0, 0, 0.2);
   border-color: var(--secondary-color);
@@ -20,7 +17,7 @@ button {
   border: 1px solid var(--secondary-color);
 }
 
-button:disabled {
+.btn-m:disabled {
   background-color: var(--disable-color);
   padding: 10px 20px;
   box-shadow: none;

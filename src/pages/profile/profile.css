@@ -31,3 +31,19 @@
  color: white;
  margin: 0.25rem 0;
  }
+ .ct-forum{
+  background-color: var(--secondary-color);
+  border-radius: 10px;
+  padding: 10px;
+  margin: 5px;
+  a{
+    color: white;
+    text-decoration: none;
+  }
+  a:hover{
+    color: var(--tertiary-color);
+  }
+  a:visited{
+    color: var(--primary-color);
+  }
+ }

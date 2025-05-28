@@ -1,0 +1,26 @@
+#nav{
+    padding:0;
+}
+
+#resourceList {
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+#list-item{
+    border: 2px solid var(--primary-color);
+    margin-bottom: 6px;
+}
+
+#tech-name {
+  flex: 1 1 0%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#tech-name p {
+  margin: 0;
+  font-weight: bold;
+  font-size: 1.1rem;
+  text-align: center;
+}

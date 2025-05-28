@@ -14,7 +14,6 @@
   --logo_big: url("/src/resources/img/logo_big.png");
   --hero: url("/src/resources/img/hero.png");
 }
-
 .prueba{
   background-image: var(--logo_small);
   width: 200px;

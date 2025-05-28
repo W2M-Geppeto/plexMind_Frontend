@@ -1,15 +1,46 @@
+body{
+overflow-y: auto !important;
+}
+
 #nav{
     padding:0;
+}
+
+.txt-sz-person{
+    font-size: 40px !important;
+}
+
+.txt-sz-icons{
+    font-size: 30px !important;
 }
 
 #resourceList {
   max-height: 300px;
   overflow-y: auto;
+  
 }
+
+#resourceList::-webkit-scrollbar {
+  width: 6px;
+  background: var(--primary-color);
+}
+#resourceList::-webkit-scrollbar-thumb {
+  background: var(--primary-color);
+  border-radius: 8px;
+}
+
+#resourceList {
+  scrollbar-width: thin;
+  scrollbar-color: var(--primary-color) #ffffff; 
+}
+
 
 #list-item{
     border: 2px solid var(--primary-color);
     margin-bottom: 6px;
+    color: var(--tertiary-color);
+  
+    background-color: var(--secondary-color);
 }
 
 #tech-name {
@@ -24,3 +55,4 @@
   font-size: 1.1rem;
   text-align: center;
 }
+

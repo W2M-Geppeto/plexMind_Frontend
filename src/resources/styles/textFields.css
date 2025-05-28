@@ -1,0 +1,19 @@
+.textField-m {
+  border: 1px solid var(--disable-color);
+  color: var(--disable-color);
+}
+
+.textField-a {
+  border: 1px solid black;
+  color: black;
+}
+
+.textField-e {
+  border: 1px solid red;
+  color: black;
+}
+
+.text-box {
+  border: 2px solid var(--secondary-color);
+  padding: var(--btn-padding);
+}

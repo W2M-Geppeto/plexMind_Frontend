@@ -1,0 +1,13 @@
+.link-st {
+  color: var(--secondary-color);
+  text-decoration: underline;
+}
+
+.link-st:hover {
+  color: var(--tertiary-color);
+  text-decoration: underline;
+}
+.link-st:visited {
+  color: var(--primary-color);
+  text-decoration: underline;
+}

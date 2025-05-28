@@ -1,0 +1,15 @@
+:root {
+  --primary-color: #4b5b6a;
+  --secondary-color: #39c9c0;
+  --tertiary-color: #bbef4c;
+  --disable-color: #bababa;
+  --main-navbar-color: #f2f2f7;
+  --h-font: "Cutive", monospace;
+  --p-font: "Plus Jakarta Sans", sans-serif;
+  --btn-padding: 10px 20px;
+  --nv-bckg: #f2f2f7;
+  /* --h1-size:  */
+  --logo_small: url("/src/resources/img/logo_small.png");
+  --logo_big: url("/src/resources/img/logo_big.png");
+  --hero: url("/src/resources/img/hero.png");
+}

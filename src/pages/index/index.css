@@ -1,0 +1,12 @@
+@import url("/src/resources/styles/style.css");
+.logo-navbar {
+    max-height: 3.5rem;
+    max-width: auto;
+    padding-top: none;
+    padding-bottom: none;
+}
+
+.icons:hover {
+    color: var(--secondary-color);
+    transform: scale(1.3);
+}

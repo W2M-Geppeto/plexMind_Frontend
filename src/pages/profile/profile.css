@@ -1,0 +1,13 @@
+:root{
+  --primary-color: #4b5b6a;
+  --secondary-color: #39c9c0;
+  --tertiary-color: #bbef4c;
+  --disable-color: #bababa;
+  --h-font: "Cutive", monospace;
+  --p-font: "Plus Jakarta Sans", sans-serif;
+}
+
+#nomUsuario{
+    color: var(--tertiary-color);
+    font-family: var(--p-font);
+}

@@ -1,0 +1,3 @@
+<script>
+  mdc.autoInit();
+</script>

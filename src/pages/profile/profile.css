@@ -32,6 +32,22 @@
   overflow-wrap: break-word;
 }
 
+.section-divider {
+  border: none;
+  border-top: 4px solid #111;
+  width: 15%;           /* Responsive: ocupa el 15% del ancho del contenedor */
+  max-width: 130px;     /* Nunca será más ancha de 130px */
+  min-width: 60px;      /* Nunca será más estrecha de 60px */
+  margin: 32px auto;
+  border-radius: 2px;
+  opacity: 1;
+}
+
+.navbar {
+  background-color: #fff !important; /* O el color que prefieras */
+  opacity: 1 !important;
+}
+
 @media (max-width: 400px) {
 
   h2{

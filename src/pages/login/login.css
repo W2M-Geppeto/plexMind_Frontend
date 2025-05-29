@@ -1,0 +1,31 @@
+body {
+  margin-top: 10vh;
+  div div{
+    margin-top: 40px;
+  }
+}
+
+#loginButton {
+  margin-bottom: 10px;
+}
+
+#textFields div {
+  margin-top: 5px;
+  white-space: nowrap;
+}
+
+#textLogin {
+  padding-left: 140px;
+  white-space: nowrap;
+}
+@media (max-width: 768px) {
+  #textLogin {
+    padding-left: 100px;
+  }
+}
+@media (max-width: 576px) {
+  #textLogin {
+    padding-left: 0px;
+  }
+ 
+}

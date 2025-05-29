@@ -1,30 +1,33 @@
 body {
-  margin-top: 10vh;
+  margin-top: 20vh;
 }
 
+#loginHead{
+  margin-bottom: 20px;
+  img{
+    margin-top: 20px;
+  }
+}
 #loginButton {
   margin-bottom: 10px;
 }
 
 #textFields{
-    
+    margin-bottom: 50px;
 }
 .textField{
     margin-bottom: 20px;
     width: 50%;
+    .textField-m{
+      margin-top: 5px;
+    }
 }
 #textLogin {
   padding-left: 140px;
   white-space: nowrap;
 }
-@media (max-width: 768px) {
-  #textLogin {
-    padding-left: 100px;
-  }
+#loginButton{
+  margin-bottom: 30px;
 }
-@media (max-width: 576px) {
-  #textLogin {
-    padding-left: 0px;
-  }
- 
-}
+
+

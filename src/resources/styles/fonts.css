@@ -1,12 +1,19 @@
-@import url("https://fonts.googleapis.com/css2?family=Cutive&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Rubik&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap");
 
 h1,
 h2,
 h3 {
   font-family: var(--h-font);
+  font-weight: bolder;
+  color: var(--primary-color);
 }
 
-
+h1 {
+  font-size: 4rem;
+  padding: auto;
+  margin-bottom: 2.5rem;
+  text-align: center;
+}
 body{
   font-family: var(--p-font);
 }

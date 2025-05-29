@@ -1,0 +1,52 @@
+.main-content {
+  margin-top: 100px; /* Ajusta este valor según la altura real de tu navbar */
+}
+
+#nomUsuario {
+  color: var(--tertiary-color);
+  font-family: var(--p-font);
+}
+
+.profile-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem;
+  background-color: #f8f9fa;
+  border-bottom: 1px solid #dee2e6;
+  position: fixed;
+}
+
+.profile-header h4 {
+  margin: 0;
+}
+
+.heart {
+  color: red;
+}
+
+.forum-button {
+  background-color: #6f42c1;
+  color: white;
+  margin: 0.25rem 0;
+}
+
+.ct-forum {
+  background-color: var(--secondary-color);
+  border-radius: 10px;
+  padding: 10px;
+  margin: 5px;
+
+  a {
+    color: white;
+    text-decoration: none;
+  }
+
+  a:hover {
+    color: var(--tertiary-color);
+  }
+
+  a:visited {
+    color: var(--tertiary-color);
+  }
+}

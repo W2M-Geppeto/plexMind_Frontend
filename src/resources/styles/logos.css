@@ -1,7 +1,8 @@
-#logo-sm{
-  width: 100px;
-  height: auto;
+.logo-navbar {
+    max-height: 3.5rem;
+    max-width: auto;
 }
+
 
 #logo-bg{
   width: 200px;

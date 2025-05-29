@@ -17,19 +17,11 @@ overflow-y: auto !important;
   transition: margin-top 0.2s;
 }
 
-@media (max-width: 1000px){
+@media (max-width: 1150px){
   .main-content {
-    margin-top: 120px;
+    margin-top: 100px;
   }
-}
 
-@media (max-width: 1200px){
-  .userInfo {
-display: flex;
-flex-direction: column;
-align-items: center;
-justify-content: center; 
- }
 }
 
 
@@ -72,14 +64,15 @@ justify-content: center;
   scrollbar-color: var(--primary-color) #ffffff;
   text-align: center;
 }
-#tech-name {
+.tech-name {
   flex: 1 1 0;
   display: flex;
   justify-content: center;
   align-items: center;
   min-width: 0;
 }
-#tech-name p {
+
+.tech-name p {
   margin: 0;
   font-weight: bold;
   font-size: 1.1rem;

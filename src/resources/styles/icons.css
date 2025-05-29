@@ -17,21 +17,21 @@
 #descriptionIcon:hover,
 #arrowIcon:hover,
 #notificationsIcon:hover,
-#forumIcon:hover, 
-#closeIcon:hover,
-#personIcon:hover {
- color: var(--secondary-color);
+#forumIcon:hover {
+  color: var(--secondary-color);
   transform: scale(1.3);
-} 
-
+}
 
 #closeIcon {
   color: var(--tertiary-color);
   background-color: var(--primary-color);
   border-radius: 5px;
 }
-
-
+#closeIcon:hover,
+#personIcon:hover {
+  background-color: var(--secondary-color);
+  transform: scale(1.3);
+}
 
 #personIcon {
   color: var(--tertiary-color);
@@ -53,12 +53,4 @@
 }
 #favoriteUserIcon:hover {
   color: var(--primary-color);
-
-}
-#exitIcon {
-  color: var(--primary-color);
-}
-#exitIcon:hover {
-  color: var(--secondary-color);
-  font-weight: bolder;
 }

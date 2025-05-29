@@ -20,20 +20,20 @@
     <!-- Navbar -->
     <nav class="navbar navbar-expand-md bg-body-primary fixed-top shadow-sm">
         <div class="container-fluid d-flex align-items-center">
-            <!-- Usuario a la izquierda -->
-            <ul class="navbar-nav mb-2 mb-lg-0 flex-row align-items-center">
+            <!-- Logo a la izquierda -->
+            <a class="navbar-brand img-fluid" id="Home" href="#">
+                <img src="/src/resources/img/logo_small (2).png" alt="Logo PlexMind" class="logo-navbar">
+            </a>
+            <!-- Usuario, nombre y corazón a la derecha -->
+            <ul class="navbar-nav mb-2 mb-lg-0 flex-row align-items-center ms-auto">
                 <li class="nav-item">
                     <a class="nav-link active d-flex align-items-center" aria-disabled="true">
-                        <i class="material-symbols-outlined" id="personIcon">person</i>
-                        <h4 class="d-inline ms-2 mb-0">Usuario</h4>
                         <i class="material-icons ms-2" id="favoriteUserIcon">favorite</i>
+                        <h4 class="d-inline ms-2 mb-0">Usuario</h4>
+                        <i class="material-symbols-outlined ms-3" id="personIcon">person</i>
                     </a>
                 </li>
             </ul>
-            <!-- Logo a la derecha del todo -->
-            <a class="navbar-brand img-fluid ms-auto" id="Home" href="#">
-                <img src="/src/resources/img/logo_small (2).png" alt="Logo PlexMind" class="logo-navbar">
-            </a>
         </div>
     </nav>
 

@@ -62,3 +62,12 @@
   color: var(--secondary-color);
   font-weight: bolder;
 }
+
+.nv-personIcon{
+    font-size: 50px !important;
+}
+
+.nv-favouriteUserIcon{
+    font-size: 30px !important;
+    margin-bottom: 20px;
+}

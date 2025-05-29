@@ -2,32 +2,37 @@ body {
   margin-top: 20vh;
 }
 
-#loginHead{
+#loginHead {
   margin-bottom: 20px;
-  img{
-    margin-top: 20px;
+
+  img {
+    margin-top: 0vw;
   }
 }
+
 #loginButton {
   margin-bottom: 10px;
 }
 
-#textFields{
-    margin-bottom: 50px;
+#textFields {
+  margin-bottom: 50px;
 }
-.textField{
-    margin-bottom: 20px;
-    width: 50%;
-    .textField-m{
-      margin-top: 5px;
-    }
+
+.textField {
+  margin-bottom: 20px;
+  width: 50%;
+
+  .textField-m {
+    margin-top: 5px;
+  }
 }
-#textLogin {
-  padding-left: 140px;
-  white-space: nowrap;
+
+.textField-m,
+.label {
+  max-width: 300px;
+  margin: 0 auto;
 }
-#loginButton{
+
+#loginButton {
   margin-bottom: 30px;
 }
-
-

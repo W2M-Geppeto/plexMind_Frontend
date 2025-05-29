@@ -20,25 +20,24 @@ overflow-y: auto !important;
   transition: margin-top 0.2s;
 }
 
-@media (min-width: 850px) and (max-width: 1200px) {
+@media (max-width: 1000px){
   .main-content {
-    margin-top: 120px;
+    margin-top: 90px;
   }
 }
 
-@media (max-width: 849px) {
-  .main-content {
-    margin-top: 160px;
-  }
-}
 
 .icons-lg{
     font-size: 40px !important;
 }
 
+
+
 #resourceList {
   max-height: 300px;
   overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: var(--primary-color) #ffffff;
   
 }
 
@@ -51,31 +50,33 @@ overflow-y: auto !important;
   border-radius: 8px;
 }
 
-#resourceList {
-  scrollbar-width: thin;
-  scrollbar-color: var(--primary-color) #ffffff; 
-}
-
-
 #list-item{
     border: 2px solid var(--primary-color);
     margin-bottom: 6px;
     color: var(--tertiary-color);
-  
     background-color: var(--secondary-color);
 }
 
+.title-sz {
+  max-width: 700px;
+  width: 100%;
+  white-space: nowrap;
+  overflow-x: auto;
+  scrollbar-width: thin;
+  scrollbar-color: var(--primary-color) #ffffff;
+  text-align: center;
+}
 #tech-name {
-  margin-left: -20px;
   flex: 1 1 0;
   display: flex;
   justify-content: center;
   align-items: center;
+  min-width: 0;
 }
 #tech-name p {
   margin: 0;
   font-weight: bold;
   font-size: 1.1rem;
   text-align: center;
+  width: 100%;
 }
-

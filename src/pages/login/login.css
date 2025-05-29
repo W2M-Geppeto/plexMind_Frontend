@@ -1,19 +1,18 @@
 body {
   margin-top: 10vh;
-  div div{
-    margin-top: 40px;
-  }
 }
 
 #loginButton {
   margin-bottom: 10px;
 }
 
-#textFields div {
-  margin-top: 5px;
-  white-space: nowrap;
+#textFields{
+    
 }
-
+.textField{
+    margin-bottom: 20px;
+    width: 50%;
+}
 #textLogin {
   padding-left: 140px;
   white-space: nowrap;

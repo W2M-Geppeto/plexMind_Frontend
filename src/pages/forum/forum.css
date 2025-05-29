@@ -1,0 +1,81 @@
+body{
+overflow-y: auto !important;
+}
+
+#nav{
+    padding:0;
+}
+
+.nv-txt-sz-person{
+    font-size: 50px !important;
+}
+
+.nv-userLike{
+    font-size: 25px !important;
+    margin-bottom: 20px;
+}
+
+ .main-content{
+  margin-top: 80px; 
+  transition: margin-top 0.2s;
+}
+
+@media (min-width: 850px) and (max-width: 1200px) {
+  .main-content {
+    margin-top: 120px;
+  }
+}
+
+@media (max-width: 849px) {
+  .main-content {
+    margin-top: 160px;
+  }
+}
+
+.icons-lg{
+    font-size: 40px !important;
+}
+
+#resourceList {
+  max-height: 300px;
+  overflow-y: auto;
+  
+}
+
+#resourceList::-webkit-scrollbar {
+  width: 6px;
+  background: var(--primary-color);
+}
+#resourceList::-webkit-scrollbar-thumb {
+  background: var(--primary-color);
+  border-radius: 8px;
+}
+
+#resourceList {
+  scrollbar-width: thin;
+  scrollbar-color: var(--primary-color) #ffffff; 
+}
+
+
+#list-item{
+    border: 2px solid var(--primary-color);
+    margin-bottom: 6px;
+    color: var(--tertiary-color);
+  
+    background-color: var(--secondary-color);
+}
+
+#tech-name {
+  margin-left: -20px;
+  flex: 1 1 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#tech-name p {
+  margin: 0;
+  font-weight: bold;
+  font-size: 1.1rem;
+  text-align: center;
+}
+

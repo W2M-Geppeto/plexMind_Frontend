@@ -14,3 +14,7 @@ h1 {
 body{
   font-family: var(--p-font);
 }
+
+txt-color{
+  color: var(--primary-color);
+}

@@ -5,7 +5,7 @@ h2,
 h3 {
   font-family: var(--h-font);
   font-weight: bolder;
-  color: var(--primary-color);
+  color: var(--font-color);
 }
 
 h1 {
@@ -18,6 +18,6 @@ body{
   font-family: var(--p-font);
 }
 
-txt-color{
+.txt-color{
   color: var(--primary-color);
 }

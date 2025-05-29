@@ -17,26 +17,26 @@
 #descriptionIcon:hover,
 #arrowIcon:hover,
 #notificationsIcon:hover,
-#forumIcon:hover {
-  color: var(--secondary-color);
-}
+#forumIcon:hover, 
+#closeIcon:hover,
+#personIcon:hover {
+ color: var(--secondary-color);
+  transform: scale(1.3);
+} 
+
 
 #closeIcon {
   color: var(--tertiary-color);
   background-color: var(--primary-color);
   border-radius: 5px;
 }
-#closeIcon:hover {
-  background-color: var(--secondary-color);
-}
+
+
 
 #personIcon {
   color: var(--tertiary-color);
   background-color: var(--primary-color);
   border-radius: 50px;
-}
-#personIcon:hover {
-  background-color: var(--secondary-color);
 }
 
 #favoriteIcon {

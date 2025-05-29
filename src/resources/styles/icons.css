@@ -53,6 +53,7 @@
 }
 #favoriteUserIcon:hover {
   color: var(--primary-color);
+
 }
 #exitIcon {
   color: var(--primary-color);

@@ -6,12 +6,34 @@ overflow-y: auto !important;
     padding:0;
 }
 
-.txt-sz-person{
-    font-size: 40px !important;
+.nv-txt-sz-person{
+    font-size: 50px !important;
 }
 
-.txt-sz-icons{
-    font-size: 30px !important;
+.nv-userLike{
+    font-size: 25px !important;
+    margin-bottom: 20px;
+}
+
+ .main-content{
+  margin-top: 80px; 
+  transition: margin-top 0.2s;
+}
+
+@media (min-width: 850px) and (max-width: 1200px) {
+  .main-content {
+    margin-top: 120px;
+  }
+}
+
+@media (max-width: 849px) {
+  .main-content {
+    margin-top: 160px;
+  }
+}
+
+.icons-lg{
+    font-size: 40px !important;
 }
 
 #resourceList {
@@ -44,7 +66,7 @@ overflow-y: auto !important;
 }
 
 #tech-name {
-  margin-left: -100px;
+  margin-left: -20px;
   flex: 1 1 0;
   display: flex;
   justify-content: center;

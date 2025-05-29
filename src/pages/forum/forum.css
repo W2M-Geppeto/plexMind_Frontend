@@ -44,7 +44,8 @@ overflow-y: auto !important;
 }
 
 #tech-name {
-  flex: 1 1 0%;
+  margin-left: -100px;
+  flex: 1 1 0;
   display: flex;
   justify-content: center;
   align-items: center;

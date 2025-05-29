@@ -7,30 +7,6 @@
   font-family: var(--p-font);
 }
 
-.profile-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 1rem;
-  background-color: #f8f9fa;
-  border-bottom: 1px solid #dee2e6;
-  position: fixed;
-}
-
-.profile-header h4 {
-  margin: 0;
-}
-
-.heart {
-  color: red;
-}
-
-.forum-button {
-  background-color: #6f42c1;
-  color: white;
-  margin: 0.25rem 0;
-}
-
 .ct-forum {
   background-color: var(--secondary-color);
   border-radius: 10px;
@@ -50,3 +26,27 @@
     color: var(--tertiary-color);
   }
 }
+
+.wrap-text, .main-content, .container, p, .ct-forum {
+  word-break: break-word;
+  overflow-wrap: break-word;
+}
+
+@media (max-width: 400px) {
+
+  h2{
+    justify-content: center;
+    align-items: center;
+  }
+  .main-content,
+  .main-content .container,
+  .ct-forum {
+    text-align: center;
+  }
+  .ct-forum {
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+

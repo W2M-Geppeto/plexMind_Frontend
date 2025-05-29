@@ -53,4 +53,12 @@
 }
 #favoriteUserIcon:hover {
   color: var(--primary-color);
+
+}
+#exitIcon {
+  color: var(--primary-color);
+}
+#exitIcon:hover {
+  color: var(--secondary-color);
+  font-weight: bolder;
 }

@@ -1,0 +1,52 @@
+.main-content {
+  margin-top: 100px; /* Ajusta este valor según la altura real de tu navbar */
+}
+
+#nomUsuario {
+  color: var(--tertiary-color);
+  font-family: var(--p-font);
+}
+
+.ct-forum {
+  background-color: var(--secondary-color);
+  border-radius: 10px;
+  padding: 10px;
+  margin: 5px;
+
+  a {
+    color: white;
+    text-decoration: none;
+  }
+
+  a:hover {
+    color: var(--tertiary-color);
+  }
+
+  a:visited {
+    color: var(--tertiary-color);
+  }
+}
+
+.wrap-text, .main-content, .container, p, .ct-forum {
+  word-break: break-word;
+  overflow-wrap: break-word;
+}
+
+@media (max-width: 400px) {
+
+  h2{
+    justify-content: center;
+    align-items: center;
+  }
+  .main-content,
+  .main-content .container,
+  .ct-forum {
+    text-align: center;
+  }
+  .ct-forum {
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+

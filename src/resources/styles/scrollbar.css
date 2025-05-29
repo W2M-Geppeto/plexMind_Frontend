@@ -1,5 +1,5 @@
 body::-webkit-scrollbar {
-  background: var(--primary-color); /* color de fondo de la barra */
+  background: var(--primary-color);
 }
 
 body {

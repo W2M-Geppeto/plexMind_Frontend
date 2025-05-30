@@ -26,10 +26,6 @@ overflow-y: auto !important;
   border-radius: 8px;
 }
 
-.icons-lg{
-    font-size: 40px !important;
-}
-
 #resourceList {
   max-height: 300px;
   overflow-y: auto;

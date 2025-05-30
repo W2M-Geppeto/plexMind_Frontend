@@ -69,6 +69,7 @@ color: white;
 
 #exitIcon {
   color: var(--primary-color);
+  font-size: 40px !important;
 }
 #exitIcon:hover {
   color: var(--secondary-color);

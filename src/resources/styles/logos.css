@@ -2,9 +2,7 @@
     max-height: 3.5rem;
     max-width: auto;
 }
-
-
-#logo-bg{
-  width: 200px;
-  height: auto;
+.logo-login {
+    max-height: 6rem;
+    max-width: auto;
 }

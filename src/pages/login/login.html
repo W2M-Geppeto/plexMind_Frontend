@@ -18,29 +18,27 @@
 
 <body>
     <div class="container text-center">
-        <div class="container">
+        <div class="container" id="loginHead">
             <h1>Login</h1>
-            <img src="/src/resources/img/logo_small.png" class="img-fluid" id="logo-sm">
+            <img src="/src/resources/img/logo.png" class="img-fluid logo-login">
         </div>
 
-
-        <div class="container">
-            <div class="row ">
-                <div class="col text-sm-end text-start">User:</div>
-                <div class="col-sm text-start textField-m">Introducce tu usuario.</div>
+        <div class="container" id="textFields">
+            <div class="textfield mx-auto">
+                <div class="text-start label">User:</div>
+                <div class="text-start textField-m">Enter your username.</div>
             </div>
-            <div class="row">
-                <div class="col text-sm-end text-start">Password:</div>
-                <div class="col-sm text-start textField-m">Introducce tu contraseña.</div>
+            <div class="textfield mx-auto">
+                <div class="text-start label">Password:</div>
+                <div class="text-start textField-m">Enter your password.</div>
             </div>
         </div>
 
         <div class="container">
-            <button class="btn-m">Log in</button>
-            <div class="row">
-                <span class="col text-sm-end text-center">Don´t you have an account?</span>
-                <span class="col-sm link-st text-sm-start text-center">Sign up</span>
-            </div>
+            <button class="btn-m" id="loginButton">Log in</button>
+            <div class="text-center">Don't you have an account?</div>
+            <div class="text-center link-st">Sign up</div>
+
         </div>
     </div>
 

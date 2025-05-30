@@ -17,7 +17,7 @@
   border: 1px solid var(--secondary-color);
 }
 
-.btn-m:disabled {
+.btn-m-disabled {
   background-color: var(--disable-color);
   padding: 10px 20px;
   box-shadow: none;

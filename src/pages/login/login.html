@@ -26,18 +26,18 @@
         <div class="container" id="textFields">
             <div class="textfield mx-auto">
                 <div class="text-start label">User:</div>
-                <input class="text-start textField-m" placeholder="Enter your username"></input>
+                <input class="text-start textField-m" id="usernameInput" placeholder="Enter your username"></input>
             </div>
             <div class="textfield mx-auto">
                 <div class="text-start label">Password:</div>
-                <input class="text-start textField-m" placeholder="Enter your password"></input>
+                <input class="text-start textField-m" id="passwordInput" placeholder="Enter your password"></input>
             </div>
         </div>
 
         <div class="container">
-            <button class="btn-m" id="loginButton">Log in</button>
+            <button class="btn-m-disabled" id="loginButton">Log in</button>
             <div class="text-center">Don't you have an account?</div>
-            <div class="text-center link-st">Sign up</div>
+            <div ><span class="text-center link-st">Sign up</span></div>
 
         </div>
     </div>
@@ -52,6 +52,7 @@
         crossorigin="anonymous"></script> <!--js bootstrap-->
     <script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
     <!--js material components-->
+    <script src="/src/pages/login/login.js"></script>
 </body>
 
 </html>

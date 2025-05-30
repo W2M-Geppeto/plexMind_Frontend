@@ -1,0 +1,23 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto_Sans&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap");
+
+h1,
+h2,
+h3 {
+  font-family: var(--h-font);
+  font-weight: bolder;
+  color: var(--font-color);
+}
+
+h1 {
+  font-size: 4rem;
+  padding: auto;
+  margin-bottom: 2.5rem;
+  text-align: center;
+}
+body{
+  font-family: var(--p-font);
+}
+
+.txt-color{
+  color: var(--primary-color);
+}

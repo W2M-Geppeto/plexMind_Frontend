@@ -6,7 +6,6 @@ const usernameRegex = /.+/;
 const passwordRegex = /.+/;
 let users = null;
 
-
 function passwordValidation() {
     if (!passwordRegex.test(password.value)) {
         password.style.borderColor = "red";
@@ -73,7 +72,6 @@ async function enviardatos() {
         console.log("mal");
     }
 }
-
 
 username.addEventListener('input', buttonUpdate);
 password.addEventListener('input', buttonUpdate);

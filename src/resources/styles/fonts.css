@@ -18,7 +18,7 @@ body{
   font-family: var(--p-font);
 }
 
-txt-color{
+.txt-color{
   color: var(--primary-color);
 }
 

@@ -1,10 +1,12 @@
 .link-st {
   color: var(--primary-color);
   text-decoration: underline;
+  display: inline-block;
 }
 .link-st:hover {
   color: var(--secondary-color);
   text-decoration: underline;
+  transform: scale(1.1);
 }
 .link-st:visited {
   color: var(--primary-color);

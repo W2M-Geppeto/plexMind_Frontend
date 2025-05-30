@@ -1,6 +1,8 @@
 .textField-m {
   border: 1px solid var(--disable-color);
+  border-radius: 7px;
   color: var(--disable-color);
+  padding-left: 10px;
 }
 
 .textField-a {

@@ -4,7 +4,7 @@ let button = document.getElementById("loginButton");
 //habra que cambiar despues a un regex mas restrictivo
 const usernameRegex = /.+/;
 const passwordRegex = /.+/;
-const users = null;
+let users = null;
 
 
 function passwordValidation() {
@@ -31,8 +31,6 @@ function usernameValidation() {
 }
 
 function buttonUpdate() {
-    console.log("Usuario:" + username.value);
-    console.log("Password:" + password.value);
     let enable = false;
     if (username.value && password.value) {
         button.classList.remove("btn-m-disabled"); //crear clase disable
@@ -46,7 +44,7 @@ function buttonUpdate() {
                 if (flag) {
                     if (!passwordValidation()) { flag = false }
                     if (!usernameValidation()) { flag = false }
-                    // enviardatos();
+                    enviardatos();
                     /* alert("Data sent corretly"); */
                 }
             })
@@ -58,23 +56,21 @@ function buttonUpdate() {
     }
 }
 
-async function validarUsuario(usuario, password) {
-
+async function validarUsuario() {
     const response = await fetch('/src/resources/data/users.json');
     users = await response.json();
-    return users.some(user => user.usuario === usuario && user.password === password);
-}
+    return users.some(user => user.username === username.value && user.password === password.value);}
 
 async function enviardatos() {
     console.log("Usuario:" + username.value);
     console.log("Usuario:" + password.value);
-    const esValido = await validarUsuario(username, password);
+    let esValido = await validarUsuario();
+    console.log(esValido);
     if (esValido) {
         console.log("todo way");
-        window.location.href = '/src/pages/forum/forum.html';
+        window.location.href = '/src/pages/index/index.html';
     } else {
         console.log("mal");
-        alert('Usuario o contraseña incorrectos');
     }
 }
 

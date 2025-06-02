@@ -1,0 +1,47 @@
+[
+    {
+        "id_topic": 932,
+        "name_topic": "python",
+        "num_likes": 9987
+    },
+    {
+        "id_topic": 745,
+        "name_topic": "csharp",
+        "num_likes": 6789
+    },
+    {
+        "id_topic": 1,
+        "name_topic": "javascript",
+        "num_likes": 5234
+    },
+    {
+        "id_topic": 487,
+        "name_topic": "css",
+        "num_likes": 4521
+    },
+    {
+        "id_topic": 604,
+        "name_topic": "php",
+        "num_likes": 1456
+    },
+    {
+        "id_topic": 888,
+        "name_topic": "sql",
+        "num_likes": 789
+    },
+    {
+        "id_topic": 512,
+        "name_topic": "typescript",
+        "num_likes": 234
+    },
+    {
+        "id_topic": 3,
+        "name_topic": "html",
+        "num_likes": 76
+    },
+    {
+        "id_topic": 2,
+        "name_topic": "java",
+        "num_likes": 8
+    }
+]

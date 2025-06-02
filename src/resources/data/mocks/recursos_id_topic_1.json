@@ -1,0 +1,14 @@
+[
+    {
+        "id_resource": 5,
+        "name": "Video de introducción a JavaScript",
+        "tipo": "VIDEO",
+        "link": ""
+    },
+    {
+        "id_resource": 102,
+        "name": "Guía JavaScript para principiantes",
+        "tipo": "WEB",
+        "link": ""
+    }
+]

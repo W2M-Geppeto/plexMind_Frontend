@@ -56,7 +56,7 @@ function buttonUpdate() {
 }
 
 async function validarUsuario() {
-    const response = await fetch('/src/resources/data/users.json');
+    const response = await fetch('/src/resources/data/mocks/users.json');
     users = await response.json();
     return users.some(user => user.username === username.value && user.password === password.value);}
 

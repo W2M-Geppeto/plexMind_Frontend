@@ -20,9 +20,12 @@ overflow-y: auto !important;
 .categoryForum{
   color: white;
   background-color: var(--secondary-color);
-  width: 40%;
+  width: 30%;
   height: 10vh;
   margin: 2% auto 4% auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 #resourceList {
   max-height: 300px;
@@ -30,11 +33,13 @@ overflow-y: auto !important;
   scrollbar-width: thin;
   scrollbar-color: var(--primary-color) #ffffff;
 }
-.resourceListEmpty{
-border: 2px solid var(--primary-color);
+.emptyList{
+color: var(--primary-color);
+font-size: 30px;
 margin: 0% auto 0% auto;
 width: 50%;
 }
+
 #resourceList::-webkit-scrollbar {
   width: 6px;
   background: var(--primary-color);

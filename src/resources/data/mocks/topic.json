@@ -1,47 +1,47 @@
 [
     {
         "id_topic": 1,
-        "name_topic": "javascript",
-        "categoria": "FRONT"
+        "title": "javascript",
+        "category": "FRONT"
     },
     {
         "id_topic": 2,
-        "name_topic": "java",
-        "categoria": "BACK"
+        "title": "java",
+        "category": "BACK"
     },
     {
         "id_topic": 3,
-        "name_topic": "html",
-        "categoria": "FRONT"
+        "title": "html",
+        "category": "FRONT"
     },
     {
         "id_topic": 487,
-        "name_topic": "css",
-        "categoria": "FRONT"
+        "title": "css",
+        "category": "FRONT"
     },
     {
         "id_topic": 932,
-        "name_topic": "python",
-        "categoria": "BACK"
+        "title": "python",
+        "category": "BACK"
     },
     {
         "id_topic": 512,
-        "name_topic": "typescript",
-        "categoria": "FRONT"
+        "title": "typescript",
+        "category": "FRONT"
     },
     {
         "id_topic": 745,
-        "name_topic": "csharp",
-        "categoria": "BACK"
+        "title": "csharp",
+        "category": "BACK"
     },
     {
         "id_topic": 604,
-        "name_topic": "php",
-        "categoria": "BACK"
+        "title": "php",
+        "category": "BACK"
     },
     {
         "id_topic": 888,
-        "name_topic": "sql",
-        "categoria": "BACK"
+        "title": "sql",
+        "category": "BACK"
     }
 ]

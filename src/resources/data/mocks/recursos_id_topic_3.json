@@ -1,0 +1,44 @@
+[
+    {
+        "id_resource": 3,
+        "name": "Guía HTML para principiantes",
+        "tipo": "WEB",
+        "link": ""
+    },
+    {
+        "id_resource": 27,
+        "name": "Video de introducción a HTML",
+        "tipo": "VIDEO",
+        "link": ""
+    },
+    {
+        "id_resource": 88,
+        "name": "Documentación oficial de HTML",
+        "tipo": "DOC",
+        "link": ""
+    },
+    {
+        "id_resource": 142,
+        "name": "Tutorial HTML avanzado",
+        "tipo": "WEB",
+        "link": ""
+    },
+    {
+        "id_resource": 315,
+        "name": "Ejercicios prácticos de HTML",
+        "tipo": "WEB",
+        "link": ""
+    },
+    {
+        "id_resource": 482,
+        "name": "HTML5 en profundidad",
+        "tipo": "WEB",
+        "link": ""
+    },
+    {
+        "id_resource": 799,
+        "name": "Web HTML interactiva",
+        "tipo": "WEB",
+        "link": ""
+    }
+]

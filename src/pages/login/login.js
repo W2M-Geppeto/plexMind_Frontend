@@ -2,7 +2,7 @@ let username = document.getElementById("usernameInput");
 let password = document.getElementById("passwordInput");
 let button = document.getElementById("loginButton");
 //habra que cambiar despues a un regex mas restrictivo
-const usernameRegex = /.+/;
+const usernameRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const passwordRegex = /.+/;
 let users = null;
 
@@ -56,7 +56,7 @@ function buttonUpdate() {
 }
 
 async function validarUsuario() {
-    const response = await fetch('/src/resources/data/users.json');
+    const response = await fetch('/src/resources/data/mocks/users.json');
     users = await response.json();
     return users.some(user => user.username === username.value && user.password === password.value);}
 

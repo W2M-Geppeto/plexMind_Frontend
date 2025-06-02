@@ -1,6 +1,6 @@
 let titleForum = document.querySelector('.titleForum');
 let categoryforum = document.querySelector('.categoryForum');
-let forumIcon = document.getElementById('favoriteForumIcon');
+let favResource = document.getElementById('favoriteForumIcon');
 let resourceList = document.getElementById('resourceList');
 let data = null;
 let listElements = null;
@@ -48,8 +48,7 @@ function fillData(){
 
 //Cada vez que se de like, aumentar el contador de likes a la BBDD
 function giveLike(){
-
-
+    console.log('Recurso marcado como favorito');
 }
 
 
@@ -83,6 +82,7 @@ function fillList() {
   }
 }
 
+//Función para obtener el icono pertienente
 function getIcon(type){
   switch(type) {
     case 'VIDEO':
@@ -106,9 +106,15 @@ document.addEventListener('DOMContentLoaded', async function() {
   listElements = await getListData();
   if (listElements) fillList();
   else console.log('No data found for the list of resources');
+  backBtn.addEventListener('click', function(e) {
+    e.preventDefault();
+    goBack();
+  });
+  favResource.addEventListener('click', function(e) {
+    e.preventDefault();
+    giveLike();
+  });
 
-  // Añadir evento al botón de volver atrás
-  //Añadir el like
 });
 
 

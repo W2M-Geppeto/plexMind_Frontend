@@ -1,6 +1,5 @@
 let titleForum = document.querySelector('.titleForum');
 let categoryforum = document.querySelector('.categoryForum');
-let favResource = document.getElementById('favoriteForumIcon');
 let resourceList = document.getElementById('resourceList');
 let data = null;
 let listElements = null;
@@ -110,11 +109,12 @@ document.addEventListener('DOMContentLoaded', async function() {
     e.preventDefault();
     goBack();
   });
-  favResource.addEventListener('click', function(e) {
-    e.preventDefault();
-    giveLike();
-  });
-
+  resourceList.addEventListener('click', function(e) {
+    if (e.target && e.target.id === 'favoriteForumIcon') {
+      e.preventDefault();
+      giveLike();
+    }
+});
 });
 
 

@@ -52,9 +52,11 @@ function giveLike(){
 
 }
 
+
+
 //Función para rellenar la lista de recursos
 function fillList() {
-  resourceList.innerHTML = ""; // Limpia la lista antes de llenarla
+  resourceList.innerHTML = ""; 
   for (let i = 0; i < listElements.length; i++) {
     const resource = listElements[i];
     let icon = getIcon(resource.type);    
@@ -105,8 +107,8 @@ document.addEventListener('DOMContentLoaded', async function() {
   if (listElements) fillList();
   else console.log('No data found for the list of resources');
 
-
-
+  // Añadir evento al botón de volver atrás
+  //Añadir el like
 });
 
 

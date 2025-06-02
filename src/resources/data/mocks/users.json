@@ -1,0 +1,14 @@
+[
+  {
+    "username": "user1@gmail.com",
+    "password": "1234"
+  },
+  {
+    "username": "user2@hotmail.com",
+    "password": "1234"
+  },
+  {
+    "username": "user3@plexus.es",
+    "password": "1234"
+  }
+]

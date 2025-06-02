@@ -1,0 +1,20 @@
+[
+    {
+        "id_resource": 9,
+        "name": "Guía TypeScript para principiantes",
+        "tipo": "WEB",
+        "link": ""
+    },
+    {
+        "id_resource": 67,
+        "name": "Video de introducción a TypeScript",
+        "tipo": "VIDEO",
+        "link": ""
+    },
+    {
+        "id_resource": 158,
+        "name": "Documentación oficial de TypeScript",
+        "tipo": "DOC",
+        "link": ""
+    }
+]

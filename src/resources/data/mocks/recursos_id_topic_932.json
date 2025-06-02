@@ -1,0 +1,26 @@
+[
+    {
+        "id_resource": 6,
+        "name": "Guía Python para principiantes",
+        "tipo": "WEB",
+        "link": ""
+    },
+    {
+        "id_resource": 23,
+        "name": "Video de introducción a Python",
+        "tipo": "VIDEO",
+        "link": ""
+    },
+    {
+        "id_resource": 91,
+        "name": "Documentación oficial de Python",
+        "tipo": "DOC",
+        "link": ""
+    },
+    {
+        "id_resource": 204,
+        "name": "Ejercicios prácticos de Python",
+        "tipo": "WEB",
+        "link": ""
+    }
+]

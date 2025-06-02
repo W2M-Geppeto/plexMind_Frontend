@@ -21,9 +21,12 @@ overflow-y: auto !important;
   overflow: hidden;
 }
 
-#descContainer{
-  border: 1px solid var(--primary-color);
-  border-radius: 8px;
+.categoryForum{
+  color: white;
+  background-color: var(--secondary-color);
+  width: 40%;
+  height: 10vh;
+  margin: 2% auto 4% auto;
 }
 
 #resourceList {

@@ -1,12 +1,11 @@
 // común
 let user = document.getElementById('user');
-const favoriteUserIcon = document.getElementById('favoriteUserIcon');
 let personIcon = document.querySelector('.personIcon');
 
 //Propio
-let titleForum = document.getElementById('title-Forum');
-let descriptionForum = document.getElementById('description');
-let likecCounter = 0;
+let titleForum = document.querySelector('.titleForum');
+let categoryforum = document.querySelector('.categoryForum');
+let likeCounter = 0;
 // const forumElementos = ...
 
 
@@ -30,12 +29,12 @@ document.addEventListener('DOMContentLoaded', function() {
 
     //Rellenar enlaces con sus iconos 
 
-    //LikesCounter aumentar likes
-    document.getElementById('favoriteForumIcon').onclick = function() {
-        likecCounter++;
-    alert('¡Gracias por tu apoyo! Tu like ha sido registrad' + likecCounter + ' likes');
-  };
+
+    //Funcion para dar y contar los likes a los recursos 
+
+   
   
 });
+
 
 

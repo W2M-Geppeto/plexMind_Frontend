@@ -2,7 +2,7 @@ let username = document.getElementById("usernameInput");
 let password = document.getElementById("passwordInput");
 let button = document.getElementById("loginButton");
 //habra que cambiar despues a un regex mas restrictivo
-const usernameRegex = /.+/;
+const usernameRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const passwordRegex = /.+/;
 let users = null;
 

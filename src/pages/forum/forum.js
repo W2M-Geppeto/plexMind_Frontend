@@ -59,10 +59,6 @@ function fillData(){
 //   categoryforum.textContent = data.category.toUpperCase();
 // }
 
-//Cada vez que se de like, enviar que le ha dado un like a ese idrecurso y que se aumente en la bbdd
-function giveLike(idResource){
-  //Enviarselo a la bbdd
-}
 
 //Función para rellenar la lista de recursos
 function fillList() {
@@ -103,6 +99,11 @@ function getIcon(type){
     default:
       return 'link';
   }
+}
+
+//Función para enviar +1 like a la bbdd
+function giveLike(idResource){
+  //Enviarselo a la bbdd
 }
 
 //Funciones para que se ejecuten después de cargar el DOM

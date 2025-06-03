@@ -11,8 +11,6 @@ function sendTopic(){
   const idTopic = sessionStorage.getItem('topic');
   //Enviarselo a la bbd
 
-
-
 }
 
 

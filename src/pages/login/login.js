@@ -3,8 +3,19 @@ let password = document.getElementById("passwordInput");
 let button = document.getElementById("loginButton");
 //habra que cambiar despues a un regex mas restrictivo
 const usernameRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-const passwordRegex = /.+/;
+const passwordRegex = /^.{4,}$/;
 let users = null;
+
+function usernameValidation() {
+    if (!usernameRegex.test(username.value)) {
+        username.style.borderColor = "red";
+        console.log("Invalid username!");
+        return false;
+    } else {
+        username.style.borderColor = "initial";
+        return true;
+    }
+}
 
 function passwordValidation() {
     if (!passwordRegex.test(password.value)) {
@@ -12,19 +23,8 @@ function passwordValidation() {
         console.log("Invalid password!");
         return false;
     } else {
+        console.log("badbadbad");
         password.style.borderColor = "initial";
-        return true;
-    }
-}
-
-
-function usernameValidation() {
-    if (!usernameRegex.test(username.value)) {
-        username.style.borderColor = "blue";
-        console.log("Invalid username!");
-        return false;
-    } else {
-        username.style.borderColor = "initial";
         return true;
     }
 }
@@ -55,21 +55,39 @@ function buttonUpdate() {
     }
 }
 
-async function validarUsuario() {
-    const response = await fetch('/src/resources/data/mocks/users.json');
-    users = await response.json();
-    return users.some(user => user.username === username.value && user.password === password.value);}
+async function validarDatos() {
+    try {
+        const response = await fetch('/src/resources/data/mocks/users1.json');
+        if (!response.ok) {
+            throw new Error(`Network response was not ok \nStatus: ${response.status} - ${response.statusText}`);
+        }
+        users = await response.json();
+        return users.some(user => user.email === username.value && user.password === password.value);
+    } catch (error) {
+        console.error('There has been a problem with your fetch operation:', error);
+    }
+}
+async function validarDatos() {
+    try {
+        const response = await fetch('API'); //A rellenar
+        if (!response.ok) {
+            throw new Error(`Network response was not ok \nStatus: ${response.status} - ${response.statusText}`);
+        }
+        users = await response.json();
+        const usersString = JSON.stringify(users);
+        sessionStorage.setItem('usuario', usersString);
+        return true;
+    } catch (error) {
+        console.error('There has been a problem with your fetch operation:', error);
+    }
+}
 
 async function enviardatos() {
-    console.log("Usuario:" + username.value);
-    console.log("Usuario:" + password.value);
-    let esValido = await validarUsuario();
+    let esValido = await validarDatos();
     console.log(esValido);
     if (esValido) {
-        console.log("todo way");
+        console.log("");
         window.location.href = '/src/pages/index/index.html';
-    } else {
-        console.log("mal");
     }
 }
 

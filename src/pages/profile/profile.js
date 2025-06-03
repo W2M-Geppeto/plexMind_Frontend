@@ -13,16 +13,16 @@ async function getUserData() {
 
 // Cambia este valor para mostrar el usuario que quieras
 // Este valor nos lo debe devolver en el futuro el backend/API
-const idUser = 1;
+const id = 700;
 
 async function mostrarUsuario() {
     const users = await getUserData();
     if (!users) return;
     // Busca el usuario por IdUser
-    const user = users.find(u => u.IdUser === idUser);
+    const user = users.find(u => u.id === id);
     if (user) {
         // Nombre en la navbar (antes del @)
-        document.getElementById('user').textContent = user.Email.split('@')[0];
+        document.getElementById('user').textContent = user.email.split('@')[0];
         // Descripción en About me (con saltos de línea)
         document.querySelector('.main-content .wrap-text p').innerHTML = user.description.replace(/\n/g, '<br>');
     } else {

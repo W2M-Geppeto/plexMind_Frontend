@@ -13,31 +13,6 @@ function sendTopic(){
 
 }
 
-
-//Función para leer los datos del foro
-async function getForumData() {
-  try {
-    const response = await fetch('/src/resources/data/mocks/topic.json');
-    if (!response.ok) {
-    throw new Error(`Network response was not ok \nStatus: ${response.status} - ${response.statusText}`);}
-    return await response.json();
-  } catch (error) {
-    console.error('There has been a problem with your fetch operation:', error);}
-}
-
-//Función para leer los datos de la lista
-async function getListData() {
-  try {
-    const response = await fetch('/src/resources/data/mocks/recursos_id_topic_1.json');
-    if (!response.ok) {
-    throw new Error(`Network response was not ok \nStatus: ${response.status} - ${response.statusText}`);
-  }
-  return await response.json();
-  } catch (error) {
-    console.error('There has been a problem with your fetch operation:', error);
-  }
-}
-
 //Función para cambiar la clase de la lista de recursos, según si tiene o no elementos hijos
 function seeResources() {
   if (resourceList && resourceList.children.length === 0) {
@@ -112,10 +87,10 @@ document.addEventListener('DOMContentLoaded', async function() {
   const observer = new MutationObserver(seeResources);
   if (resourceList) {
     observer.observe(resourceList, { childList: true });}
-  data = await getForumData();  
+  data = await getData('/src/resources/data/mocks/topic.json') ;  
   if (data) fillData();
   else console.log('No data found for the forum');
-  listElements = await getListData();
+  listElements = await getData('/src/resources/data/mocks/recursos_id_topic_1.json') ;
   if (listElements) fillList();
   else console.log('No data found for the list of resources');
   backBtn.addEventListener('click', function(e) {

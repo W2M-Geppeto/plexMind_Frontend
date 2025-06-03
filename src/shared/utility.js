@@ -48,3 +48,14 @@ function setPreviousPage(selector) {
   
   goProfile();
   backHome();
+
+  //Función para leer los datos del fetch
+async function getData(direccion) {
+  try {
+    const response = await fetch(direccion);
+    if (!response.ok) {
+    throw new Error(`Network response was not ok \nStatus: ${response.status} - ${response.statusText}`);}
+    return await response.json();
+  } catch (error) {
+    console.error('There has been a problem with your fetch operation:', error);}
+}

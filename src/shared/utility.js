@@ -15,6 +15,7 @@ function setPreviousPage(selector) {
   });
 }
 
+//Función para volver a la página anterior
 function goBack() {
   const previous = sessionStorage.getItem('previousPage');
   if (previous && previous !== window.location.pathname) {

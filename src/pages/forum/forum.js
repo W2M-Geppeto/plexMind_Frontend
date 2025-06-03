@@ -12,8 +12,7 @@ async function getForumData() {
     const response = await fetch('/src/resources/data/mocks/topic.json');
     if (!response.ok) {
       throw new Error('Network response was not ok');}
-    data = await response.json();
-    return data;
+    return await response.json();
   } catch (error) {
     console.error('There has been a problem with your fetch operation:', error);}
 }
@@ -21,12 +20,11 @@ async function getForumData() {
 //Función para leer los datos de la lista
 async function getListData() {
   try {
-    const response = await fetch('/src/resources/data/mocks/recursos_id_topic_8.json');
+    const response = await fetch('/src/resources/data/mocks/recursos_id_topic_3.json');
     if (!response.ok) {
     throw new Error(`Network response was not ok \nStatus: ${response.status} - ${response.statusText}`);
   }
-  listElements = await response.json();
-    return listElements;
+  return await response.json();
   } catch (error) {
     console.error('There has been a problem with your fetch operation:', error);
   }
@@ -43,16 +41,18 @@ function seeResources() {
 
 //Función para rellenar la infromación del foro con el titulo y categoría
 function fillData(){
-  titleForum.textContent =  data[0].title.toUpperCase();
-  categoryforum.textContent = data[0].category.toUpperCase();
+  titleForum.textContent =  data[1].nameTopic.toUpperCase(); //sin [] cuando solo sea un objeto
+  categoryforum.textContent = data[1].nameCategory.toUpperCase();
 }
+// function fillData(){
+//   titleForum.textContent =  data.title.toUpperCase();
+//   categoryforum.textContent = data.category.toUpperCase();
+// }
 
 //Cada vez que se de like, aumentar el contador de likes a la BBDD
 function giveLike(){
     console.log('Recurso marcado como favorito');
 }
-
-
 
 //Función para rellenar la lista de recursos
 function fillList() {
@@ -97,7 +97,7 @@ function getIcon(type){
 
 //Funciones para que se ejecuten después de cargar el DOM
 document.addEventListener('DOMContentLoaded', async function() {
-  fillMainUser();
+  //fillMainUser();
   seeResources();
   const observer = new MutationObserver(seeResources);
   if (resourceList) {

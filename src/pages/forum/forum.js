@@ -6,12 +6,22 @@ let listElements = null;
 const emptyList = document.querySelector('.emptyList');
 let backBtn = document.getElementById('exitIcon');
 
+//Función para enviar al back el id del topic
+function sendTopic(){
+  const idTopic = sessionStorage.getItem('topic');
+  //Enviarselo a la bbd
+
+
+
+}
+
+
 //Función para leer los datos del foro
 async function getForumData() {
   try {
     const response = await fetch('/src/resources/data/mocks/topic.json');
     if (!response.ok) {
-      throw new Error('Network response was not ok');}
+    throw new Error(`Network response was not ok \nStatus: ${response.status} - ${response.statusText}`);}
     return await response.json();
   } catch (error) {
     console.error('There has been a problem with your fetch operation:', error);}
@@ -20,7 +30,7 @@ async function getForumData() {
 //Función para leer los datos de la lista
 async function getListData() {
   try {
-    const response = await fetch('/src/resources/data/mocks/recursos_id_topic_3.json');
+    const response = await fetch('/src/resources/data/mocks/recursos_id_topic_1.json');
     if (!response.ok) {
     throw new Error(`Network response was not ok \nStatus: ${response.status} - ${response.statusText}`);
   }
@@ -34,7 +44,7 @@ async function getListData() {
 function seeResources() {
   if (resourceList && resourceList.children.length === 0) {
     emptyList.style.display = '';      
-  } else if (resourceList) {
+  } else{
     emptyList.style.display = 'none';
   }
 }
@@ -45,14 +55,10 @@ function fillData(){
   categoryforum.textContent = data[1].nameCategory.toUpperCase();
 }
 // function fillData(){
-//   titleForum.textContent =  data.title.toUpperCase();
+//   titleForum.textContent = data.title.toUpperCase();
 //   categoryforum.textContent = data.category.toUpperCase();
 // }
 
-//Cada vez que se de like, aumentar el contador de likes a la BBDD
-function giveLike(){
-    console.log('Recurso marcado como favorito');
-}
 
 //Función para rellenar la lista de recursos
 function fillList() {
@@ -67,12 +73,12 @@ function fillList() {
       <div class="row">
         <div class="col-2"></div>
         <div class="col-8">
-          <a href="#" class="text-decoration-none text-reset text-truncate w-100 d-block txt-color">
-            ${resource.name}
+          <a href="#" target="_blank" class="text-decoration-none text-reset text-truncate w-100 d-block txt-color">
+            ${resource.name} 
           </a>
         </div>
         <div class="col-1 d-flex justify-content-end">
-          <i class="material-icons" id="favoriteForumIcon">favorite</i>
+          <i class="material-icons" id="favoriteForumIcon" data-id="${resource.id}">favorite</i>
         </div>
         <div class="col-1 d-flex justify-content-end">
           <i class="material-icons" id="linkIconForum">${icon}</i>
@@ -95,9 +101,14 @@ function getIcon(type){
   }
 }
 
+//Función para enviar +1 like a la bbdd
+function giveLike(idResource){
+  //Enviarselo a la bbdd
+}
+
 //Funciones para que se ejecuten después de cargar el DOM
 document.addEventListener('DOMContentLoaded', async function() {
-  //fillMainUser();
+  fillMainUser();
   seeResources();
   const observer = new MutationObserver(seeResources);
   if (resourceList) {
@@ -115,7 +126,7 @@ document.addEventListener('DOMContentLoaded', async function() {
   resourceList.addEventListener('click', function(e) {
     if (e.target && e.target.id === 'favoriteForumIcon') {
       e.preventDefault();
-      giveLike();
+      giveLike(e.target.getAttribute('data-id'));
     }
 });
 });

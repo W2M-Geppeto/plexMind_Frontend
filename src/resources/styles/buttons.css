@@ -15,7 +15,7 @@
   border: 1px solid var(--secondary-color);
 }
 
-.btn:disabled {
+.btn-m-disabled{
   background-color: var(--disable-color);
   box-shadow: none;
   color: #9c9b9d;

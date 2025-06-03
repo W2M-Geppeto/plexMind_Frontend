@@ -20,9 +20,9 @@ document.addEventListener('DOMContentLoaded', function() {
                 <div class="col-md-6 col-lg-4">
                     <a href="${item.url || '#'}" class="btn btn-trend w-100 text-start mb-3">
                         <div class="row align-items-center">
-                            <div class="col-7 fs-4">${item.name_topic.toUpperCase()}</div>
+                            <div class="col-7 fs-4">${item.nameTopic.toUpperCase()}</div>
                             <div class="col-5 d-flex justify-content-end align-items-center">
-                                <span class="me-2 mb-0 align-middle" style="font-size:1.2rem">${item.num_likes}</span>
+                                <span class="me-2 mb-0 align-middle" style="font-size:1.2rem">${item.sumLikes}</span>
                                 <i class="material-icons align-middle" style="font-size:2.5rem;">favorite</i>
                             </div>
                         </div>

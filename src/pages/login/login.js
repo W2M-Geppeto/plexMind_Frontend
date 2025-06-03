@@ -57,7 +57,7 @@ function buttonUpdate() {
 
 async function validarDatos() {
     try {
-        const response = await fetch('/src/resources/data/mocks/users1.json');
+        const response = await fetch('/src/resources/data/mocks/users.json');
         if (!response.ok) {
             throw new Error(`Network response was not ok \nStatus: ${response.status} - ${response.statusText}`);
         }
@@ -67,7 +67,7 @@ async function validarDatos() {
         console.error('There has been a problem with your fetch operation:', error);
     }
 }
-async function validarDatos() {
+/* async function validarDatos() {
     try {
         const response = await fetch('API'); //A rellenar
         if (!response.ok) {
@@ -80,7 +80,7 @@ async function validarDatos() {
     } catch (error) {
         console.error('There has been a problem with your fetch operation:', error);
     }
-}
+} */
 
 async function enviardatos() {
     let esValido = await validarDatos();

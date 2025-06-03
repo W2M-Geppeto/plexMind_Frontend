@@ -24,9 +24,21 @@ function goBack() {
   }
 }
 
-//Añadir la llamada a la funcion:   setPreviousPage('.go-to-forum'); y la classe a todos los elementos que lleven al foro
-function setPreviousPageOnClick(selector) {
+//Añadir la llamada a la funcion:   setPreviousPage('.goForum'); y la classe a todos los elementos que lleven al foro
+function setPreviousPage(selector) {
   document.querySelector(selector).addEventListener('click', function() {
       sessionStorage.setItem('previousPage', window.location.pathname);
     });
   };
+
+  //Función para que el logo vuelva al home
+  function backHome(){
+    document.querySelector('.logo-navbar').addEventListener('click', function(e) {
+      e.preventDefault();
+      window.location.href = '/src/pages/index/index.html';
+    });
+  }
+
+  //Func
+
+  backHome();

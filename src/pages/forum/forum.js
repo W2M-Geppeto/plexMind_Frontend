@@ -97,6 +97,7 @@ function getIcon(type){
 
 //Funciones para que se ejecuten después de cargar el DOM
 document.addEventListener('DOMContentLoaded', async function() {
+  fillMainUser();
   seeResources();
   const observer = new MutationObserver(seeResources);
   if (resourceList) {

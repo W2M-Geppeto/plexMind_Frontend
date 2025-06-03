@@ -1,10 +1,20 @@
 let user = document.getElementById('user');
-let personIcon = document.querySelector('.personIcon');
 
 //funcion para rellenar el nombre de usuario según el email acortado
+function fillMainUser(){
+const userEmail = sessionStorage.getItem('userEmail');
+user.textContent = userEmail ? userEmail.split('@')[0] : 'Usuario';
+}
 
+//Función para guardar y recuperar la página anterior
+function setPreviousPage(selector) {
+  document.querySelectorAll(selector).forEach(element => {
+    element.addEventListener('click', function() {
+      sessionStorage.setItem('previousPage', window.location.pathname);
+    });
+  });
+}
 
-//Función para volvere a la pagina anterior, se necesita la información de la página anterior en sessionStorage en cada enlace/boton que lleve a una página nueva
 function goBack() {
   const previous = sessionStorage.getItem('previousPage');
   if (previous && previous !== window.location.pathname) {
@@ -13,3 +23,10 @@ function goBack() {
     window.location.href = '/src/pages/index/index.html';
   }
 }
+//Añadir la llamada a la funcion:   setPreviousPage('.go-to-forum'); y la classe a todos los elementos que lleven al foro
+
+function setPreviousPageOnClick(selector) {
+  document.querySelector(selector).addEventListener('click', function() {
+      sessionStorage.setItem('previousPage', window.location.pathname);
+    });
+  };

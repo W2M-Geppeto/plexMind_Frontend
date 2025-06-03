@@ -6,12 +6,16 @@ let listElements = null;
 const emptyList = document.querySelector('.emptyList');
 let backBtn = document.getElementById('exitIcon');
 
+//Función para enviar al back el id del topic
+
+
+
 //Función para leer los datos del foro
 async function getForumData() {
   try {
     const response = await fetch('/src/resources/data/mocks/topic.json');
     if (!response.ok) {
-      throw new Error('Network response was not ok');}
+    throw new Error(`Network response was not ok \nStatus: ${response.status} - ${response.statusText}`);}
     return await response.json();
   } catch (error) {
     console.error('There has been a problem with your fetch operation:', error);}

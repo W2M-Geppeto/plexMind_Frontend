@@ -6,55 +6,55 @@
     },
 
     {
-        "idUser": 2,
+        "id": 2,
         "email": "user2@gmail.com",
         "description": "Que tal gremio, aqui un usuario más\n - Nombre: User2\n - Edad: 20\n - País: Alemania"
     },
 
     {
-        "idUser": 10,
+        "id": 10,
         "email": "user10@gmail.com",
         "description": "Bienvenidos a mi perfil, aqui un programador principiante con ganas de aprender\n - Nombre: User10\n - Edad: 25\n - País: España\n - Hobbies: Videojuegos, Deporte, Películas"
     },
 
     {
-        "idUser": 50,
+        "id": 50,
         "email": "user50@gmail.com",
         "description": "Estudiante recien matriculado de ingeniería informática orientada a software\n - Nombre: User50\n - Edad: 19\n - País: Francia\n - Hobbies: Series, Películas"
     }, 
 
     {
-        "idUser": 70,
+        "id": 70,
         "email": "user70@hotmail.com",
         "description": "Si, lo sé, aun sigo usando hotmail en vez de gmail pero es lo que tiene ser viejo\n - Nombre: User70\n - Edad: 38\n - País: España\n - Hobbies: Videojuegos, Películas, Juegos de mesa"
     },
 
     {
-        "idUser": 100,
+        "id": 100,
         "email": "user100@hotmail.com",
         "description": "Espero poder aprender un monton en esta app!\n - Nombre: User100\n - Edad: 31\n - País: España\n - Hobbies: Salir a pasear. Entrenar con mi perror"
     },
 
     {
-        "idUser": 170,
+        "id": 170,
         "email": "user170@gmail.com",
         "description": "Aprendiendo con tiempo limitado pero con constancia. Veamos que ofrece esta plataforma\n - Nombre: User170\n - Edad: 23\n - País: Reino Unido\n - Hobbies: Tomar té, Películas"
     },
 
     {
-        "idUser": 500,
+        "id": 500,
         "email": "user500@gmail.com",
         "description": "Otra plataforma relacionada con contenido didactico... Salen de debajo de las piedras macho... ¡Habrá que ver lo que vale!\n - Nombre: User500\n - Edad: 34\n - País: España\n - Hobbies: Jugador profesional de LoL, Tenis, Crítico amateur de películas"
     },
 
     {
-        "idUser": 700,
+        "id": 700,
         "email": "user700@gmail.com",
         "description": "Experto programador de back buscando ampliar fronteras, a tope con ese Front!!\n - Nombre: User700\n - Edad: 20\n - País: Alemania\n - Hobbies: Salir con los amigos, jugar al csgo, ir al gimnasio "
     },
 
     {
-        "idUser": 900,
+        "id": 900,
         "email": "user900@gmail.com",
         "description": "Me han hablado muy bien de esta plataforma y ya tengo experiencia en este tipo de webs, espero que no decepcione!\n - Nombre: User900\n - Edad: 28\n - País: España\n - Hobbies: Leer, Estudiar, Programar "
     }

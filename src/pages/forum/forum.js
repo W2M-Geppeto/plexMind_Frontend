@@ -5,15 +5,11 @@ let data = null;
 let listElements = null;
 const emptyList = document.querySelector('.emptyList');
 let backBtn = document.getElementById('exitIcon');
-
-//Función para enviar al back el id del topic
 function sendTopic(){
   const idTopic = sessionStorage.getItem('topic');
   //Enviarselo a la bbd
 
 }
-
-//Función para cambiar la clase de la lista de recursos, según si tiene o no elementos hijos
 function seeResources() {
   if (resourceList && resourceList.children.length === 0) {
     emptyList.style.display = '';      
@@ -21,8 +17,6 @@ function seeResources() {
     emptyList.style.display = 'none';
   }
 }
-
-//Función para rellenar la infromación del foro con el titulo y categoría
 function fillData(){
   titleForum.textContent =  data[1].nameTopic.toUpperCase();
   categoryforum.textContent = data[1].idCategory.toUpperCase();
@@ -31,9 +25,6 @@ function fillData(){
 //   titleForum.textContent = data.title.toUpperCase();
 //   categoryforum.textContent = data.category.toUpperCase();
 // }
-
-
-//Función para rellenar la lista de recursos
 function fillList() {
   resourceList.innerHTML = ""; 
   for (let i = 0; i < listElements.length; i++) {
@@ -61,8 +52,6 @@ function fillList() {
     resourceList.appendChild(li);
   }
 }
-
-//Función para obtener el icono pertienente
 function getIcon(type){
   switch(type) {
     case 'VIDEO':
@@ -73,14 +62,10 @@ function getIcon(type){
       return 'link';
   }
 }
-
-//Función para enviar +1 like a la bbdd
 function giveLike(idResource){
   //Enviarselo a la bbdd
   console.log(`Like given to resource with ID: ${idResource}`);
 }
-
-//Funciones para que se ejecuten después de cargar el DOM
 document.addEventListener('DOMContentLoaded', async function() {
   fillMainUser();
   seeResources();
@@ -104,6 +89,3 @@ document.addEventListener('DOMContentLoaded', async function() {
     }
 });
 });
-
-
-

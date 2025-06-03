@@ -1,5 +1,4 @@
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,17 +11,15 @@
   <!--material components-->
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"> <!-- material icons-->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
+  <link rel="icon" type="logo" href="/src/resources/img/logo.png">
   <!--material symbols-->
 </head>
-
 <body>
   <nav class="navbar navbar-expand-md bg-body-primary fixed-top shadow-sm w-100" >
     <div class="row" style="width: 100%;">
       <div class="col-2">
         <div class="d-flex align-items-center" >
-
-          <a class="navbar-brand img-fluid ms-3" id="Home" href="#">
-
+          <a class="navbar-brand img-fluid ms-3 mt-2" id="Home" href='/src/pages/index/index.html'>
             <img src="/src/resources/img/logo.png" alt="Logo PlexMind" class="logo-navbar">
           </a>
         </div>
@@ -33,9 +30,9 @@
         <div>
           <div class="w-100 d-flex justify-content-end userInfo" id="nav">
             <h4 class="d-inline ms-2 mb-0 my-auto mt-3" id="user">Usuario</h4>
-            <i class="material-icons nv-favouriteUserIcon favourite-sm-sz" id="favoriteUserIcon">favorite</i>
-            <span class="txt-color ms-2 favourite-sm-sz likeCount">89</span>
-            <i class="material-symbols-outlined nv-personIcon ms-2 mt-1" id="personIcon">person</i>
+            <a href='/src/pages/profile/profile.html'>            
+              <i class="material-symbols-outlined nv-personIcon ms-2 mt-1" id="personIcon">person</i>
+            </a>
           </div>
         </div>
       </div>
@@ -45,136 +42,16 @@
       <div class="container-fluidpt-3 d-flex justify-content-between align-items-center">
        <a id="back-link" href="#">
            <i class="material-icons icons-lg" id="exitIcon">west</i>
-          </a>
+        </a>
       </div>
-      <div class=" container-fluid d-flex justify-content-center align-items-center">
-        <i class="material-icons icons-lg" id="favoriteForumIcon">favorite</i>
-      </div>
-      <div class="container-sm text-center">
-        <h1   class="tech-name text-break title-Forum txt-color">Titulo</h1>
-        <div class="container-sm text-center mt-5 mb-5" id="descContainer">
-          <p class=" rounded py-3 px-2 text-break w-100 mx-auto description txt-color">ESTA ES UNA DESCRIPCIÓN EJEMPLO</p>
-        </div>
+      <div class="container-sm text-center align-items-center">
+        <h1   class="tech-name text-break titleForum txt-color">Titulo</h1>
+        <h2 class="rounded py-3 px-2 text-break categoryForum">Categoría</h2>
         <h1 class="txt-color">SOURCES</h1>
         <div class="container-sm text-center mt-3">
+          <p class="emptyList">Coming soon...</p>
           <ul class="list-group" id="resourceList">
-            <li class="list-group-item" id="list-item">
-              <div class="row">
-              <div class="col-2"></div>
-              <div class="col-8">
-              <a href="#" class="text-decoration-none text-reset text-truncate w-100 d-block txt-color">
-                ENLACEEEEE
-              </a>                
-            </div>
-                <div class="col-2 d-flex justify-content-end">
-                  <i class="material-icons" id="linkIconForum">link</i>
-                </div>
-              </div>
-            </li>
-              <li class="list-group-item" id="list-item">
-              <div class="row">
-              <div class="col-2"></div>
-              <div class="col-8">
-              <a href="#" class="text-decoration-none text-reset text-truncate w-100 d-block txt-color">
-                ENLACEEEEE
-              </a>                
-            </div>
-                <div class="col-2 d-flex justify-content-end">
-                  <i class="material-icons" id="linkIconForum">link</i>
-                </div>
-              </div>
-            </li>
-              <li class="list-group-item" id="list-item">
-              <div class="row">
-              <div class="col-2"></div>
-              <div class="col-8">
-              <a href="#" class="text-decoration-none text-reset text-truncate w-100 d-block txt-color">
-                ENLACEEEEE
-              </a>                
-            </div>
-                <div class="col-2 d-flex justify-content-end">
-                  <i class="material-icons" id="linkIconForum">link</i>
-                </div>
-              </div>
-            </li>
-              <li class="list-group-item" id="list-item">
-              <div class="row">
-              <div class="col-2"></div>
-              <div class="col-8">
-              <a href="#" class="text-decoration-none text-reset text-truncate w-100 d-block txt-color">
-                ENLACEEEEE
-              </a>                
-            </div>
-                <div class="col-2 d-flex justify-content-end">
-                  <i class="material-icons" id="linkIconForum">link</i>
-                </div>
-              </div>
-            </li>
-              <li class="list-group-item" id="list-item">
-              <div class="row">
-              <div class="col-2"></div>
-              <div class="col-8">
-              <a href="#" class="text-decoration-none text-reset text-truncate w-100 d-block txt-color">
-                ENLACEEEEE
-              </a>                
-            </div>
-                <div class="col-2 d-flex justify-content-end">
-                  <i class="material-icons" id="linkIconForum">link</i>
-                </div>
-              </div>
-            </li>
-              <li class="list-group-item" id="list-item">
-              <div class="row">
-              <div class="col-2"></div>
-              <div class="col-8">
-              <a href="#" class="text-decoration-none text-reset text-truncate w-100 d-block txt-color">
-                ENLACEEEEE
-              </a>                
-            </div>
-                <div class="col-2 d-flex justify-content-end">
-                  <i class="material-icons" id="linkIconForum">link</i>
-                </div>
-              </div>
-            </li>
-              <li class="list-group-item" id="list-item">
-              <div class="row">
-              <div class="col-2"></div>
-              <div class="col-8">
-              <a href="#" class="text-decoration-none text-reset text-truncate w-100 d-block txt-color">
-                ENLACEEEEE
-              </a>                
-            </div>
-                <div class="col-2 d-flex justify-content-end">
-                  <i class="material-icons" id="linkIconForum">link</i>
-                </div>
-              </div>
-            </li>
-              <li class="list-group-item" id="list-item">
-              <div class="row">
-              <div class="col-2"></div>
-              <div class="col-8">
-              <a href="#" class="text-decoration-none text-reset text-truncate w-100 d-block txt-color">
-                ENLACEEEEE
-              </a>                
-            </div>
-                <div class="col-2 d-flex justify-content-end">
-                  <i class="material-icons" id="linkIconForum">link</i>
-                </div>
-              </div>
-            </li>
-              <li class="list-group-item" id="list-item">
-              <div class="row">
-              <div class="col-2"></div>
-              <div class="col-8">
-              <a href="#" class="text-decoration-none text-reset text-truncate w-100 d-block txt-color">
-                ENLACEEEEE
-              </a>                
-            </div>
-                <div class="col-2 d-flex justify-content-end">
-                  <i class="material-icons" id="linkIconForum">link</i>
-                </div>
-              </div>
-            </li>
+                     
           </ul>
         </div>
       </div>
@@ -187,8 +64,7 @@
     crossorigin="anonymous"></script> <!--js bootstrap-->
   <script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
   <!--js material components-->
-  <script src="/plexMind_Frontend/src/shared/utility.js"></script>
+  <script src="/src/shared/utility.js"></script>
   <script src="./forum.js"></script>
 </body>
-
 </html>

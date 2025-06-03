@@ -1,41 +1,124 @@
-// común
-let user = document.getElementById('user');
-const favoriteUserIcon = document.getElementById('favoriteUserIcon');
-let personIcon = document.querySelector('.personIcon');
-
-//Propio
-let titleForum = document.getElementById('title-Forum');
-let descriptionForum = document.getElementById('description');
-let likecCounter = 0;
-// const forumElementos = ...
-
+let titleForum = document.querySelector('.titleForum');
+let categoryforum = document.querySelector('.categoryForum');
+let resourceList = document.getElementById('resourceList');
+let data = null;
+let listElements = null;
+const emptyList = document.querySelector('.emptyList');
+let backBtn = document.getElementById('exitIcon');
 
 //Función para leer los datos del foro
 async function getForumData() {
   try {
-    const response = await fetch('/api/forum');
+    const response = await fetch('/src/resources/data/mocks/topic.json');
     if (!response.ok) {
-      throw new Error('Network response was not ok');
-    }
-    const data = await response.json();
-    return data;
+      throw new Error('Network response was not ok');}
+    return await response.json();
+  } catch (error) {
+    console.error('There has been a problem with your fetch operation:', error);}
+}
+
+//Función para leer los datos de la lista
+async function getListData() {
+  try {
+    const response = await fetch('/src/resources/data/mocks/recursos_id_topic_3.json');
+    if (!response.ok) {
+    throw new Error(`Network response was not ok \nStatus: ${response.status} - ${response.statusText}`);
+  }
+  return await response.json();
   } catch (error) {
     console.error('There has been a problem with your fetch operation:', error);
   }
 }
 
-document.addEventListener('DOMContentLoaded', function() {
-    // Función para mostrar los datos en el foro
-    
+//Función para cambiar la clase de la lista de recursos, según si tiene o no elementos hijos
+function seeResources() {
+  if (resourceList && resourceList.children.length === 0) {
+    emptyList.style.display = '';      
+  } else if (resourceList) {
+    emptyList.style.display = 'none';
+  }
+}
 
-    //Rellenar enlaces con sus iconos 
+//Función para rellenar la infromación del foro con el titulo y categoría
+function fillData(){
+  titleForum.textContent =  data[1].nameTopic.toUpperCase(); //sin [] cuando solo sea un objeto
+  categoryforum.textContent = data[1].nameCategory.toUpperCase();
+}
+// function fillData(){
+//   titleForum.textContent =  data.title.toUpperCase();
+//   categoryforum.textContent = data.category.toUpperCase();
+// }
 
-    //LikesCounter aumentar likes
-    document.getElementById('favoriteForumIcon').onclick = function() {
-        likecCounter++;
-    alert('¡Gracias por tu apoyo! Tu like ha sido registrad' + likecCounter + ' likes');
-  };
-  
+//Cada vez que se de like, aumentar el contador de likes a la BBDD
+function giveLike(){
+    console.log('Recurso marcado como favorito');
+}
+
+//Función para rellenar la lista de recursos
+function fillList() {
+  resourceList.innerHTML = ""; 
+  for (let i = 0; i < listElements.length; i++) {
+    const resource = listElements[i];
+    let icon = getIcon(resource.type);    
+    const li = document.createElement('li');
+    li.className = 'list-group-item';
+    li.id = 'list-item';
+    li.innerHTML = `
+      <div class="row">
+        <div class="col-2"></div>
+        <div class="col-8">
+          <a href="#" class="text-decoration-none text-reset text-truncate w-100 d-block txt-color">
+            ${resource.name}
+          </a>
+        </div>
+        <div class="col-1 d-flex justify-content-end">
+          <i class="material-icons" id="favoriteForumIcon">favorite</i>
+        </div>
+        <div class="col-1 d-flex justify-content-end">
+          <i class="material-icons" id="linkIconForum">${icon}</i>
+        </div>
+      </div>
+    `;
+    resourceList.appendChild(li);
+  }
+}
+
+//Función para obtener el icono pertienente
+function getIcon(type){
+  switch(type) {
+    case 'VIDEO':
+      return 'ondemand_video';
+    case 'DOC':
+      return 'description';
+    default:
+      return 'link';
+  }
+}
+
+//Funciones para que se ejecuten después de cargar el DOM
+document.addEventListener('DOMContentLoaded', async function() {
+  //fillMainUser();
+  seeResources();
+  const observer = new MutationObserver(seeResources);
+  if (resourceList) {
+    observer.observe(resourceList, { childList: true });}
+  data = await getForumData();  
+  if (data) fillData();
+  else console.log('No data found for the forum');
+  listElements = await getListData();
+  if (listElements) fillList();
+  else console.log('No data found for the list of resources');
+  backBtn.addEventListener('click', function(e) {
+    e.preventDefault();
+    goBack();
+  });
+  resourceList.addEventListener('click', function(e) {
+    if (e.target && e.target.id === 'favoriteForumIcon') {
+      e.preventDefault();
+      giveLike();
+    }
 });
+});
+
 
 

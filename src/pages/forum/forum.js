@@ -24,7 +24,7 @@ function seeResources() {
 
 //Función para rellenar la infromación del foro con el titulo y categoría
 function fillData(){
-  titleForum.textContent =  data[1].nameTopic.toUpperCase(); //sin [] cuando solo sea un objeto
+  titleForum.textContent =  data[1].nameTopic.toUpperCase();
   categoryforum.textContent = data[1].idCategory.toUpperCase();
 }
 // function fillData(){
@@ -90,7 +90,7 @@ document.addEventListener('DOMContentLoaded', async function() {
   data = await getData('/src/resources/data/mocks/topic.json') ;  
   if (data) fillData();
   else console.log('No data found for the forum');
-  listElements = await getData('/src/resources/data/mocks/recursos_id_topic_1.json') ;
+  listElements = await getData('/src/resources/data/mocks/recursos_id_topic_3.json') ;
   if (listElements) fillList();
   else console.log('No data found for the list of resources');
   backBtn.addEventListener('click', function(e) {

@@ -30,7 +30,8 @@ function setPreviousPage(selector) {
     });
   });
 }
-  //Función para que el logo vuelva al home
+
+//Función para que el logo vuelva al home
   function backHome(){
     document.querySelector('.logo-navbar').addEventListener('click', function(e) {
       e.preventDefault();
@@ -38,7 +39,7 @@ function setPreviousPage(selector) {
     });
   }
 
-  //Función para que el icono vaya al profile 
+//Función para que el icono vaya al profile 
   function goProfile() {
    document.getElementById('personIcon').addEventListener('click', function(e) {
       e.preventDefault();
@@ -49,7 +50,7 @@ function setPreviousPage(selector) {
   goProfile();
   backHome();
 
-  //Función para leer los datos del fetch
+//Función para leer los datos del fetch
 async function getData(direccion) {
   try {
     const response = await fetch(direccion);

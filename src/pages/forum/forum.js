@@ -52,7 +52,7 @@ function seeResources() {
 //Función para rellenar la infromación del foro con el titulo y categoría
 function fillData(){
   titleForum.textContent =  data[1].nameTopic.toUpperCase(); //sin [] cuando solo sea un objeto
-  categoryforum.textContent = data[1].nameCategory.toUpperCase();
+  categoryforum.textContent = data[1].idCategory.toUpperCase();
 }
 // function fillData(){
 //   titleForum.textContent = data.title.toUpperCase();

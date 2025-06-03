@@ -1,60 +1,60 @@
 [
     {
-        "id_resource": 7,
+        "id": 7,
         "name": "Guía CSS para principiantes",
         "tipo": "WEB",
         "link": ""
     },
     {
-        "id_resource": 19,
+        "id": 19,
         "name": "Video de introducción a CSS",
         "tipo": "VIDEO",
         "link": ""
     },
     {
-        "id_resource": 54,
+        "id": 54,
         "name": "Documentación oficial de CSS",
         "tipo": "DOC",
         "link": ""
     },
     {
-        "id_resource": 112,
+        "id": 112,
         "name": "Tutorial avanzado de CSS",
         "tipo": "WEB",
         "link": ""
     },
     {
-        "id_resource": 203,
+        "id": 203,
         "name": "Ejercicios prácticos de CSS",
         "tipo": "WEB",
         "link": ""
     },
     {
-        "id_resource": 315,
+        "id": 315,
         "name": "CSS Grid y Flexbox",
         "tipo": "WEB",
         "link": ""
     },
     {
-        "id_resource": 427,
+        "id": 427,
         "name": "Web interactiva de CSS",
         "tipo": "WEB",
         "link": ""
     },
     {
-        "id_resource": 589,
+        "id": 589,
         "name": "CSS para responsive design",
         "tipo": "WEB",
         "link": ""
     },
     {
-        "id_resource": 678,
+        "id": 678,
         "name": "Animaciones con CSS",
         "tipo": "WEB",
         "link": ""
     },
     {
-        "id_resource": 899,
+        "id": 899,
         "name": "CSS Tricks y buenas prácticas",
         "tipo": "WEB",
         "link": ""

@@ -12,6 +12,7 @@
   --h-font: "Noto Sans", sans-serif;
   --p-font: "Plus Jakarta Sans", sans-serif;
   --btn-padding: 10px 20px;
+  --btn-forum-padding: 1.5rem 1.4rem;
   --logo: url("/src/resources/img/logo.png");
   --hero: url("/src/resources/img/hero.png");
 }

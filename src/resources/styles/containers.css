@@ -1,21 +1,4 @@
-.ct-forum {
-  background-color: var(--secondary-color);
-  border-radius: 500px;
-  padding: var(--btn-padding);
-  width: 300px;
-  height: 10x;
-  a {
-    color: var(--tertiary-color);
-    text-decoration: none; 
-  }
-  a:hover {
-    font-weight: bolder;
-  }
- 
-
-}
 .bg-navbar {
   background-color: white;
-  opacity: 0.93
- 
+  opacity: 0.93;
 }  

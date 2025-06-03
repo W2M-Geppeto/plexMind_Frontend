@@ -1,12 +1,12 @@
 [
     {
-        "idTopic": 5,
+        "id": 5,
         "name": "Video de introducción a JavaScript",
         "type": "VIDEO",
         "link": ""
     },
     {
-        "idTopic": 102,
+        "id": 102,
         "name": "Guía JavaScript para principiantes",
         "type": "WEB",
         "link": ""

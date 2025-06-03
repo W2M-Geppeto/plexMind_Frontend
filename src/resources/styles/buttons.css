@@ -1,26 +1,38 @@
-.btn-m {
+.btn {
   background-color: var(--secondary-color);
-  padding: var(--btn-padding);
   font-family: var(--h-font);
   color: white;
   box-shadow: -5px 5px 5px rgba(0, 0, 0, 0.2);
-  border-color: var(--secondary-color);
-  border-radius: 5px;
-  border: 1px solid var(--secondary-color);
+  border-color: var(--primary-color);
+  border: 1px solid var(--primary-color);
+  transition: all 0.3s ease;
 }
 
-.btn-m:hover {
+.btn:hover {
   background-color: white;
   color: var(--secondary-color);
-  padding: 10px 20px;
   box-shadow: none;
   border: 1px solid var(--secondary-color);
 }
 
-.btn-m-disabled {
+.btn:disabled {
   background-color: var(--disable-color);
-  padding: 10px 20px;
   box-shadow: none;
   color: #9c9b9d;
   border: 1px solid var(--secondary-color);
 }
+
+.btn-m {
+  padding: var(--btn-padding);
+  border-radius: 5px;
+}
+
+.btn-trend {
+  border-radius: 500px;
+  padding: var(--btn-forum-padding);
+}
+
+.btn-trend:hover{
+  overflow: hidden;
+}
+

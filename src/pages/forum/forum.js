@@ -67,8 +67,8 @@ function fillList() {
       <div class="row">
         <div class="col-2"></div>
         <div class="col-8">
-          <a href="#" class="text-decoration-none text-reset text-truncate w-100 d-block txt-color">
-            ${resource.name}
+          <a href="#" target="_blank" class="text-decoration-none text-reset text-truncate w-100 d-block txt-color">
+            ${resource.name} 
           </a>
         </div>
         <div class="col-1 d-flex justify-content-end">

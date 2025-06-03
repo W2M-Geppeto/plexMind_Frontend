@@ -24,13 +24,14 @@ function goBack() {
   }
 }
 
-//Añadir la llamada a la funcion:   setPreviousPage('.goForum'); y la classe a todos los elementos que lleven al foro
+//Añadir la llamada a la funcion: setPreviousPage('.goForum'); y la classe a todos los elementos que lleven al foro
 function setPreviousPage(selector) {
-  document.querySelector(selector).addEventListener('click', function() {
+  document.querySelectorAll(selector).forEach(element => {
+    element.addEventListener('click', function() {
       sessionStorage.setItem('previousPage', window.location.pathname);
     });
-  };
-
+  });
+}
   //Función para que el logo vuelva al home
   function backHome(){
     document.querySelector('.logo-navbar').addEventListener('click', function(e) {
@@ -39,6 +40,13 @@ function setPreviousPage(selector) {
     });
   }
 
-  //Func
-
+  //Función para que el icono vaya al profile 
+  function goProfile() {
+   document.getElementById('personIcon').addEventListener('click', function(e) {
+      e.preventDefault();
+      window.location.href = '/src/pages/profile/profile.html';
+    });
+  } 
+  
+  goProfile();
   backHome();

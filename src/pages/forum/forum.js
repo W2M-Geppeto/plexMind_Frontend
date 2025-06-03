@@ -108,7 +108,7 @@ function giveLike(idResource){
 
 //Funciones para que se ejecuten después de cargar el DOM
 document.addEventListener('DOMContentLoaded', async function() {
-  //fillMainUser();
+  fillMainUser();
   seeResources();
   const observer = new MutationObserver(seeResources);
   if (resourceList) {

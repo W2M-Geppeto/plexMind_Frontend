@@ -1,10 +1,7 @@
-let user = document.getElementById('user');
-
 //funcion para rellenar el nombre de usuario según el email acortado
 function fillMainUser(){
 const userInfo = JSON.parse(sessionStorage.getItem('user'));
-user.textContent = userInfo.email ? userInfo.email.split('@')[0] : 'Usuario';
-}
+document.getElementById('user').textContent = (userInfo && userInfo.email) ? userInfo.email.split('@')[0] : 'Usuario';}
 
 //Función para guardar y recuperar la página anterior
 function setPreviousPage(selector) {

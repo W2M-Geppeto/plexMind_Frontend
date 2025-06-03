@@ -12,7 +12,7 @@ async function getUserData() {
 }
 
 // Cambia este valor para mostrar el usuario que quieras
-// Este valor nos lo debe devolver en el futuro el backend
+// Este valor nos lo debe devolver en el futuro el backend/API
 const idUser = 1;
 
 async function mostrarUsuario() {

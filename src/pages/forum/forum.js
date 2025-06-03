@@ -19,7 +19,7 @@ function seeResources() {
 }
 function fillData(){
   titleForum.textContent =  data[1].nameTopic.toUpperCase();
-  categoryforum.textContent = data[1].idCategory.toUpperCase();
+  categoryforum.textContent = (data[1].idCategory + " - stack").toUpperCase();
 }
 // function fillData(){
 //   titleForum.textContent = data.title.toUpperCase();
@@ -37,7 +37,7 @@ function fillList() {
       <div class="row">
         <div class="col-2"></div>
         <div class="col-8">
-          <a href="#" target="_blank" class="text-decoration-none text-reset text-truncate w-100 d-block txt-color">
+          <a href="#" target="_blank" class="text-decoration-none text-reset text-truncate txt-color link">
             ${resource.name} 
           </a>
         </div>
@@ -85,6 +85,7 @@ document.addEventListener('DOMContentLoaded', async function() {
   resourceList.addEventListener('click', function(e) {
     if (e.target && e.target.id === 'favoriteForumIcon') {
       e.preventDefault();
+      //añadir un disabled al like 
       giveLike(e.target.getAttribute('data-id'));
     }
 });

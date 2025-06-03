@@ -21,13 +21,15 @@ async function getForumData() {
 //Función para leer los datos de la lista
 async function getListData() {
   try {
-    const response = await fetch('/src/resources/data/mocks/recursos_id_topic_3.json');
+    const response = await fetch('/src/resources/data/mocks/recursos_id_topic_8.json');
     if (!response.ok) {
-      throw new Error('Network response was not ok');}
-    listElements = await response.json();
+    throw new Error(`Network response was not ok \nStatus: ${response.status} - ${response.statusText}`);
+  }
+  listElements = await response.json();
     return listElements;
   } catch (error) {
-    console.error('There has been a problem with your fetch operation:', error);}
+    console.error('There has been a problem with your fetch operation:', error);
+  }
 }
 
 //Función para cambiar la clase de la lista de recursos, según si tiene o no elementos hijos

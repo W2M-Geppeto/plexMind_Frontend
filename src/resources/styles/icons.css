@@ -41,6 +41,7 @@
   color: var(--tertiary-color);
   background-color: var(--primary-color);
   border-radius: 50px;
+  cursor: pointer;
 }
 
 #favoriteIcon {
@@ -51,23 +52,32 @@
   color: var(--tertiary-color);
 }
 
-#favoriteForumIcon, #favoriteUserIcon {
+#favoriteUserIcon {
   color: transparent;
   -webkit-text-stroke: 1.5px var(--primary-color);
 }
-#favoriteForumIcon:hover, #favoriteUserIcon:hover {
+#favoriteUserIcon:hover {
   color: var(--primary-color);
+}
+
+#favoriteForumIcon {
+  color: transparent;
+  -webkit-text-stroke: 2px white;
+}
+#favoriteForumIcon:hover {
+color: white;
 }
 
 #exitIcon {
   color: var(--primary-color);
+  font-size: 40px !important;
 }
 #exitIcon:hover {
   color: var(--secondary-color);
   font-weight: bolder;
 }
 
-#favoriteForumIcon, .nv-personIcon{
+.nv-personIcon{
     font-size: 50px !important;
 }
 

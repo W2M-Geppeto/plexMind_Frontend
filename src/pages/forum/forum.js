@@ -43,8 +43,8 @@ function seeResources() {
 
 //Función para rellenar la infromación del foro con el titulo y categoría
 function fillData(){
-  titleForum.textContent =  data[1].title.toUpperCase();
-  categoryforum.textContent = data[1].category.toUpperCase();
+  titleForum.textContent =  data[0].title.toUpperCase();
+  categoryforum.textContent = data[0].category.toUpperCase();
 }
 
 //Cada vez que se de like, aumentar el contador de likes a la BBDD

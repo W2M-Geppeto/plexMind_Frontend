@@ -1,0 +1,38 @@
+.btn {
+  background-color: var(--secondary-color);
+  font-family: var(--h-font);
+  color: white;
+  box-shadow: -5px 5px 5px rgba(0, 0, 0, 0.2);
+  border-color: var(--primary-color);
+  border: 1px solid var(--primary-color);
+  transition: all 0.3s ease;
+}
+
+.btn:hover {
+  background-color: white;
+  color: var(--secondary-color);
+  box-shadow: none;
+  border: 1px solid var(--secondary-color);
+}
+
+.btn-m-disabled{
+  background-color: var(--disable-color);
+  box-shadow: none;
+  color: #9c9b9d;
+  border: 1px solid var(--secondary-color);
+}
+
+.btn-m {
+  padding: var(--btn-padding);
+  border-radius: 5px;
+}
+
+.btn-trend {
+  border-radius: 500px;
+  padding: var(--btn-forum-padding);
+}
+
+.btn-trend:hover{
+  overflow: hidden;
+}
+

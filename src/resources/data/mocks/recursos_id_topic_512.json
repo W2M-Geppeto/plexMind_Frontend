@@ -1,0 +1,20 @@
+[
+    {
+        "id": 9,
+        "name": "Guía TypeScript para principiantes",
+        "tipo": "WEB",
+        "link": ""
+    },
+    {
+        "id": 67,
+        "name": "Video de introducción a TypeScript",
+        "tipo": "VIDEO",
+        "link": ""
+    },
+    {
+        "id": 158,
+        "name": "Documentación oficial de TypeScript",
+        "tipo": "DOC",
+        "link": ""
+    }
+]

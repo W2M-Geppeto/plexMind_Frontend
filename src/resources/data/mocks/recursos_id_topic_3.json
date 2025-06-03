@@ -1,0 +1,44 @@
+[
+    {
+        "id": 3,
+        "name": "Guía HTML para principiantes",
+        "type": "WEB",
+        "link": ""
+    },
+    {
+        "id": 27,
+        "name": "Video de introducción a HTML",
+        "type": "VIDEO",
+        "link": ""
+    },
+    {
+        "id": 88,
+        "name": "Documentación oficial de HTML",
+        "type": "DOC",
+        "link": ""
+    },
+    {
+        "id": 142,
+        "name": "Tutorial HTML avanzado",
+        "type": "WEB",
+        "link": ""
+    },
+    {
+        "id": 315,
+        "name": "Ejercicios prácticos de HTML",
+        "type": "WEB",
+        "link": ""
+    },
+    {
+        "id": 482,
+        "name": "HTML5 en profundidad",
+        "type": "WEB",
+        "link": ""
+    },
+    {
+        "id": 799,
+        "name": "Web HTML interactiva",
+        "type": "WEB",
+        "link": ""
+    }
+]

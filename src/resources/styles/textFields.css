@@ -1,0 +1,24 @@
+.textField-m {
+  border: 1px solid var(--disable-color);
+  border-radius: 7px;
+  color: var(--disable-color);
+  padding-left: 10px;
+}
+.textField-m:hover{
+  border: 1px solid var(--secondary-color);
+}
+
+.textField-a {
+  border: 1px solid black;
+  color: black;
+}
+
+.textField-e {
+  border: 1px solid red;
+  color: black;
+}
+
+.text-box {
+  border: 2px solid var(--secondary-color);
+  padding: var(--btn-padding);
+}

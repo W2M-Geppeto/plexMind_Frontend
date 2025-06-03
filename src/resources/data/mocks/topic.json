@@ -1,0 +1,47 @@
+[
+    {
+        "id": 1,
+        "nameTopic": "javascript",
+        "idCategory": "FRONT"
+    },
+    {
+        "id": 2,
+        "nameTopic": "java",
+        "idCategory": "BACK"
+    },
+    {
+        "id": 3,
+        "nameTopic": "html",
+        "idCategory": "FRONT"
+    },
+    {
+        "id": 487,
+        "nameTopic": "css",
+        "idCategory": "FRONT"
+    },
+    {
+        "id": 932,
+        "nameTopic": "python",
+        "idCategory": "BACK"
+    },
+    {
+        "id": 512,
+        "nameTopic": "typescript",
+        "idCategory": "FRONT"
+    },
+    {
+        "id": 745,
+        "nameTopic": "csharp",
+        "idCategory": "BACK"
+    },
+    {
+        "id": 604,
+        "nameTopic": "php",
+        "idCategory": "BACK"
+    },
+    {
+        "id": 888,
+        "nameTopic": "sql",
+        "idCategory": "BACK"
+    }
+]

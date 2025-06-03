@@ -1,0 +1,87 @@
+#homeIcon,
+#linkIcon,
+#searchIcon,
+#videocamicon,
+#menuIcon,
+#descriptionIcon,
+#arrowIcon,
+#notificationIcon,
+#forumIcon {
+  color: var(--primary-color);
+}
+#homeIcon:hover,
+#linkIcon:hover,
+#searchIcon:hover,
+#videocamicon:hover,
+#menuIcon:hover,
+#descriptionIcon:hover,
+#arrowIcon:hover,
+#notificationsIcon:hover,
+#forumIcon:hover {
+  color: var(--secondary-color);
+  transform: scale(1.3);
+}
+
+#linkIconForum{
+  color: white;
+}
+
+#closeIcon {
+  color: var(--tertiary-color);
+  background-color: var(--primary-color);
+  border-radius: 5px;
+}
+#closeIcon:hover,
+#personIcon:hover {
+  background-color: var(--secondary-color);
+  transform: scale(1.3);
+}
+
+#personIcon {
+  color: var(--tertiary-color);
+  background-color: var(--primary-color);
+  border-radius: 50px;
+  cursor: pointer;
+}
+
+#favoriteIcon {
+  color: transparent;
+  -webkit-text-stroke: 1.5px white;
+}
+#favoriteIcon:hover {
+  color: var(--tertiary-color);
+}
+
+#favoriteUserIcon {
+  color: transparent;
+  -webkit-text-stroke: 1.5px var(--primary-color);
+}
+#favoriteUserIcon:hover {
+  color: var(--primary-color);
+}
+
+#favoriteForumIcon {
+  color: transparent;
+  -webkit-text-stroke: 2px white;
+}
+#favoriteForumIcon:hover {
+color: white;
+}
+
+#exitIcon {
+  color: var(--primary-color);
+  font-size: 40px !important;
+}
+#exitIcon:hover {
+  color: var(--secondary-color);
+  font-weight: bolder;
+}
+
+.nv-personIcon{
+    font-size: 50px !important;
+}
+
+.nv-favouriteUserIcon{
+    font-size: 30px !important;
+    margin-bottom: 20px;
+}

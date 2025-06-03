@@ -104,6 +104,7 @@ function getIcon(type){
 //Función para enviar +1 like a la bbdd
 function giveLike(idResource){
   //Enviarselo a la bbdd
+  console.log(`Like given to resource with ID: ${idResource}`);
 }
 
 //Funciones para que se ejecuten después de cargar el DOM

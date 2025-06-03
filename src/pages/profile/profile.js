@@ -1,19 +1,36 @@
-// Cambia este valor por el IdUser que quieras mostrar
-const idUser = 700;
+//Funcion para leer los datos del usuario
+async function getUserData() {
+    try{
+        const response = await fetch('/src/resources/data/mocks/user.json');
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        return await response.json();
+    } catch (error) {
+        console.error('There has been a problem with your fetch operation:', error);
+    }
+}
 
-fetch('/src/resources/data/mocks/user.json')
-  .then(response => response.json())
-  .then(users => {
-    // Busca el usuario con el idUser deseado
+// Cambia este valor para mostrar el usuario que quieras
+// Este valor nos lo debe devolver en el futuro el backend
+const idUser = 1;
+
+async function mostrarUsuario() {
+    const users = await getUserData();
+    if (!users) return;
+    // Busca el usuario por IdUser
     const user = users.find(u => u.IdUser === idUser);
     if (user) {
-      // Pon el nombre antes del @ como nombre visible
-      document.getElementById('user').textContent = user.Email.split('@')[0];
-      // Reemplaza \n por <br> en la descripción
-      document.querySelector('.main-content .wrap-text p').innerHTML = user.description.replace(/\n/g, '<br>');
+        // Nombre en la navbar (antes del @)
+        document.getElementById('user').textContent = user.Email.split('@')[0];
+        // Descripción en About me (con saltos de línea)
+        document.querySelector('.main-content .wrap-text p').innerHTML = user.description.replace(/\n/g, '<br>');
     } else {
-      document.getElementById('user').textContent = "Usuario no encontrado";
-      document.querySelector('.main-content .wrap-text p').textContent = "";
+        document.getElementById('user').textContent = "Usuario no encontrado";
+        document.querySelector('.main-content .wrap-text p').textContent = "";
     }
-  })
-  .catch(error => console.error('Error cargando el usuario:', error));
+}
+
+// Ejecuta al cargar la página
+document.addEventListener('DOMContentLoaded', mostrarUsuario);
+

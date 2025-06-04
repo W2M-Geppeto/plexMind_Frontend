@@ -22,13 +22,13 @@ main {
     margin-top: 12.1vh;
   }
 }
-@media (min-width: 992px) {  /* Escritorio (lg y superior) */
+@media (min-width: 992px) { 
   main {
     margin-top: 10vh;
   }
 }
-@media (min-width: 1200px) {  /* Extra grande (xl y superior) */
+@media (min-width: 1200px) {  
   main {
-    margin-top: 9.5vh; /* Ajusta este valor según el alto real de tu navbar en xl */
+    margin-top: 9.5vh; 
   }
 }

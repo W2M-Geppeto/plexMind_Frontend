@@ -11,7 +11,7 @@ function setPreviousPage(selector) {
   });
 }
 function goBack() {
-  const previous = sessionStorage.getItem("previousPage");
+  const previous = getCookie("previousPage");
   if (previous && previous !== window.location.pathname) {
     window.location.href = previous;
   } else {
@@ -22,7 +22,7 @@ function goBack() {
 function setPreviousPage(selector) {
   document.querySelectorAll(selector).forEach((element) => {
     element.addEventListener("click", function () {
-      sessionStorage.setItem("previousPage", window.location.pathname);
+      setCookie("previousPage", window.location.pathname, {});
     });
   });
 }
@@ -70,7 +70,7 @@ async function sendData(url = '', data = {}) {
     body: JSON.stringify(data)
   });
 }
-function setCookie(name, value, jsonAttributes = {}) {
+function createNewCookie(name, value, jsonAttributes = {}) {
   jsonAttributes = {
     path: "/",
     ...jsonAttributes,
@@ -102,11 +102,11 @@ function getCookie(name) {
 function setCookie(name, newDataObj, jsonAttributes = {}) {
   let oldCookieData = {};
   let currentCookieData = getCookie(name);
-  if (!currentCookieData) setCookie(name, JSON.stringify(newDataObj), attributes = {})
+  if (!currentCookieData) createNewCookie(name, JSON.stringify(newDataObj), attributes = {})
   else{
     oldCookieData = JSON.parse(currentCookieData);
     const updatedObj = { ...oldCookieData, ...newDataObj };
-    setCookie(name, JSON.stringify(updatedObj), jsonAttributes);
+    createNewCookie(name, JSON.stringify(updatedObj), jsonAttributes);
   }}
 function deleteCookie(name) {
   setCookie(name, "", {

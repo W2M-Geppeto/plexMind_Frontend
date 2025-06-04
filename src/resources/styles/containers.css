@@ -1,8 +1,34 @@
 .bg-navbar {
   background-color: white;
-  opacity: 0.93;
 }
 .navbar {
   padding-left: 1rem;
   padding-right: 0.7rem;
+  margin-bottom: none;
+}
+
+main {
+  margin-top: 12vh;
+}
+
+@media (max-width: 767.98px) {   
+  main {
+    margin-top: 3vh;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 991.98px) {  
+  main {
+    margin-top: 12.1vh;
+  }
+}
+@media (min-width: 992px) {  /* Escritorio (lg y superior) */
+  main {
+    margin-top: 10vh;
+  }
+}
+@media (min-width: 1200px) {  /* Extra grande (xl y superior) */
+  main {
+    margin-top: 9.5vh; /* Ajusta este valor según el alto real de tu navbar en xl */
+  }
 }

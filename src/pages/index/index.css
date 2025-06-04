@@ -9,8 +9,9 @@
             var(--primary-color) 100%
         ),
         url("/src/resources/img/logo.png") center/38% auto no-repeat;
-    margin-top: 5rem;
-    display: flex;
+   padding-top: 82px !important;
+   margin-top: 0;
+   display: flex;
 }
 .forum-title {
   white-space: nowrap;
@@ -43,3 +44,4 @@
     color: #bdbdbd !important;
     cursor: not-allowed !important;
 }
+

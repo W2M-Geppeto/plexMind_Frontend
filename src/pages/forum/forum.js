@@ -10,7 +10,7 @@ function sendTopic(){
   //Enviarselo a la bbd
 
 }
-function seeResources() {
+function emptyResources() {
   if (resourceList && resourceList.children.length === 0) {
     emptyList.style.display = '';      
   } else{
@@ -56,6 +56,7 @@ function fillList() {
     `;
     resourceList.appendChild(li);
   }
+  emptyResources();
 }
 function getIcon(type){
   switch(type) {
@@ -85,8 +86,9 @@ document.addEventListener('DOMContentLoaded', async function() {
   if (data) fillData();
   else console.log('No data found for the forum');
   listElements = await getData('/src/resources/data/mocks/recursos_id_topic_3.json');
+  console.log('listElements:', listElements);
   if (listElements) fillList();
-  else  seeResources();
+  else  emptyResources();
   backBtn.addEventListener('click', function(e) {
     e.preventDefault();
     goBack();

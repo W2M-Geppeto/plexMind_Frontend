@@ -12,7 +12,13 @@
     margin-top: 5rem;
     display: flex;
 }
-
+.forum-title {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: block;
+  max-width: 100%;
+}
 #footer {
     background-color: #19789eab;
     color: var(--secondary-color);

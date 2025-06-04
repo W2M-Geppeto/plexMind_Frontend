@@ -1,4 +1,5 @@
 @import url("/src/resources/styles/main.css");
+
 .hero {
     background-color: var(--primary-color);
     margin-top: 5rem;
@@ -10,16 +11,17 @@
 }
 
 #footer {
-  background-color: #19789eab;
-  color: var(--secondary-color);
-  padding: 1rem;
-  text-align: center;
+    background-color: #19789eab;
+    color: var(--secondary-color);
+    padding: 1rem;
+    text-align: center;
 }
 
 #arrowIcon {
     font-size: 3rem;
     color: rgb(65, 64, 64);
 }
+
 #arrowIcon:hover {
     color: white;
     background-color: rgb(65, 64, 64);
@@ -28,3 +30,7 @@
 }
 
 
+.nav-item.disabled .nav-link {
+    color: #bdbdbd !important;
+    cursor: not-allowed !important;
+}

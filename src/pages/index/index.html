@@ -18,7 +18,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
     <!--material symbols-->
 
-    <script src="/src/pages/index/index.js"></script>
+
 
 </head>
 
@@ -47,20 +47,20 @@
                     </label>
                 </div>
 
-                <ul class="navbar-nav mb-2 mb-lg-0">
+                <ul class="navbar-nav mb-2 mb-lg-0 align-items-center">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#Home">
+                        <a class="nav-link d-flex active" aria-current="page" href="#Home">
                             <i class="material-symbols-outlined" id="homeIcon">home</i>
                         </a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" href="#Forums">
-                            <i class="material-symbols-outlined" id="forumIcon">forum</i>
+                    <li class="nav-item disabled">
+                        <a class="nav-link d-flex" href="#Forums">
+                            <i class="material-symbols-outlined" id="forumIconNav">forum</i>
                         </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link active" aria-disabled="true">
-                            <i class="material-symbols-outlined" id="personIcon">person</i>
+                            <i class="material-symbols-outlined nv-personIcon" id="personIcon">person</i>
                         </a>
                     </li>
                 </ul>
@@ -122,7 +122,7 @@
         </main>
     </div>
 
-    
+
     <!-- Footer -->
     <section class="container-fluid" id="footer">
         <div class="d-flex flex-column flex-md-row align-items-start py-5 text-white px-4 gap-4">
@@ -179,13 +179,12 @@
     </a>
 
 
-
-
-
-
+    <!-- ----------------------------------------------------------------------------------------------------------- -->
+    <script src="/src/pages/index/index.js"></script>
+    <script src="/src/shared/utility.js"></script>
 
     <script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
-
+    <!--js material components-->
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
         integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
         crossorigin="anonymous"></script> <!--js popper-->
@@ -193,7 +192,7 @@
         integrity="sha384-RuyvpeZCxMJCqVUGFI0Do1mQrods/hhxYlcVfGPOfQtPJh0JCw12tUAZ/Mv10S7D"
         crossorigin="anonymous"></script> <!--js bootstrap-->
 
-    <!--js material components-->
+
 </body>
 
 </html>

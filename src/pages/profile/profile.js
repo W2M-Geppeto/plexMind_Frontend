@@ -35,3 +35,4 @@ async function mostrarUsuario() {
 // Ejecuta al cargar la página
 document.addEventListener('DOMContentLoaded', mostrarUsuario);
 
+

@@ -69,13 +69,12 @@ function giveLike(idResource) {
   let likedArr = likedCookie ? JSON.parse(likedCookie) : [];
   idResource = Number(idResource);
   if (!likedArr.includes(idResource)) likedArr.push(idResource);
-  setCookie(
+  createNewCookie(
     "liked_prueba",
     JSON.stringify(likedArr),
     { expires: new Date(Date.now() + 10 * 365 * 24 * 60 * 60 * 1000) }
   );
 }
-
 document.addEventListener('DOMContentLoaded', async function() {
   fillMainUser();
   data = await getData('/src/resources/data/mocks/topic.json') ;  

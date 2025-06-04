@@ -1,12 +1,15 @@
 @import url("/src/resources/styles/main.css");
 
 .hero {
-    background-color: var(--primary-color);
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(255,255,255, 0.02) 0%,
+            rgb(28, 103, 132, 0.9) 60%,
+            var(--primary-color) 100%
+        ),
+        url("/src/resources/img/logo.png") center/38% auto no-repeat;
     margin-top: 5rem;
-    background-image: url("/src/resources/img/logo_low_opacity.png");
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: 32% auto;
     display: flex;
 }
 

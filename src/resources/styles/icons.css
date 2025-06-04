@@ -42,6 +42,7 @@
   background-color: var(--primary-color);
   border-radius: 50px;
   cursor: pointer;
+  margin-left: 32px !important; /* Ajusta el valor según lo que necesites */
 }
 
 #favoriteIcon {
@@ -79,6 +80,7 @@ color: white;
 
 .nv-personIcon{
     font-size: 50px !important;
+    
 }
 
 .nv-favouriteUserIcon{

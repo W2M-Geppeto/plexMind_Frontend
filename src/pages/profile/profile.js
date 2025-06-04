@@ -1,3 +1,6 @@
+let backBtn = document.getElementById('exitIcon');
+
+
 //Funcion para leer los datos del usuario
 async function getUserData() {
     try{
@@ -34,5 +37,12 @@ async function mostrarUsuario() {
 
 // Ejecuta al cargar la página
 document.addEventListener('DOMContentLoaded', mostrarUsuario);
+document.addEventListener('DOMContentLoaded', async function() {
+    backBtn.addEventListener('click', function(e) {
+        e.preventDefault();
+        goBack();
+    });
+
+});
 
 

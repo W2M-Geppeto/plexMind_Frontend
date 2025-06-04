@@ -68,7 +68,6 @@ function giveLike(idResource){
 }
 document.addEventListener('DOMContentLoaded', async function() {
   fillMainUser();
-  seeResources();
   const observer = new MutationObserver(seeResources);
   if (resourceList) {
     observer.observe(resourceList, { childList: true });}
@@ -77,7 +76,7 @@ document.addEventListener('DOMContentLoaded', async function() {
   else console.log('No data found for the forum');
   listElements = await getData('/src/resources/data/mocks/recursos_id_topic_3.json') ;
   if (listElements) fillList();
-  else console.log('No data found for the list of resources');
+  else  seeResources();
   backBtn.addEventListener('click', function(e) {
     e.preventDefault();
     goBack();

@@ -39,7 +39,9 @@ font-size: 30px;
 margin: 0% auto 0% auto;
 width: 50%;
 }
-
+li a:hover{
+font-weight: bolder;
+}
 #resourceList::-webkit-scrollbar {
   width: 6px;
   background: var(--primary-color);

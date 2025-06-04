@@ -30,12 +30,13 @@
             </div>
             <div class="textfield mx-auto">
                 <div class="text-start label">Password:</div>
-                <input class="text-start textField-m" id="passwordInput" placeholder="Enter your password"></input>
+                <input class="text-start textField-m" id="passwordInput" type="password" placeholder="Enter your password"></input>
+                <div id="passwordError" class="text-danger small pt-3" style="display:none;">Invalid username or password</div>
             </div>
         </div>
 
         <div class="container">
-            <button class="btn btn-m-disabled" id="loginButton">Log in</button>
+            <button class="btn btn-m" id="loginButton">Log in</button>
             <div class="text-center">Don't you have an account?</div>
             <div ><span class="text-center link-st">Sign up</span></div>
 

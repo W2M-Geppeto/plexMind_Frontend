@@ -21,10 +21,6 @@ function fillData(){
   titleForum.textContent =  data[1].nameTopic.toUpperCase();
   categoryforum.textContent = (data[1].idCategory + " - stack").toUpperCase();
 }
-// function fillData(){
-//   titleForum.textContent = data.title.toUpperCase();
-//   categoryforum.textContent = data.category.toUpperCase();
-// }
 function fillList() {
   resourceList.innerHTML = ""; 
   let likedCookie = getCookie("liked_prueba");

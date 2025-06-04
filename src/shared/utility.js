@@ -84,7 +84,7 @@ function getCookie(name) {
   );
   return matches ? decodeURIComponent(matches[1]) : undefined;
 }
-function addDataCookie(name, newDataObj, jsonAttributes = {}) {
+function updateCookieObject(name, newDataObj, jsonAttributes = {}) {
   let oldCookieData = {};
   let currentCookieData = getCookie(name);
   if (!currentCookieData) setCookie(name, JSON.stringify(newDataObj), attributes = {})

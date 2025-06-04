@@ -27,12 +27,17 @@ function fillData(){
 // }
 function fillList() {
   resourceList.innerHTML = ""; 
+  let likedCookie = getCookie("liked_prueba");
+  console.log(likedCookie);
+  let likedArr = likedCookie ? JSON.parse(likedCookie) : [];
   for (let i = 0; i < listElements.length; i++) {
     const resource = listElements[i];
-    let icon = getIcon(resource.type);    
+    let icon = getIcon(resource.type);   
+    let isLiked = likedArr.includes(resource.id);    
     const li = document.createElement('li');
     li.className = 'list-group-item';
     li.id = 'list-item';
+    let idStyle = isLiked ? "favoriteForumIconLiked" : "favoriteForumIcon";
     li.innerHTML = `
       <div class="row">
         <div class="col-2"></div>
@@ -42,7 +47,7 @@ function fillList() {
           </a>
         </div>
         <div class="col-1 d-flex justify-content-end">
-          <i class="material-icons" id="favoriteForumIcon" data-id="${resource.id}">favorite</i>
+          <i class="material-icons" id=${idStyle} data-id="${resource.id}">favorite</i>
         </div>
         <div class="col-1 d-flex justify-content-end">
           <i class="material-icons" id="linkIconForum">${icon}</i>
@@ -62,19 +67,24 @@ function getIcon(type){
       return 'link';
   }
 }
-function giveLike(idResource){
-  //Enviarselo a la bbdd
-  console.log(`Like given to resource with ID: ${idResource}`);
+function giveLike(idResource) {
+  let likedCookie = getCookie("liked_prueba");
+  let likedArr = likedCookie ? JSON.parse(likedCookie) : [];
+  idResource = Number(idResource);
+  if (!likedArr.includes(idResource)) likedArr.push(idResource);
+  setCookie(
+    "liked_prueba",
+    JSON.stringify(likedArr),
+    { expires: new Date(Date.now() + 10 * 365 * 24 * 60 * 60 * 1000) }
+  );
 }
+
 document.addEventListener('DOMContentLoaded', async function() {
   fillMainUser();
-  const observer = new MutationObserver(seeResources);
-  if (resourceList) {
-    observer.observe(resourceList, { childList: true });}
   data = await getData('/src/resources/data/mocks/topic.json') ;  
   if (data) fillData();
   else console.log('No data found for the forum');
-  listElements = await getData('/src/resources/data/mocks/recursos_id_topic_3.json') ;
+  listElements = await getData('/src/resources/data/mocks/recursos_id_topic_3.json');
   if (listElements) fillList();
   else  seeResources();
   backBtn.addEventListener('click', function(e) {
@@ -84,7 +94,7 @@ document.addEventListener('DOMContentLoaded', async function() {
   resourceList.addEventListener('click', function(e) {
     if (e.target && e.target.id === 'favoriteForumIcon') {
       e.preventDefault();
-      //añadir un disabled al like 
+      e.target.removeAttribute('id');
       giveLike(e.target.getAttribute('data-id'));
     }
 });

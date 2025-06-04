@@ -42,9 +42,14 @@ function goProfile() {
 }
 goProfile();
 backHome();
-async function getData(direccion) {
-  try {
-    const response = await fetch(direccion);
+async function getData(url = '') {
+   try {
+    const response = await fetch(url, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+    });
     if (!response.ok) {
       throw new Error(
         `Network response was not ok \nStatus: ${response.status} - ${response.statusText}`
@@ -54,6 +59,16 @@ async function getData(direccion) {
   } catch (error) {
     console.error("There has been a problem with your fetch operation:", error);
   }
+}
+async function sendData(url = '', data = {}) {
+  const response = await fetch(url, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    referrerPolicy: 'no-referrer', //para no saber quien envia la peticion, prescindible
+    body: JSON.stringify(data)
+  });
 }
 function setCookie(name, value, jsonAttributes = {}) {
   jsonAttributes = {
@@ -97,4 +112,20 @@ function deleteCookie(name) {
   setCookie(name, "", {
     'max-age': -1
   })
+}
+async function sendData(url = '', data = {}) {
+  const response = await fetch(url, {
+    method: 'POST', // *GET, POST, PUT, DELETE, etc.
+    mode: 'cors', // no-cors, *cors, same-origin
+    cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+    credentials: 'same-origin', // include, *same-origin, omit
+    headers: {
+      'Content-Type': 'application/json'
+      // 'Content-Type': 'application/x-www-form-urlencoded',
+    },
+    redirect: 'follow', // manual, *follow, error
+    referrerPolicy: 'no-referrer', // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
+    body: JSON.stringify(data) // body data type must match "Content-Type" header
+  });
+  return response.json();
 }

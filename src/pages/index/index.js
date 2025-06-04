@@ -18,9 +18,11 @@ document.addEventListener('DOMContentLoaded', function() {
         if (data && data.length > 0) {
             trendingRow.innerHTML = "";
             data.forEach(item => {
+                // Construye la URL al foro usando el id
+                const forumUrl = `/src/pages/forum/forum.html?id=${item.id}`;
                 trendingRow.innerHTML += `
                 <div class="col-md-6 col-lg-4">
-                    <a href="${item.url || '#'}" class="btn btn-trend w-100 text-start mb-3">
+                    <a href="${forumUrl}" class="btn btn-trend w-100 text-start mb-3">
                         <div class="row align-items-center">
                             <div class="col-7 fs-4">${item.nameTopic.toUpperCase()}</div>
                             <div class="col-5 d-flex justify-content-end align-items-center">

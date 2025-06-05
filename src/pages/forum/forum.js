@@ -77,7 +77,7 @@ function giveLike(idResource) {
 }
 document.addEventListener('DOMContentLoaded', async function() {
   fillMainUser();
-  data = await getData('/src/resources/data/mocks/topic.json') ;  
+  data = await getData('/src/resources/data/mocks/topic.json');  
   if (data) fillData();
   else console.log('No data found for the forum');
   listElements = await getData('/src/resources/data/mocks/recursos_id_topic_3.json');
@@ -96,3 +96,4 @@ document.addEventListener('DOMContentLoaded', async function() {
     }
 });
 });
+console.log(document.cookie);

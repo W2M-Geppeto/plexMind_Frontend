@@ -62,27 +62,46 @@ async function getData(url = '') {
 }
 async function sendData(url = '', data = {}) {
   const response = await fetch(url, {
-    method: 'POST',
+    method: 'POST', 
     headers: {
       'Content-Type': 'application/json'
     },
-    referrerPolicy: 'no-referrer', //para no saber quien envia la peticion, prescindible
+    referrerPolicy: 'no-referrer', //opcional, para ocultar quien envía la peticion
     body: JSON.stringify(data)
   });
 }
-function createNewCookie(name, value, jsonAttributes = {}) {
-  jsonAttributes = {
-    path: "/",
-    ...jsonAttributes,
-  };
-  if (jsonAttributes.expires instanceof Date) {
-    jsonAttributes.expires = jsonAttributes.expires.toUTCString();
+async function sendGetData(url = '', data = {}) {
+  try {
+    const response = await fetch(url, {
+    method: 'POST', 
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    referrerPolicy: 'no-referrer', //opcional, para ocultar quien envía la peticion
+    body: JSON.stringify(data)
+  });
+    if (!response.ok) {
+      throw new Error(
+        `Network response was not ok \nStatus: ${response.status} - ${response.statusText}`
+      );
+    }
+    return await response.json();
+  } catch (error) {
+    console.error("There has been a problem with your fetch operation:", error);
   }
-  let newCookie =
-    encodeURIComponent(name) + "=" + encodeURIComponent(value);
-  for (let attributeKey in jsonAttributes) {
+}
+function createNewCookie(name, value, cookieAttributes = {}) {
+  cookieAttributes = {
+    path: "/",
+    ...cookieAttributes,
+  };
+  if (cookieAttributes.expires instanceof Date) {
+    cookieAttributes.expires = cookieAttributes.expires.toUTCString();
+  }
+let newCookie =
+  encodeURIComponent(name) + "=" + encodeURIComponent(JSON.stringify(value));  for (let attributeKey in cookieAttributes) {
     newCookie += "; " + attributeKey;
-    let attributeValue = jsonAttributes[attributeKey];
+    let attributeValue = cookieAttributes[attributeKey];
     if (attributeValue !== true) {
       newCookie += "=" + attributeValue;
     }
@@ -102,24 +121,14 @@ function getCookie(name) {
 function updateCookie(name, newDataObj, jsonAttributes = {}) {
   let oldCookieData = {};
   let currentCookieData = getCookie(name);
-  if (!currentCookieData) createNewCookie(name, JSON.stringify(newDataObj), attributes = {})
+  if (!currentCookieData) createNewCookie(name, newDataObj, attributes = {})
   else{
     oldCookieData = JSON.parse(currentCookieData);
     const updatedObj = { ...oldCookieData, ...newDataObj };
-    createNewCookie(name, JSON.stringify(updatedObj), jsonAttributes);
+    createNewCookie(name, updatedObj, jsonAttributes);
   }}
 function deleteCookie(name) {
   updateCookie(name, "", {
     'max-age': -1
   })
-}
-async function sendData(url = '', data = {}) {
-  const response = await fetch(url, {
-    method: 'POST', 
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    referrerPolicy: 'no-referrer', //opcional, para ocultar quien envía la peticion
-    body: JSON.stringify(data)
-  });
 }

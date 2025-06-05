@@ -92,7 +92,7 @@ function createNewCookie(name, value, cookieAttributes = {}) {
     cookieAttributes.expires = cookieAttributes.expires.toUTCString();
   }
 let newCookie =
-  encodeURIComponent(name) + "=" + encodeURIComponent(JSON.stringify(value));  for (let attributeKey in cookieAttributes) {
+  encodeURIComponent(name) + "=" + encodeURIComponent(value);  for (let attributeKey in cookieAttributes) {
     newCookie += "; " + attributeKey;
     let attributeValue = cookieAttributes[attributeKey];
     if (attributeValue !== true) {

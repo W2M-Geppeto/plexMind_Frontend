@@ -1,7 +1,13 @@
 function fillMainUser() {
-  const userInfo = JSON.parse(getCookie("user"));
-  document.getElementById("user").textContent =
-    userInfo && userInfo.email ? userInfo.email.split("@")[0] : "Usuario";
+  const cookieValue = getCookie("user");
+  try {
+    const userInfo = JSON.parse(cookieValue);
+    document.getElementById("user").textContent =
+      userInfo && userInfo.email ? userInfo.email.split("@")[0] : "Usuario";
+  } catch (error) {
+    console.error("Error al parsear la cookie 'user':", error);
+    document.getElementById("user").textContent = "Usuario";
+  }
 }
 function goBack() {
   const previous = getCookie("previousPage");
@@ -12,7 +18,6 @@ function goBack() {
     window.location.href = "/src/pages/index/index.html";
   }
 }
-//Añadir la llamada a la funcion: setPreviousPage('.goForum'); y la classe a todos los elementos que lleven al foro
 function setPreviousPage(selector) {
   document.querySelectorAll(selector).forEach((element) => {
     element.addEventListener("click", function (e) {

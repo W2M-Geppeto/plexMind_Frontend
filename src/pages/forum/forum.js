@@ -72,14 +72,15 @@ function giveLike(idResource) {
      JSON.stringify(likedArr),
     { expires: new Date(Date.now() + 10 * 365 * 24 * 60 * 60 * 1000) }
   );
-  //sendData('/src/resources/data/mocks/liked.json', {id: idResource})
 }
 document.addEventListener('DOMContentLoaded', async function() {
   fillMainUser();
   data = await getData('/src/resources/data/mocks/topic.json');  
+  console.log(data);
   if (data) fillData();
   else console.log('No data found for the forum');
   listElements = await getData('/src/resources/data/mocks/recursos_id_topic_3.json');
+  console.log(listElements);
   if (listElements) fillList();
   else  emptyResources();
  
@@ -101,4 +102,3 @@ document.getElementById("personIcon").addEventListener("click", function (e) {
   
 });
 });
-console.log(document.cookie);

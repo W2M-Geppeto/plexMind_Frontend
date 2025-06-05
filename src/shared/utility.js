@@ -1,5 +1,5 @@
 function fillMainUser() {
-  const userInfo = JSON.parse(sessionStorage.getItem("user"));
+  const userInfo = JSON.parse(getCookie("user"));
   document.getElementById("user").textContent =
     userInfo && userInfo.email ? userInfo.email.split("@")[0] : "Usuario";
 }

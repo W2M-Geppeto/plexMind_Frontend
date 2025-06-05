@@ -8,8 +8,6 @@ let users = null;
 
 function usernameValidation() {
     if (!usernameRegex.test(username.value)) {
-        username.style.borderColor = "red";
-        console.log("Invalid username!");
         return false;
     } else {
         username.style.borderColor = "initial";
@@ -19,43 +17,23 @@ function usernameValidation() {
 
 function passwordValidation() {
     if (!passwordRegex.test(password.value)) {
-        password.style.borderColor = "red";
-        console.log("Invalid password!");
         return false;
     } else {
-        console.log("badbadbad");
         password.style.borderColor = "initial";
         return true;
     }
 }
 
+/* Cambia boton LOGIN entre disable y enable dependiendo de regex sobre los campos username y password. */
 function buttonUpdate() {
-    let enable = false;
-    if (username.value && password.value) {
-        button.classList.remove("btn-m-disabled"); //crear clase disable
-        button.classList.add("btn-m");
-        enable = true;
-        if (enable) {
-            console.log("Boton ENABLE");
-            button.addEventListener('click', function (e) {
-                e.preventDefault();
-                let flag = true;
-                if (flag) {
-                    if (!passwordValidation()) { flag = false }
-                    if (!usernameValidation()) { flag = false }
-                    enviardatos();
-                    /* alert("Data sent corretly"); */
-                }
-            })
-        }
+    if (passwordValidation() && usernameValidation()) {
+        button.disabled = false;
     } else {
-        console.log("boton DISABLE");
-        button.classList.remove("btn-m");
-        button.classList.add("btn-m-disabled");
+        button.disabled = true;
     }
 }
 
-async function validarDatos() {
+/* async function validarDatos() {
     try {
         const response = await fetch('/src/resources/data/mocks/users.json');
         if (!response.ok) {
@@ -66,31 +44,43 @@ async function validarDatos() {
     } catch (error) {
         console.error('There has been a problem with your fetch operation:', error);
     }
-}
-/* async function validarDatos() {
-    try {
-        const response = await fetch('API'); //A rellenar
-        if (!response.ok) {
-            throw new Error(`Network response was not ok \nStatus: ${response.status} - ${response.statusText}`);
-        }
-        users = await response.json();
-        const usersString = JSON.stringify(users);
-        sessionStorage.setItem('usuario', usersString);
-        return true;
-    } catch (error) {
-        console.error('There has been a problem with your fetch operation:', error);
-    }
 } */
 
-async function enviardatos() {
+async function validarDatos() {
+    const sendData = { email: username.value, password: password.value };
+    const receiveData = await sendGetData('https://micro-user-m5dv.onrender.com/api/users/login', JSON.stringify(sendData));
+    console.log(receiveData);
+    if (receiveData && receiveData.id && receiveData.email) {
+        createNewCookie('user', receiveData, {});
+        console.log('cookie creada');
+        return true;
+    } else {
+        console.log('cookie ERROR');
+        return false;
+    }
+}
+
+async function enviarDatos() {
     let esValido = await validarDatos();
-    console.log(esValido);
+    console.log("Login: " + esValido);
     if (esValido) {
-        console.log("");
+        password.value = "";
+        passwordError.style.display = "none";
         window.location.href = '/src/pages/index/index.html';
+    } else {
+        password.value = "";
+        username.style.borderColor = "red";
+        password.style.borderColor = "red";
+        passwordError.style.display = "block";
+        button.disabled = true;
     }
 }
 
 username.addEventListener('input', buttonUpdate);
 password.addEventListener('input', buttonUpdate);
 buttonUpdate();
+
+button.addEventListener('click', function (e) {
+    e.preventDefault();
+    enviarDatos();
+})

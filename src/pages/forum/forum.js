@@ -83,6 +83,7 @@ document.addEventListener('DOMContentLoaded', async function() {
   console.log(listElements);
   if (listElements) fillList();
   else  emptyResources();
+ 
   backBtn.addEventListener('click', function(e) {
     e.preventDefault();
     goBack();
@@ -93,5 +94,11 @@ document.addEventListener('DOMContentLoaded', async function() {
       e.target.removeAttribute('id');
       giveLike(e.target.getAttribute('data-id'));
     }
+});
+
+document.getElementById("personIcon").addEventListener("click", function (e) {
+  e.preventDefault();
+  createNewCookie("previousPage", window.location.pathname, {});
+  
 });
 });

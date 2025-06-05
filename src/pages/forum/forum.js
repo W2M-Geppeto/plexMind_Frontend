@@ -95,7 +95,7 @@ document.addEventListener('DOMContentLoaded', async function() {
     }
 });
 
-document.getElementById("personIcon").addEventListener("click", function (e) {
+document.querySelector(".personIcon").addEventListener("click", function (e) {
   e.preventDefault();
   createNewCookie("previousPage", window.location.pathname, {});
   

@@ -11,7 +11,7 @@ function setPreviousPage(selector) {
   });
 }
 function goBack() {
-  const previous = sessionStorage.getItem("previousPage");
+  const previous = getCookie("previousPage");
   if (previous && previous !== window.location.pathname) {
     window.location.href = previous;
   } else {
@@ -22,7 +22,7 @@ function goBack() {
 function setPreviousPage(selector) {
   document.querySelectorAll(selector).forEach((element) => {
     element.addEventListener("click", function () {
-      sessionStorage.setItem("previousPage", window.location.pathname);
+      updateCookie("previousPage", window.location.pathname, {});
     });
   });
 }
@@ -62,32 +62,51 @@ async function getData(url = '') {
 }
 async function sendData(url = '', data = {}) {
   const response = await fetch(url, {
-    method: 'POST',
+    method: 'POST', 
     headers: {
       'Content-Type': 'application/json'
     },
-    referrerPolicy: 'no-referrer', //para no saber quien envia la peticion, prescindible
+    referrerPolicy: 'no-referrer', //opcional, para ocultar quien envía la peticion
     body: JSON.stringify(data)
   });
 }
-function setCookie(name, value, jsonAttributes = {}) {
-  jsonAttributes = {
-    path: "/",
-    ...jsonAttributes,
-  };
-  if (jsonAttributes.expires instanceof Date) {
-    jsonAttributes.expires = jsonAttributes.expires.toUTCString();
+async function sendGetData(url = '', data = {}) {
+  try {
+    const response = await fetch(url, {
+    method: 'POST', 
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    referrerPolicy: 'no-referrer', //opcional, para ocultar quien envía la peticion
+    body: JSON.stringify(data)
+  });
+    if (!response.ok) {
+      throw new Error(
+        `Network response was not ok \nStatus: ${response.status} - ${response.statusText}`
+      );
+    }
+    return await response.json();
+  } catch (error) {
+    console.error("There has been a problem with your fetch operation:", error);
   }
-  let updatedCookie =
-    encodeURIComponent(name) + "=" + encodeURIComponent(value);
-  for (let attributeKey in jsonAttributes) {
-    updatedCookie += "; " + attributeKey;
-    let attributeValue = jsonAttributes[attributeKey];
+}
+function createNewCookie(name, value, cookieAttributes = {}) {
+  cookieAttributes = {
+    path: "/",
+    ...cookieAttributes,
+  };
+  if (cookieAttributes.expires instanceof Date) {
+    cookieAttributes.expires = cookieAttributes.expires.toUTCString();
+  }
+let newCookie =
+  encodeURIComponent(name) + "=" + encodeURIComponent(JSON.stringify(value));  for (let attributeKey in cookieAttributes) {
+    newCookie += "; " + attributeKey;
+    let attributeValue = cookieAttributes[attributeKey];
     if (attributeValue !== true) {
-      updatedCookie += "=" + attributeValue;
+      newCookie += "=" + attributeValue;
     }
   }
-  document.cookie = updatedCookie;
+  document.cookie = newCookie;
 }
 function getCookie(name) {
   let matches = document.cookie.match(
@@ -99,33 +118,17 @@ function getCookie(name) {
   );
   return matches ? decodeURIComponent(matches[1]) : undefined;
 }
-function updateCookieObject(name, newDataObj, jsonAttributes = {}) {
+function updateCookie(name, newDataObj, jsonAttributes = {}) {
   let oldCookieData = {};
   let currentCookieData = getCookie(name);
-  if (!currentCookieData) setCookie(name, JSON.stringify(newDataObj), attributes = {})
+  if (!currentCookieData) createNewCookie(name, newDataObj, attributes = {})
   else{
     oldCookieData = JSON.parse(currentCookieData);
     const updatedObj = { ...oldCookieData, ...newDataObj };
-    setCookie(name, JSON.stringify(updatedObj), jsonAttributes);
+    createNewCookie(name, updatedObj, jsonAttributes);
   }}
 function deleteCookie(name) {
-  setCookie(name, "", {
+  updateCookie(name, "", {
     'max-age': -1
   })
-}
-async function sendData(url = '', data = {}) {
-  const response = await fetch(url, {
-    method: 'POST', // *GET, POST, PUT, DELETE, etc.
-    mode: 'cors', // no-cors, *cors, same-origin
-    cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
-    credentials: 'same-origin', // include, *same-origin, omit
-    headers: {
-      'Content-Type': 'application/json'
-      // 'Content-Type': 'application/x-www-form-urlencoded',
-    },
-    redirect: 'follow', // manual, *follow, error
-    referrerPolicy: 'no-referrer', // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
-    body: JSON.stringify(data) // body data type must match "Content-Type" header
-  });
-  return response.json();
 }

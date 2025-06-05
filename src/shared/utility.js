@@ -122,5 +122,4 @@ async function sendData(url = '', data = {}) {
     referrerPolicy: 'no-referrer', //opcional, para ocultar quien envía la peticion
     body: JSON.stringify(data)
   });
-  return response.json();
 }

@@ -39,7 +39,9 @@ font-size: 30px;
 margin: 0% auto 0% auto;
 width: 50%;
 }
-
+li a:hover{
+font-weight: bolder;
+}
 #resourceList::-webkit-scrollbar {
   width: 6px;
   background: var(--primary-color);
@@ -77,4 +79,7 @@ width: 50%;
   font-size: 1.1rem;
   text-align: center;
   width: 100%;
+}
+#favoriteForumIconLiked{
+  color: white;
 }

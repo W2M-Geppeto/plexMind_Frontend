@@ -18,7 +18,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
     <!--material symbols-->
 
-    <script src="/src/pages/index/index.js"></script>
+
 
 </head>
 
@@ -27,7 +27,7 @@
     <!-- NAVBAR -->
     <nav class="navbar navbar-expand-md fixed-top shadow-sm bg-navbar">
         <div class="container-fluid">
-            <a class="navbar-brand img-fluid" href="#"> <img src="/src/resources/img/logo.png" alt="Logo PlexMind"
+            <a class="navbar-brand img-fluid"> <img src="/src/resources/img/logo.png" alt="Logo PlexMind"
                     class="logo-navbar"> </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
@@ -39,7 +39,7 @@
                 <!-- Campo de búsqueda desde librería Material Components -->
                 <div class="me-3">
                     <label class="mdc-text-field mdc-text-field--with-trailing-icon">
-                        <input type="text" class="mdc-text-field__input" placeholder="Search" aria-label="Search">
+                        <input type="text" class="mdc-text-field__input">
 
                         <i class="material-icons mdc-text-field__icon mdc-text-field__icon--trailing p-0" tabindex="0"
                             role="button">search</i>
@@ -47,20 +47,20 @@
                     </label>
                 </div>
 
-                <ul class="navbar-nav mb-2 mb-lg-0">
+                <ul class="navbar-nav mb-2 mb-lg-0 align-items-center">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#Home">
+                        <a class="nav-link d-flex active" aria-current="page" href="#Home">
                             <i class="material-symbols-outlined" id="homeIcon">home</i>
                         </a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" href="#Forums">
-                            <i class="material-symbols-outlined" id="forumIcon">forum</i>
+                    <li class="nav-item disabled">
+                        <a class="nav-link d-flex" href="#Forums">
+                            <i class="material-symbols-outlined" id="forumIconNav">forum</i>
                         </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link active" aria-disabled="true">
-                            <i class="material-symbols-outlined" id="personIcon">person</i>
+                            <i class="material-symbols-outlined nv-personIcon" id="personIcon">person</i>
                         </a>
                     </li>
                 </ul>
@@ -97,6 +97,8 @@
                 </ul>
             </div>
         </section>
+        
+        
         <main class="flex-grow-1">
             <!-- Sección Hero -->
             <section class="hero" id="Home">
@@ -122,7 +124,7 @@
         </main>
     </div>
 
-    
+
     <!-- Footer -->
     <section class="container-fluid" id="footer">
         <div class="d-flex flex-column flex-md-row align-items-start py-5 text-white px-4 gap-4">
@@ -162,7 +164,7 @@
             <!-- Parte derecha: Enlaces a secciones -->
             <div class="d-flex flex-column align-items-md-end align-items-start">
                 <a href="#Home" class="text-white text-decoration-none mb-2">Home</a>
-                <a href="#Forums" class="text-white text-decoration-none mb-2">Forums</a>
+                <a href="#Forums" class="text-white text-decoration-none mb-2 disabled">Forums</a>
                 <a href="#Home" class="text-white text-decoration-none mb-2">Search</a>
                 <a href="#Contact" class="text-white text-decoration-none mb-2">Contact</a>
             </div>
@@ -179,13 +181,12 @@
     </a>
 
 
-
-
-
-
+    <!-- ----------------------------------------------------------------------------------------------------------- -->
+    <script src="/src/pages/index/index.js"></script>
+    <script src="/src/shared/utility.js"></script>
 
     <script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
-
+    <!--js material components-->
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
         integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
         crossorigin="anonymous"></script> <!--js popper-->
@@ -193,7 +194,7 @@
         integrity="sha384-RuyvpeZCxMJCqVUGFI0Do1mQrods/hhxYlcVfGPOfQtPJh0JCw12tUAZ/Mv10S7D"
         crossorigin="anonymous"></script> <!--js bootstrap-->
 
-    <!--js material components-->
+
 </body>
 
 </html>

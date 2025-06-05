@@ -1,15 +1,13 @@
 let titleForum = document.querySelector('.titleForum');
 let categoryforum = document.querySelector('.categoryForum');
 let resourceList = document.getElementById('resourceList');
-let data = null;
-let listElements = null;
 const emptyList = document.querySelector('.emptyList');
 let backBtn = document.getElementById('exitIcon');
-function sendTopic(){
-  const idTopic = sessionStorage.getItem('topic');
-  //Enviarselo a la bbd
-
-}
+let data = null;
+let idTopic = {idTopic: getCookie('topic')};
+//let data = await sendFGetData('/src/resources/data/mocks/topic.json', idTopic);
+let listElements = null;
+//let listElements = await sendFGetData('/src/resources/data/mocks/topic.json', idTopic);
 function emptyResources() {
   if (resourceList && resourceList.children.length === 0) {
     emptyList.style.display = '';      
@@ -24,7 +22,6 @@ function fillData(){
 function fillList() {
   resourceList.innerHTML = ""; 
   let likedCookie = getCookie("liked_prueba");
-  console.log(likedCookie);
   let likedArr = likedCookie ? JSON.parse(likedCookie) : [];
   for (let i = 0; i < listElements.length; i++) {
     const resource = listElements[i];
@@ -71,9 +68,10 @@ function giveLike(idResource) {
   if (!likedArr.includes(idResource)) likedArr.push(idResource);
   createNewCookie(
     "liked_prueba",
-    JSON.stringify(likedArr),
+     JSON.stringify(likedArr),
     { expires: new Date(Date.now() + 10 * 365 * 24 * 60 * 60 * 1000) }
   );
+  //sendData('/src/resources/data/mocks/liked.json', {id: idResource})
 }
 document.addEventListener('DOMContentLoaded', async function() {
   fillMainUser();
@@ -81,7 +79,6 @@ document.addEventListener('DOMContentLoaded', async function() {
   if (data) fillData();
   else console.log('No data found for the forum');
   listElements = await getData('/src/resources/data/mocks/recursos_id_topic_3.json');
-  console.log('listElements:', listElements);
   if (listElements) fillList();
   else  emptyResources();
   backBtn.addEventListener('click', function(e) {

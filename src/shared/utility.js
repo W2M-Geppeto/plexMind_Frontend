@@ -3,13 +3,6 @@ function fillMainUser() {
   document.getElementById("user").textContent =
     userInfo && userInfo.email ? userInfo.email.split("@")[0] : "Usuario";
 }
-function setPreviousPage(selector) {
-  document.querySelectorAll(selector).forEach((element) => {
-    element.addEventListener("click", function () {
-      sessionStorage.setItem("previousPage", window.location.pathname);
-    });
-  });
-}
 function goBack() {
   const previous = getCookie("previousPage");
   if (previous && previous !== window.location.pathname) {
@@ -99,7 +92,7 @@ function createNewCookie(name, value, cookieAttributes = {}) {
     cookieAttributes.expires = cookieAttributes.expires.toUTCString();
   }
 let newCookie =
-  encodeURIComponent(name) + "=" + encodeURIComponent(JSON.stringify(value));  for (let attributeKey in cookieAttributes) {
+  encodeURIComponent(name) + "=" + encodeURIComponent(value);  for (let attributeKey in cookieAttributes) {
     newCookie += "; " + attributeKey;
     let attributeValue = cookieAttributes[attributeKey];
     if (attributeValue !== true) {
@@ -121,11 +114,11 @@ function getCookie(name) {
 function updateCookie(name, newDataObj, jsonAttributes = {}) {
   let oldCookieData = {};
   let currentCookieData = getCookie(name);
-  if (!currentCookieData) createNewCookie(name, newDataObj, attributes = {})
+  if (!currentCookieData) createNewCookie(name, JSON.stringify(newDataObj), attributes = {})
   else{
     oldCookieData = JSON.parse(currentCookieData);
     const updatedObj = { ...oldCookieData, ...newDataObj };
-    createNewCookie(name, updatedObj, jsonAttributes);
+    createNewCookie(name, JSON.stringify(newDataObj), jsonAttributes);
   }}
 function deleteCookie(name) {
   updateCookie(name, "", {

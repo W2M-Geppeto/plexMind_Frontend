@@ -6,9 +6,8 @@ let listElements = null;
 const emptyList = document.querySelector('.emptyList');
 let backBtn = document.getElementById('exitIcon');
 function sendTopic(){
-  const idTopic = sessionStorage.getItem('topic');
-  //Enviarselo a la bbd
-
+  const idTopic = getCookie('topic');
+  //sendGetData('/src/resources/data/mocks/topic.json', { idTopic: idTopic });
 }
 function emptyResources() {
   if (resourceList && resourceList.children.length === 0) {
@@ -81,7 +80,6 @@ document.addEventListener('DOMContentLoaded', async function() {
   if (data) fillData();
   else console.log('No data found for the forum');
   listElements = await getData('/src/resources/data/mocks/recursos_id_topic_3.json');
-  console.log('listElements:', listElements);
   if (listElements) fillList();
   else  emptyResources();
   backBtn.addEventListener('click', function(e) {

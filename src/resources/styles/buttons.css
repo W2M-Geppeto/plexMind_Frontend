@@ -15,6 +15,13 @@
   border: 1px solid var(--secondary-color);
 }
 
+.btn-m:disabled{
+  background-color: var(--disable-color);
+  box-shadow: none;
+  color: #9c9b9d;
+  border: 1px solid #9c9b9d;
+}
+
 .btn-m-disabled{
   background-color: var(--disable-color);
   box-shadow: none;

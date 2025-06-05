@@ -64,31 +64,14 @@ function buttonUpdate() {
     }
 } */
 async function validarDatos() {
-    try {
-        const response = await fetch('TU_API_URL_AQUI', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                email: username.value,
-                password: password.value
-            })
-        });
-        if (!response.ok) {
-            throw new Error(`Network response was not ok \nStatus: ${response.status} - ${response.statusText}`);
-        }
-        const result = await response.json();
-        // Si el array tiene al menos una tupla, login correcto
-        if (Array.isArray(result) && result.length === 1 && result[0].id && result[0].email) {
-            // Puedes guardar el usuario en sessionStorage si quieres
-            sessionStorage.setItem('usuario', JSON.stringify(result[0]));
-            return true;
-        } else {
-            return false;
-        }
-    } catch (error) {
-        console.error('There has been a problem with your fetch operation:', error);
+    const sendData = { email: username.value, password: password.value };
+    const receiveData = sendGetData('https://micro-user-m5dv.onrender.com/api/users/login', sendData);
+    if (receiveData[0] && receiveData[0].id && receiveData[0].email) {
+        createNewCookie('user', receiveData, {});
+        console.log('cookie creada');
+        return true;
+    }else{
+        console.log('cookie ERROR');
         return false;
     }
 }
@@ -96,6 +79,7 @@ async function validarDatos() {
 async function enviarDatos() {
     let esValido = await validarDatos();
     console.log("Login: " + esValido);
+    esValido = false;
     if (esValido) {
         password.value = "";
         passwordError.style.display = "none";

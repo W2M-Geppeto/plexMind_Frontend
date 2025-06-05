@@ -44,5 +44,6 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
-getCookie('user') 
+//getCookie('user') 
 setPreviousPage('.btn-trend');
+console.log(getCookie('user'));

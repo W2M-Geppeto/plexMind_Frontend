@@ -3,13 +3,6 @@ function fillMainUser() {
   document.getElementById("user").textContent =
     userInfo && userInfo.email ? userInfo.email.split("@")[0] : "Usuario";
 }
-function setPreviousPage(selector) {
-  document.querySelectorAll(selector).forEach((element) => {
-    element.addEventListener("click", function () {
-      sessionStorage.setItem("previousPage", window.location.pathname);
-    });
-  });
-}
 function goBack() {
   const previous = getCookie("previousPage");
   if (previous && previous !== window.location.pathname) {

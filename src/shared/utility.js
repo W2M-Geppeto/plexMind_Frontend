@@ -15,7 +15,7 @@ function goBack() {
 function setPreviousPage(selector) {
   document.querySelectorAll(selector).forEach((element) => {
     element.addEventListener("click", function () {
-      updateCookie("previousPage", window.location.pathname, {});
+      createNewCookie("previousPage", window.location.pathname, {});
     });
   });
 }

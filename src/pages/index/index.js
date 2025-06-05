@@ -1,8 +1,8 @@
 
-
+let list = "";
 const mockOrdered = '/src/resources/data/mocks/trending_topic_orderByLike.json';
 
-async function orderForumsByLikes() {
+async function fillTrendingForums() {
     try {
         const response = await fetch(mockOrdered);
         const data = await response.json();
@@ -14,7 +14,7 @@ async function orderForumsByLikes() {
 
 document.addEventListener('DOMContentLoaded', function() {
     const trendingRow = document.querySelector('.trendingRow');
-    orderForumsByLikes().then(data => {
+    fillTrendingForums().then(data => {
         if (data && data.length > 0) {
             trendingRow.innerHTML = "";
             data.forEach(item => {
@@ -43,3 +43,6 @@ document.addEventListener('DOMContentLoaded', function() {
         console.error('Error loading trending data:', error);
     });
 });
+
+getCookie('user') 
+setPreviousPage('.btn-trend');

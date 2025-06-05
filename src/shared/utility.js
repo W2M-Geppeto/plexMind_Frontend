@@ -3,10 +3,11 @@ function fillMainUser() {
   try {
     const userInfo = JSON.parse(cookieValue);
     document.getElementById("user").textContent =
-      userInfo && userInfo.email ? userInfo.email.split("@")[0] : "Usuario";
+      userInfo && userInfo.email ? userInfo.email.split("@")[0] : "User";
   } catch (error) {
     console.error("Error al parsear la cookie 'user':", error);
-    document.getElementById("user").textContent = "Usuario";
+    document.getElementById("user").textContent = "User";
+
   }
 }
 function goBack() {
@@ -36,13 +37,15 @@ function backHome() {
     });
 }
 function goProfile() {
-  document.getElementById("personIcon").addEventListener("click", function (e) {
-    e.preventDefault();
-    window.location.href = "/src/pages/profile/profile.html";
+  document.querySelectorAll(".personIcon").forEach(icon => {
+    icon.addEventListener("click", function (e) {
+      if (e.target.tagName === "I") { 
+        e.preventDefault();
+        window.location.href = "/src/pages/profile/profile.html";
+      }
+    });
   });
 }
-goProfile();
-backHome();
 async function getData(url = '') {
    try {
     const response = await fetch(url, {
@@ -133,3 +136,6 @@ function deleteCookie(name) {
     'max-age': -1
   })
 }
+fillMainUser();
+goProfile();
+backHome();

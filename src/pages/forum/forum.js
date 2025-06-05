@@ -74,7 +74,6 @@ function giveLike(idResource) {
   );
 }
 document.addEventListener('DOMContentLoaded', async function() {
-  fillMainUser();
   data = await getData('/src/resources/data/mocks/topic.json');  
   console.log(data);
   if (data) fillData();

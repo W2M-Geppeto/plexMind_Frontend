@@ -48,13 +48,13 @@ function buttonUpdate() {
 
 async function validarDatos() {
     const sendData = { email: username.value, password: password.value };
-    const receiveData = await sendGetData('https://micro-user-m5dv.onrender.com/api/users/login', sendData);
+    const receiveData = await sendGetData('https://micro-user-m5dv.onrender.com/api/users/login', JSON.stringify(sendData));
     console.log(receiveData);
     if (receiveData && receiveData.id && receiveData.email) {
         createNewCookie('user', receiveData, {});
         console.log('cookie creada');
         return true;
-    }else{
+    } else {
         console.log('cookie ERROR');
         return false;
     }

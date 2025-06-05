@@ -22,7 +22,7 @@ function goBack() {
 function setPreviousPage(selector) {
   document.querySelectorAll(selector).forEach((element) => {
     element.addEventListener("click", function () {
-      setCookie("previousPage", window.location.pathname, {});
+      updateCookie("previousPage", window.location.pathname, {});
     });
   });
 }
@@ -78,16 +78,16 @@ function createNewCookie(name, value, jsonAttributes = {}) {
   if (jsonAttributes.expires instanceof Date) {
     jsonAttributes.expires = jsonAttributes.expires.toUTCString();
   }
-  let updatedCookie =
+  let newCookie =
     encodeURIComponent(name) + "=" + encodeURIComponent(value);
   for (let attributeKey in jsonAttributes) {
-    updatedCookie += "; " + attributeKey;
+    newCookie += "; " + attributeKey;
     let attributeValue = jsonAttributes[attributeKey];
     if (attributeValue !== true) {
-      updatedCookie += "=" + attributeValue;
+      newCookie += "=" + attributeValue;
     }
   }
-  document.cookie = updatedCookie;
+  document.cookie = newCookie;
 }
 function getCookie(name) {
   let matches = document.cookie.match(
@@ -99,7 +99,7 @@ function getCookie(name) {
   );
   return matches ? decodeURIComponent(matches[1]) : undefined;
 }
-function setCookie(name, newDataObj, jsonAttributes = {}) {
+function updateCookie(name, newDataObj, jsonAttributes = {}) {
   let oldCookieData = {};
   let currentCookieData = getCookie(name);
   if (!currentCookieData) createNewCookie(name, JSON.stringify(newDataObj), attributes = {})
@@ -109,23 +109,18 @@ function setCookie(name, newDataObj, jsonAttributes = {}) {
     createNewCookie(name, JSON.stringify(updatedObj), jsonAttributes);
   }}
 function deleteCookie(name) {
-  setCookie(name, "", {
+  updateCookie(name, "", {
     'max-age': -1
   })
 }
 async function sendData(url = '', data = {}) {
   const response = await fetch(url, {
-    method: 'POST', // *GET, POST, PUT, DELETE, etc.
-    mode: 'cors', // no-cors, *cors, same-origin
-    cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
-    credentials: 'same-origin', // include, *same-origin, omit
+    method: 'POST', 
     headers: {
       'Content-Type': 'application/json'
-      // 'Content-Type': 'application/x-www-form-urlencoded',
     },
-    redirect: 'follow', // manual, *follow, error
-    referrerPolicy: 'no-referrer', // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
-    body: JSON.stringify(data) // body data type must match "Content-Type" header
+    referrerPolicy: 'no-referrer', //opcional, para ocultar quien envía la peticion
+    body: JSON.stringify(data)
   });
   return response.json();
 }

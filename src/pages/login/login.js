@@ -48,11 +48,12 @@ function buttonUpdate() {
 
 async function validarDatos() {
     const sendData = { email: username.value, password: password.value };
-    const receiveData = await sendGetData('https://micro-user-m5dv.onrender.com/api/users/login', JSON.stringify(sendData));
+    const receiveData = await sendGetData('https://micro-user-m5dv.onrender.com/api/users/login', sendData);
     console.log(receiveData);
     if (receiveData && receiveData.id && receiveData.email) {
-        createNewCookie('user', receiveData, {});
+        createNewCookie('user', JSON.stringify(receiveData), {});
         console.log('cookie creada');
+        console.log(getCookie('user'));
         return true;
     } else {
         console.log('cookie ERROR');
@@ -66,7 +67,7 @@ async function enviarDatos() {
     if (esValido) {
         password.value = "";
         passwordError.style.display = "none";
-        window.location.href = '/src/pages/index/index.html';
+       /*  window.location.href = '/src/pages/index/index.html'; */
     } else {
         password.value = "";
         username.style.borderColor = "red";
@@ -74,6 +75,7 @@ async function enviarDatos() {
         passwordError.style.display = "block";
         button.disabled = true;
     }
+
 }
 
 username.addEventListener('input', buttonUpdate);

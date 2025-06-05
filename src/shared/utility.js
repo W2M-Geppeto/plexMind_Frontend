@@ -5,6 +5,7 @@ function fillMainUser() {
 }
 function goBack() {
   const previous = getCookie("previousPage");
+  console.log(previous);
   if (previous && previous !== window.location.pathname) {
     window.location.href = previous;
   } else {
@@ -14,8 +15,10 @@ function goBack() {
 //Añadir la llamada a la funcion: setPreviousPage('.goForum'); y la classe a todos los elementos que lleven al foro
 function setPreviousPage(selector) {
   document.querySelectorAll(selector).forEach((element) => {
-    element.addEventListener("click", function () {
+    element.addEventListener("click", function (e) {
+      e.preventDefault(); // Evita la navegación automática
       createNewCookie("previousPage", window.location.pathname, {});
+      window.location.href = element.href; // Navega manualmente después de guardar la cookie
     });
   });
 }

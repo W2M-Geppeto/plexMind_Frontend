@@ -35,7 +35,9 @@ document.addEventListener('DOMContentLoaded', function() {
                     </a>
                 </div>
                 `;
+        
             });
+            setPreviousPage('.btn-trend');
         } else {
             trendingRow.innerHTML = "<p>No hay temas trending.</p>";
         }
@@ -45,5 +47,5 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 //getCookie('user') 
-setPreviousPage('.btn-trend');
-console.log(getCookie('user'));
+
+// console.log(getCookie('user'));

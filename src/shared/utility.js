@@ -114,11 +114,11 @@ function getCookie(name) {
 function updateCookie(name, newDataObj, jsonAttributes = {}) {
   let oldCookieData = {};
   let currentCookieData = getCookie(name);
-  if (!currentCookieData) createNewCookie(name, newDataObj, attributes = {})
+  if (!currentCookieData) createNewCookie(name, JSON.stringify(newDataObj), attributes = {})
   else{
     oldCookieData = JSON.parse(currentCookieData);
     const updatedObj = { ...oldCookieData, ...newDataObj };
-    createNewCookie(name, updatedObj, jsonAttributes);
+    createNewCookie(name, JSON.stringify(newDataObj), jsonAttributes);
   }}
 function deleteCookie(name) {
   updateCookie(name, "", {

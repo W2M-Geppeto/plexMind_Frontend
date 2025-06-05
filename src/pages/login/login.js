@@ -8,7 +8,6 @@ let users = null;
 
 function usernameValidation() {
     if (!usernameRegex.test(username.value)) {
-        console.log("Invalid username!");
         return false;
     } else {
         username.style.borderColor = "initial";
@@ -18,7 +17,6 @@ function usernameValidation() {
 
 function passwordValidation() {
     if (!passwordRegex.test(password.value)) {
-        console.log("Invalid password!");
         return false;
     } else {
         password.style.borderColor = "initial";
@@ -30,9 +28,7 @@ function passwordValidation() {
 function buttonUpdate() {
     if (passwordValidation() && usernameValidation()) {
         button.disabled = false;
-        console.log("Boton ENABLE");
     } else {
-        console.log("boton DISABLE");
         button.disabled = true;
     }
 }
@@ -49,24 +45,12 @@ function buttonUpdate() {
         console.error('There has been a problem with your fetch operation:', error);
     }
 } */
-/* async function validarDatos() {
-    try {
-        const response = await fetch('API'); //A rellenar
-        if (!response.ok) {
-            throw new Error(`Network response was not ok \nStatus: ${response.status} - ${response.statusText}`);
-        }
-        users = await response.json();
-        const usersString = JSON.stringify(users);
-        sessionStorage.setItem('usuario', usersString);
-        return true;
-    } catch (error) {
-        console.error('There has been a problem with your fetch operation:', error);
-    }
-} */
+
 async function validarDatos() {
     const sendData = { email: username.value, password: password.value };
-    const receiveData = sendGetData('https://micro-user-m5dv.onrender.com/api/users/login', sendData);
-    if (receiveData[0] && receiveData[0].id && receiveData[0].email) {
+    const receiveData = await sendGetData('https://micro-user-m5dv.onrender.com/api/users/login', sendData);
+    console.log(receiveData);
+    if (receiveData && receiveData.id && receiveData.email) {
         createNewCookie('user', receiveData, {});
         console.log('cookie creada');
         return true;
@@ -79,7 +63,6 @@ async function validarDatos() {
 async function enviarDatos() {
     let esValido = await validarDatos();
     console.log("Login: " + esValido);
-    esValido = false;
     if (esValido) {
         password.value = "";
         passwordError.style.display = "none";

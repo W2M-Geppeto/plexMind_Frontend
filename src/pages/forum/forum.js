@@ -5,6 +5,7 @@ const emptyList = document.querySelector('.emptyList');
 let backBtn = document.getElementById('exitIcon');
 let data = null;
 let idTopic = {idTopic: getCookie('topic')};
+console.log(idTopic);
 //let data = await sendFGetData('/src/resources/data/mocks/topic.json', idTopic);
 let listElements = null;
 //let listElements = await sendFGetData('/src/resources/data/mocks/topic.json', idTopic);

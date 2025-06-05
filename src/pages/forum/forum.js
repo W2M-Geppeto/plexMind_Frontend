@@ -4,11 +4,7 @@ let resourceList = document.getElementById('resourceList');
 const emptyList = document.querySelector('.emptyList');
 let backBtn = document.getElementById('exitIcon');
 let data = null;
-let idTopic = {idTopic: getCookie('topic')};
-console.log(idTopic);
-//let data = await sendFGetData('/src/resources/data/mocks/topic.json', idTopic);
-let listElements = null;
-//let listElements = await sendFGetData('/src/resources/data/mocks/topic.json', idTopic);
+let idTopic = {idTopic: 3}; //getCookie('idTopic')
 function emptyResources() {
   if (resourceList && resourceList.children.length === 0) {
     emptyList.style.display = '';      
@@ -18,7 +14,7 @@ function emptyResources() {
 }
 function fillData(){
   titleForum.textContent =  data[1].nameTopic.toUpperCase();
-  categoryforum.textContent = (data[1].idCategory + " - stack").toUpperCase();
+  categoryforum.textContent = (data[1].idCategory + "end").toUpperCase();
 }
 function fillList() {
   resourceList.innerHTML = ""; 
@@ -72,17 +68,25 @@ function giveLike(idResource) {
      JSON.stringify(likedArr),
     { expires: new Date(Date.now() + 10 * 365 * 24 * 60 * 60 * 1000) }
   );
+  
+  let sendlikesCookie = getCookie("toSendLikes");
+  let likedArr2 = sendlikesCookie ? JSON.parse(sendlikesCookie) : [];
+  idResource = Number(idResource);
+  if (!likedArr2.includes(idResource)) likedArr.push(idResource);
+  createNewCookie(
+    "toSendLikes",
+     JSON.stringify(likedArr2),{}
+  );
 }
 document.addEventListener('DOMContentLoaded', async function() {
-  data = await getData('/src/resources/data/mocks/topic.json');  
+  data = await getData('/src/resources/data/mocks/topic.json');
+  //let data = await sendFGetData('/src/resources/data/mocks/topic.json', idTopic);  
   console.log(data);
   if (data) fillData();
   else console.log('No data found for the forum');
-  listElements = await getData('/src/resources/data/mocks/recursos_id_topic_3.json');
-  console.log(listElements);
+  let listElements = await sendGetData('https://micro-resource.onrender.com/api/resources/topic/1/details', idTopic);
   if (listElements) fillList();
   else  emptyResources();
- 
   backBtn.addEventListener('click', function(e) {
     e.preventDefault();
     goBack();

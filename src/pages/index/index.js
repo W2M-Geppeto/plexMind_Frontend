@@ -1,20 +1,7 @@
-
-let list = "";
-const mockOrdered = '/src/resources/data/mocks/trending_topic_orderByLike.json';
-
-async function fillTrendingForums() {
+async function fillTrending() {
     try {
-        const response = await fetch(mockOrdered);
-        const data = await response.json();
-        return data;
-    } catch (error) {
-        console.error('Error fetching trending data:', error);
-    }
-}
-
-document.addEventListener('DOMContentLoaded', function() {
-    const trendingRow = document.querySelector('.trendingRow');
-    fillTrendingForums().then(data => {
+        const data = await getData(url = 'https://micro-resource.onrender.com/api/resources/top-by-likes');
+        const trendingRow = document.querySelector('.trendingRow');
         if (data && data.length > 0) {
             trendingRow.innerHTML = "";
             data.forEach(item => {
@@ -35,17 +22,36 @@ document.addEventListener('DOMContentLoaded', function() {
                     </a>
                 </div>
                 `;
-        
+
             });
             setPreviousPage('.btn-trend');
+            return data;
         } else {
             trendingRow.innerHTML = "<p>No hay temas trending.</p>";
+            return null;
         }
-    }).catch(error => {
+    } catch (error) {
         console.error('Error loading trending data:', error);
-    });
-});
+        return null;
+    }
 
-//getCookie('user') 
+}
 
-// console.log(getCookie('user'));
+
+document.addEventListener('DOMContentLoaded', async function () {
+    await fillTrending();
+    if (data) {
+        createNewCookie('topic', JSON.stringify(data), {});
+        console.log('cookie creada');
+        console.log(getCookie('topic'));
+        return true;
+    } else {
+        console.log('cookie ERROR');
+        return false;
+    }
+})
+
+
+
+
+

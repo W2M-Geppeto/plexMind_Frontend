@@ -28,14 +28,14 @@ async function fillTrending() {
 
             });
             document.querySelectorAll('.btn-trend').forEach(btn => {
-  btn.addEventListener('click', function(e) {
-    e.preventDefault();
-    const idTopic = btn.getAttribute('data-id');
-    createNewCookie('topic', idTopic, {});
-    window.location.href = btn.href;
-console.log(`Navigating to forum with ID: ${idTopic}`);
-});   
-}); 
+                btn.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const idTopic = btn.getAttribute('data-id');
+                    createNewCookie('topic', idTopic, {});
+                    window.location.href = btn.href;
+                    console.log(`Navigating to forum with ID: ${idTopic}`);
+                });
+            });
             return data;
         } else {
             trendingRow.innerHTML = "<p>No hay temas trending.</p>";
@@ -48,11 +48,25 @@ console.log(`Navigating to forum with ID: ${idTopic}`);
 
 }
 
+document.addEventListener("DOMContentLoaded", function() {
+    // Load login.html content into the modal
+    fetch('/src/pages/login/login.html')
+      .then(response => response.text())
+      .then(html => {
+        // Extract only the <body> content from login.html
+        const bodyContent = html.match(/<body[^>]*>([\s\S]*?)<\/body>/i);
+        document.getElementById('loginModalContent').innerHTML = bodyContent ? bodyContent[1] : html;
+      });
 
-document.addEventListener('DOMContentLoaded', async function (){
+    // Prevent closing the modal by clicking outside or pressing ESC
+    document.body.classList.add('modal-open');
+    document.body.style.overflow = 'hidden';
+});
+
+document.addEventListener('DOMContentLoaded', async function () {
     goProfile();
     await fillTrending();
- 
+
 });
 
 

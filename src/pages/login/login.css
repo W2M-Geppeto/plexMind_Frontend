@@ -1,12 +1,12 @@
 body {
-  margin-top: 20vh;
+  margin-top: 10vh;
 }
 
 #loginHead {
-  margin-bottom: 20px;
+  margin-bottom: 25px;
 
   img {
-    margin-top: 0vw;
+    margin-top: -10px;
   }
 }
 
@@ -15,16 +15,19 @@ body {
 }
 
 #textFields {
-  margin-bottom: 50px;
+  margin-bottom: 25px;
 }
 
 .textField {
   margin-bottom: 20px;
   width: 50%;
 
-  .textField-m {
-    margin-top: 5px;
-  }
+  
+}
+
+#usernameInput, #passwordInput{
+  margin-top: 5px;
+  margin-bottom: 20px;
 }
 
 .textField-m,

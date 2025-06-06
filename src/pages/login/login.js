@@ -33,30 +33,14 @@ function buttonUpdate() {
     }
 }
 
-/* async function validarDatos() {
-    try {
-        const response = await fetch('/src/resources/data/mocks/users.json');
-        if (!response.ok) {
-            throw new Error(`Network response was not ok \nStatus: ${response.status} - ${response.statusText}`);
-        }
-        users = await response.json();
-        return users.some(user => user.email === username.value && user.password === password.value);
-    } catch (error) {
-        console.error('There has been a problem with your fetch operation:', error);
-    }
-} */
-
 async function validarDatos() {
     const sendData = { email: username.value, password: password.value };
-    const receiveData = await sendGetData('https://micro-user-m5dv.onrender.com/api/users/login', sendData);
-    console.log(receiveData);
-    if (receiveData && receiveData.id && receiveData.email) {
-        createNewCookie('user', JSON.stringify(receiveData), {});
-        console.log('cookie creada');
+    const receivedData = await sendGetData('https://plexmind.onrender.com/api/users/login', sendData);
+    if (receivedData && receivedData.id && receivedData.email) {
+        createNewCookie('user', JSON.stringify(receivedData), {});
         console.log(getCookie('user'));
         return true;
     } else {
-        console.log('cookie ERROR');
         return false;
     }
 }

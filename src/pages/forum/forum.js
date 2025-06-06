@@ -3,12 +3,24 @@ let categoryforum = document.querySelector('.categoryForum');
 let resourceList = document.getElementById('resourceList');
 const emptyList = document.querySelector('.emptyList');
 const backBtn = document.getElementById('exitIcon');
-const logo = document.querySelector('.logo-navbar');
-let likedArr2 = [];
+let likedArr = [];
 let data = null;
 let likedDataUser = []
 let listElements = [];
-let idTopic = {idTopic: 3}; //getCookie('idTopic')
+try {
+  idTopic = JSON.parse(getCookie('topic'));
+} catch (error) {
+  console.error("Error al parsear la cookie:", error);
+  idTopic = null;
+}
+ let idUser;
+  try {
+  let user = JSON.parse(getCookie("user"));
+  idUser = user ? user.id : null;
+  } catch (error) {
+     console.error("Error al parsear la cookie:", error);
+     idUser = null;}
+
 function emptyResources() {
   if (resourceList && resourceList.children.length === 0) {
     emptyList.style.display = '';      
@@ -35,7 +47,7 @@ function fillList(likedDataUser) {
       <div class="row">
         <div class="col-2"></div>
         <div class="col-8">
-          <a href="#" target="_blank" class="text-decoration-none text-reset text-truncate txt-color link">
+          <a href="${resource.link} " target="_blank" class="text-decoration-none text-reset text-truncate txt-color link">
             ${resource.name} 
           </a>
         </div>
@@ -63,50 +75,54 @@ function getIcon(type){
 }
 function giveLike(idResource) { 
   let sendlikesCookie = getCookie("toSendLikes");
-  likedArr2 = sendlikesCookie ? JSON.parse(sendlikesCookie) : [];
+  likedArr = sendlikesCookie ? JSON.parse(sendlikesCookie) : [];
   idResource = Number(idResource);
-  if (!likedArr2.includes(idResource)) likedArr2.push(idResource);
+  if (!likedArr.includes(idResource)) likedArr.push(idResource);
   createNewCookie(
     "toSendLikes",
-     JSON.stringify(likedArr2),{}
+     JSON.stringify(likedArr),{}
   );
-  console.log("likedArr2", likedArr2);
-  console.log(document.cookie);
 }
-function sendLikes(){
-if (likedArr2.length > 0) {
-  //sendData('',(likedArr2));
-  deleteCookie("toSendLikes");
- }
+async function sendLikes() {
+  if (Array.isArray(likedArr) && likedArr.length > 0) {
+    try {
+      await sendData("", {idUser: idUser, likes: likedArr});
+      deleteCookie("toSendLikes");
+      likedArr.length = 0;
+    } catch (error) {
+      console.error("Error al enviar likes:", error);
+    }
+  }
 }
 document.addEventListener('DOMContentLoaded', async function() {
-  data = await getData("http://127.0.0.1:5500/src/resources/data/mocks/topic.json");
-  //data = await sendFGetData('/src/resources/data/mocks/topic.json', idTopic);  
+  data = await sendFGetData('/src/resources/data/mocks/topic.json', idTopic);  
   if (data) fillData();
-  //listElements = await sendGetData('https://micro-resource.onrender.com/api/resources/topic/1/details', idTopic);
-  listElements = await getData("http://127.0.0.1:5500/src/resources/data/mocks/recursos_id_topic_3.json");
-  likedDataUser = await getData("http://127.0.0.1:5500/src/resources/data/mocks/liked.json");
-  console.log("likedDataUser", likedDataUser);
+  
+  listElements = await sendGetData('https://micro-resource.onrender.com/api/resources/topic/${idTopic}/details', idTopic);
+  // likedDataUser =  sendGetData(' ', idUser);
   if (listElements) fillList(likedDataUser);
   else  emptyResources();
   backBtn.addEventListener('click', function(e) {
     e.preventDefault();
-    sendLikes();
     goBack();
   });
-  
 
-  logo.addEventListener('click', function(e) {
-    e.preventDefault();
-    sendLikes();
+  window.addEventListener("beforeunload", async function () {
+    console.log("Sending likes before leaving the page...");
+    //navigator.sendBeacon("/api/sendLikes");
+     await sendLikes();
   });
+
   resourceList.addEventListener('click', function(e) {
     if (e.target && e.target.id === 'favoriteForumIcon') {
       e.preventDefault();
       e.target.removeAttribute('id');
       giveLike(e.target.getAttribute('data-id'));
+      console.log(document.cookie);
     }
+    
 });
+
 document.querySelector(".personIcon").addEventListener("click", function (e) {
   e.preventDefault();
   createNewCookie("previousPage", window.location.pathname, {});

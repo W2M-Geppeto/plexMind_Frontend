@@ -46,7 +46,7 @@ function goProfile() {
     });
   });
 }
-async function getData(url = '') {
+async function getData(url) {
    try {
     const response = await fetch(url, {
       method: 'GET',
@@ -64,7 +64,7 @@ async function getData(url = '') {
     console.error("There has been a problem with your fetch operation:", error);
   }
 }
-async function sendData(url = '', data = {}) {
+async function sendData(url = '', data) {
   const response = await fetch(url, {
     method: 'POST', 
     headers: {

@@ -33,11 +33,12 @@ function backHome() {
     .querySelector(".logo-navbar")
     .addEventListener("click", function (e) {
       e.preventDefault();
+      createNewCookie("previousPage","/src/pages/index/index.html", {});
       window.location.href = "/src/pages/index/index.html";
     });
 }
 function goProfile() {
-  document.querySelectorAll(".personIcon").forEach(icon => {
+  document.querySelectorAll(".goProfile").forEach(icon => {
     icon.addEventListener("click", function (e) {
       if (e.target.tagName === "I") { 
         e.preventDefault();

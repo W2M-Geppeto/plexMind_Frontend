@@ -5,6 +5,9 @@ const emptyList = document.querySelector('.emptyList');
 const backBtn = document.getElementById('exitIcon');
 const logo = document.querySelector('.logo-navbar');
 let likedArr2 = [];
+let data = null;
+let likedDataUser = []
+let listElements = [];
 let idTopic = {idTopic: 3}; //getCookie('idTopic')
 function emptyResources() {
   if (resourceList && resourceList.children.length === 0) {
@@ -14,17 +17,16 @@ function emptyResources() {
   }
 }
 function fillData(){
+  console.log("data", data);
   titleForum.textContent =  data[1].nameTopic.toUpperCase();
   categoryforum.textContent = (data[1].idCategory + "end").toUpperCase();
 }
-function fillList() {
+function fillList(likedDataUser) {
   resourceList.innerHTML = ""; 
-  let likedCookie = getCookie("liked_prueba");
-  let likedArr = likedCookie ? JSON.parse(likedCookie) : [];
   for (let i = 0; i < listElements.length; i++) {
     const resource = listElements[i];
     let icon = getIcon(resource.type);   
-    let isLiked = likedArr.includes(resource.id);    
+    let isLiked = likedDataUser.includes(resource.id);    
     const li = document.createElement('li');
     li.className = 'list-group-item';
     li.id = 'list-item';
@@ -74,21 +76,26 @@ function giveLike(idResource) {
 function sendLikes(){
 if (likedArr2.length > 0) {
   //sendData('',(likedArr2));
- // deleteCookie("toSendLikes");
- console.log("sent cookies to server")}
+  deleteCookie("toSendLikes");
+ }
 }
 document.addEventListener('DOMContentLoaded', async function() {
-let data = getData("src/resources/data/mocks/topic.json");
-  //let data = await sendFGetData('/src/resources/data/mocks/topic.json', idTopic);  
+  data = await getData("http://127.0.0.1:5500/src/resources/data/mocks/topic.json");
+  //data = await sendFGetData('/src/resources/data/mocks/topic.json', idTopic);  
   if (data) fillData();
-  //let listElements = await sendGetData('https://micro-resource.onrender.com/api/resources/topic/1/details', idTopic);
-  let listElements = getData("resources/data/mocks/recursos_id_topic_3.json");
-  if (listElements) fillList();
+  //listElements = await sendGetData('https://micro-resource.onrender.com/api/resources/topic/1/details', idTopic);
+  listElements = await getData("http://127.0.0.1:5500/src/resources/data/mocks/recursos_id_topic_3.json");
+  likedDataUser = await getData("http://127.0.0.1:5500/src/resources/data/mocks/liked.json");
+  console.log("likedDataUser", likedDataUser);
+  if (listElements) fillList(likedDataUser);
   else  emptyResources();
   backBtn.addEventListener('click', function(e) {
     e.preventDefault();
+    sendLikes();
     goBack();
   });
+  
+
   logo.addEventListener('click', function(e) {
     e.preventDefault();
     sendLikes();

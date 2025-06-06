@@ -7,7 +7,6 @@ function fillMainUser() {
   } catch (error) {
     console.error("Error al parsear la cookie 'user':", error);
     document.getElementById("user").textContent = "User";
-
   }
 }
 function goBack() {

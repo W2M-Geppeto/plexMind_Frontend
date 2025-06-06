@@ -1,6 +1,9 @@
+const mockOrdered = '/src/resources/data/mocks/trending_topic_orderByLike.json';
+const url = 'https://micro-resource.onrender.com/api/resources/top-by-likes'
+let data = null;
 async function fillTrending() {
     try {
-        const data = await getData(url = 'https://micro-resource.onrender.com/api/resources/top-by-likes');
+        data = await getData(mockOrdered);
         const trendingRow = document.querySelector('.trendingRow');
         if (data && data.length > 0) {
             trendingRow.innerHTML = "";
@@ -11,7 +14,7 @@ async function fillTrending() {
 
                 trendingRow.innerHTML += `
                 <div class="col-md-6 col-lg-4">
-                    <a href="${forumUrl}" class="btn btn-trend w-100 text-start mb-3">
+                    <a href="${forumUrl}" class="btn btn-trend w-100 text-start mb-3" data-id="${item.id}">
                         <div class="row align-items-center">
                             <div class="col-7 fs-4 forum-title">${item.nameTopic.toUpperCase()}</div>
                             <div class="col-5 d-flex justify-content-end align-items-center">
@@ -24,7 +27,15 @@ async function fillTrending() {
                 `;
 
             });
-            setPreviousPage('.btn-trend');
+            document.querySelectorAll('.btn-trend').forEach(btn => {
+  btn.addEventListener('click', function(e) {
+    e.preventDefault();
+    const idTopic = btn.getAttribute('data-id');
+    createNewCookie('topic', idTopic, {});
+    window.location.href = btn.href;
+console.log(`Navigating to forum with ID: ${idTopic}`);
+});   
+}); 
             return data;
         } else {
             trendingRow.innerHTML = "<p>No hay temas trending.</p>";
@@ -38,18 +49,13 @@ async function fillTrending() {
 }
 
 
-document.addEventListener('DOMContentLoaded', async function () {
+document.addEventListener('DOMContentLoaded', async function (){
+    goProfile();
     await fillTrending();
-    if (data) {
-        createNewCookie('topic', JSON.stringify(data), {});
-        console.log('cookie creada');
-        console.log(getCookie('topic'));
-        return true;
-    } else {
-        console.log('cookie ERROR');
-        return false;
-    }
-})
+ 
+});
+
+
 
 
 

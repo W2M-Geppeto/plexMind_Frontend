@@ -1,3 +1,6 @@
+let backBtn = document.getElementById('exitIcon');
+
+
 //Funcion para leer los datos del usuario
 async function getUserData() {
     try{
@@ -13,8 +16,6 @@ async function getUserData() {
 
 // Cambia este valor para mostrar el usuario que quieras
 // Este valor nos lo debe devolver en el futuro el backend/API
-const id = 700;
-
 // Función que muestra los datos del usuario en la página
 async function mostrarUsuario() {
     const users = await getUserData();
@@ -34,4 +35,10 @@ async function mostrarUsuario() {
 
 // Ejecuta al cargar la página
 document.addEventListener('DOMContentLoaded', mostrarUsuario);
+document.addEventListener('DOMContentLoaded', async function() {
+    backBtn.addEventListener('click', function(e) {
+        e.preventDefault();
+        goBack();
+    });
 
+});

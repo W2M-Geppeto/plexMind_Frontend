@@ -1,51 +1,141 @@
-function fillMainUser(){
-const userInfo = JSON.parse(sessionStorage.getItem('user'));
-document.getElementById('user').textContent = (userInfo && userInfo.email) ? userInfo.email.split('@')[0] : 'Usuario';}
-function setPreviousPage(selector) {
-  document.querySelectorAll(selector).forEach(element => {
-    element.addEventListener('click', function() {
-      sessionStorage.setItem('previousPage', window.location.pathname);
-    });
-  });
+function fillMainUser() {
+  const cookieValue = getCookie("user");
+  try {
+    const userInfo = JSON.parse(cookieValue);
+    document.getElementById("user").textContent =
+      userInfo && userInfo.email ? userInfo.email.split("@")[0] : "User";
+  } catch (error) {
+    console.error("Error al parsear la cookie 'user':", error);
+    document.getElementById("user").textContent = "User";
+
+  }
 }
 function goBack() {
-  const previous = sessionStorage.getItem('previousPage');
+  const previous = getCookie("previousPage");
+  console.log(previous);
   if (previous && previous !== window.location.pathname) {
     window.location.href = previous;
   } else {
-    window.location.href = '/src/pages/index/index.html';
+    window.location.href = "/src/pages/index/index.html";
   }
 }
-//Añadir la llamada a la funcion: setPreviousPage('.goForum'); y la classe a todos los elementos que lleven al foro
 function setPreviousPage(selector) {
-  document.querySelectorAll(selector).forEach(element => {
-    element.addEventListener('click', function() {
-      sessionStorage.setItem('previousPage', window.location.pathname);
+  document.querySelectorAll(selector).forEach((element) => {
+    element.addEventListener("click", function (e) {
+      e.preventDefault(); // Evita la navegación automática
+      createNewCookie("previousPage", window.location.pathname, {});
+      window.location.href = element.href; // Navega manualmente después de guardar la cookie
     });
   });
 }
-  function backHome(){
-    document.querySelector('.logo-navbar').addEventListener('click', function(e) {
+function backHome() {
+  document
+    .querySelector(".logo-navbar")
+    .addEventListener("click", function (e) {
       e.preventDefault();
-      window.location.href = '/src/pages/index/index.html';
+      window.location.href = "/src/pages/index/index.html";
     });
-  }
-  function goProfile() {
-   document.getElementById('personIcon').addEventListener('click', function(e) {
-      e.preventDefault();
-      window.location.href = '/src/pages/profile/profile.html';
+}
+function goProfile() {
+  document.querySelectorAll(".personIcon").forEach(icon => {
+    icon.addEventListener("click", function (e) {
+      if (e.target.tagName === "I") { 
+        e.preventDefault();
+        window.location.href = "/src/pages/profile/profile.html";
+      }
     });
-  } 
-  goProfile();
-  backHome();
-
-//Función para leer los datos del fetch
-async function getData(direccion) {
-  try {
-    const response = await fetch(direccion);
+  });
+}
+async function getData(url = '') {
+   try {
+    const response = await fetch(url, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+    });
     if (!response.ok) {
-    throw new Error(`Network response was not ok \nStatus: ${response.status} - ${response.statusText}`);}
+      throw new Error(
+        `Network response was not ok \nStatus: ${response.status} - ${response.statusText}`
+      );
+    }
     return await response.json();
   } catch (error) {
-    console.error('There has been a problem with your fetch operation:', error);}
+    console.error("There has been a problem with your fetch operation:", error);
+  }
 }
+async function sendData(url = '', data = {}) {
+  const response = await fetch(url, {
+    method: 'POST', 
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    referrerPolicy: 'no-referrer', //opcional, para ocultar quien envía la peticion
+    body: JSON.stringify(data)
+  });
+}
+async function sendGetData(url = '', data = {}) {
+  try {
+    const response = await fetch(url, {
+    method: 'POST', 
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    referrerPolicy: 'no-referrer', //opcional, para ocultar quien envía la peticion
+    body: JSON.stringify(data)
+  });
+    if (!response.ok) {
+      throw new Error(
+        `Network response was not ok \nStatus: ${response.status} - ${response.statusText}`
+      );
+    }
+    return await response.json();
+  } catch (error) {
+    console.error("There has been a problem with your fetch operation:", error);
+  }
+}
+function createNewCookie(name, value, cookieAttributes = {}) {
+  cookieAttributes = {
+    path: "/",
+    ...cookieAttributes,
+  };
+  if (cookieAttributes.expires instanceof Date) {
+    cookieAttributes.expires = cookieAttributes.expires.toUTCString();
+  }
+let newCookie =
+  encodeURIComponent(name) + "=" + encodeURIComponent(value);  for (let attributeKey in cookieAttributes) {
+    newCookie += "; " + attributeKey;
+    let attributeValue = cookieAttributes[attributeKey];
+    if (attributeValue !== true) {
+      newCookie += "=" + attributeValue;
+    }
+  }
+  document.cookie = newCookie;
+}
+function getCookie(name) {
+  let matches = document.cookie.match(
+    new RegExp(
+      "(?:^|; )" +
+        name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, "\\$1") +
+        "=([^;]*)"
+    )
+  );
+  return matches ? decodeURIComponent(matches[1]) : undefined;
+}
+function updateCookie(name, newDataObj, jsonAttributes = {}) {
+  let oldCookieData = {};
+  let currentCookieData = getCookie(name);
+  if (!currentCookieData) createNewCookie(name, JSON.stringify(newDataObj), attributes = {})
+  else{
+    oldCookieData = JSON.parse(currentCookieData);
+    const updatedObj = { ...oldCookieData, ...newDataObj };
+    createNewCookie(name, JSON.stringify(newDataObj), jsonAttributes);
+  }}
+function deleteCookie(name) {
+  updateCookie(name, "", {
+    'max-age': -1
+  })
+}
+fillMainUser();
+goProfile();
+backHome();

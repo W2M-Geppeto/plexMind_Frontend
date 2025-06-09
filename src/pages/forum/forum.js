@@ -103,12 +103,12 @@ document.addEventListener('DOMContentLoaded', async function() {
   resourceList.addEventListener('click', function(e) {
     if (e.target && e.target.id === 'favoriteForumIcon' || e.target.id === 'favoriteForumIconLiked') {
       e.preventDefault();
-      e.target.id = 'favoriteForumIconLiked';
-      addLike(e.target.getAttribute('data-id'));
-      if(e.target.id === 'favoriteForumIcon'){}
+      
+      if(e.target.id === 'favoriteForumIcon'){e.target.id = 'favoriteForumIconLiked';
+      addLike(e.target.getAttribute('data-id'));}
       else{
          e.target.id = 'favoriteForumIcon';
-      removeLike(e.target.getAttribute('data-id'));
+        removeLike(e.target.getAttribute('data-id'));
       }
     }    
 });

@@ -13,7 +13,7 @@ try {
 }
 try {
 let user = JSON.parse(getCookie("user"));
-idUser = user ? user.id : null;  
+idUser = user ? user.id : -1;  
 } catch (error) {
   console.error("Error al parsear la cookie:", error);
   idUser = -1;}

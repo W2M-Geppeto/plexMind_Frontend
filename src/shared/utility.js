@@ -6,7 +6,7 @@ function fillMainUser() {
       userInfo && userInfo.email ? userInfo.email.split("@")[0] : "User";
   } catch (error) {
     console.error("Error al parsear la cookie 'user':", error);
-    document.getElementById("user").textContent = "User";
+    document.getElementById("user").textContent = "Invitado";
   }
 }
 function goBack() {

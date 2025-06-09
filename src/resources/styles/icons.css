@@ -117,3 +117,11 @@ color: white;
   padding-left: 15px;
    cursor: pointer;
 }
+.nav-item.disabled .nv-personIcon {
+    color: #f1efef !important;
+    background-color: var(--disable-color) !important;
+}
+.nav-item.disabled .nv-personIcon:hover {
+    transform: none;
+    cursor: not-allowed !important;
+}

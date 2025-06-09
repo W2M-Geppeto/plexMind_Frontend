@@ -3,8 +3,9 @@ let categoryforum = document.querySelector('.categoryForum');
 let resourceList = document.getElementById('resourceList');
 const emptyList = document.querySelector('.emptyList');
 const backBtn = document.getElementById('exitIcon');
+let idTopic = null;
 try {
- let idTopic = JSON.parse(getCookie('topic'));
+  idTopic = JSON.parse(getCookie('topic'));
 } catch (error) {
   console.error("Error al parsear la cookie:", error);
   idTopic = null;

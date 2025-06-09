@@ -1,12 +1,12 @@
 let username = document.getElementById("usernameInput");
-let password = document.getElementById("passwordInput");
-let button = document.getElementById("loginButton");
+    let password = document.getElementById("passwordInput");
+    let button = document.getElementById("loginButton");
 //habra que cambiar despues a un regex mas restrictivo
 const usernameRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const passwordRegex = /^.{4,}$/;
 let users = null;
 
-function usernameValidation() {
+window.usernameValidation = function () {
     if (!usernameRegex.test(username.value)) {
         return false;
     } else {
@@ -15,7 +15,7 @@ function usernameValidation() {
     }
 }
 
-function passwordValidation() {
+window.passwordValidation = function () {
     if (!passwordRegex.test(password.value)) {
         return false;
     } else {
@@ -25,7 +25,7 @@ function passwordValidation() {
 }
 
 /* Cambia boton LOGIN entre disable y enable dependiendo de regex sobre los campos username y password. */
-function buttonUpdate() {
+window.buttonUpdate = function () {
     if (passwordValidation() && usernameValidation()) {
         button.disabled = false;
     } else {
@@ -33,30 +33,14 @@ function buttonUpdate() {
     }
 }
 
-/* async function validarDatos() {
-    try {
-        const response = await fetch('/src/resources/data/mocks/users.json');
-        if (!response.ok) {
-            throw new Error(`Network response was not ok \nStatus: ${response.status} - ${response.statusText}`);
-        }
-        users = await response.json();
-        return users.some(user => user.email === username.value && user.password === password.value);
-    } catch (error) {
-        console.error('There has been a problem with your fetch operation:', error);
-    }
-} */
-
 async function validarDatos() {
     const sendData = { email: username.value, password: password.value };
-    const receiveData = await sendGetData('https://micro-user-m5dv.onrender.com/api/users/login', sendData);
-    console.log(receiveData);
-    if (receiveData && receiveData.id && receiveData.email) {
-        createNewCookie('user', JSON.stringify(receiveData), {});
-        console.log('cookie creada');
+    const receivedData = await sendGetData('https://plexmind.onrender.com/api/users/login', sendData);
+    if (receivedData && receivedData.id && receivedData.email) {
+        createNewCookie('user', JSON.stringify(receivedData), {});
         console.log(getCookie('user'));
         return true;
     } else {
-        console.log('cookie ERROR');
         return false;
     }
 }
@@ -78,11 +62,14 @@ async function enviarDatos() {
 
 }
 
-username.addEventListener('input', buttonUpdate);
-password.addEventListener('input', buttonUpdate);
-buttonUpdate();
+function initLogin() {
+    
+    username.addEventListener('input', window.buttonUpdate);
+    password.addEventListener('input', window.buttonUpdate);
+    window.buttonUpdate();
 
-button.addEventListener('click', function (e) {
-    e.preventDefault();
-    enviarDatos();
-})
+    button.addEventListener('click', function (e) {
+        e.preventDefault();
+        enviarDatos();
+    })
+}

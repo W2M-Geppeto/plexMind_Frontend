@@ -6,7 +6,7 @@ function fillMainUser() {
       userInfo && userInfo.email ? userInfo.email.split("@")[0] : "User";
   } catch (error) {
     console.error("Error al parsear la cookie 'user':", error);
-    document.getElementById("user").textContent = "User";
+    document.getElementById("user").textContent = "Invitado";
   }
 }
 function goBack() {
@@ -32,22 +32,39 @@ function backHome() {
     .querySelector(".logo-navbar")
     .addEventListener("click", function (e) {
       e.preventDefault();
-      createNewCookie("previousPage","/src/pages/index/index.html", {});
+      createNewCookie("previousPage", "/src/pages/index/index.html", {});
       window.location.href = "/src/pages/index/index.html";
     });
 }
 function goProfile() {
   document.querySelectorAll(".goProfile").forEach(icon => {
     icon.addEventListener("click", function (e) {
-      if (e.target.tagName === "I") { 
-        e.preventDefault();
-        window.location.href = "/src/pages/profile/profile.html";
+      if (getCookie('user') === undefined) {
+        fetch('/src/pages/login/login.html')
+          .then(response => response.text())
+          .then(html => {
+            const bodyContent = html.match(/<body[^>]*>([\s\S]*?)<\/body>/i);
+            document.getElementById('loginModal').style.display = "block";
+            document.getElementById('loginModalContent').innerHTML = bodyContent ? bodyContent[1] : html;
+            const script = document.createElement('script');
+            script.src = '/src/pages/login/login.js';
+            script.onload = function () {
+              initLogin();
+            };
+            document.body.appendChild(script);
+          });
+      } else {
+        if (e.target.tagName === "I") {
+          e.preventDefault();
+          window.location.href = "/src/pages/profile/profile.html";
+        }
       }
+
     });
   });
 }
 async function getData(url) {
-   try {
+  try {
     const response = await fetch(url, {
       method: 'GET',
       headers: {
@@ -66,7 +83,7 @@ async function getData(url) {
 }
 async function sendData(url = '', data) {
   const response = await fetch(url, {
-    method: 'POST', 
+    method: 'POST',
     headers: {
       'Content-Type': 'application/json'
     },
@@ -77,13 +94,13 @@ async function sendData(url = '', data) {
 async function sendGetData(url = '', data = {}) {
   try {
     const response = await fetch(url, {
-    method: 'POST', 
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    referrerPolicy: 'no-referrer', //opcional, para ocultar quien envía la peticion
-    body: JSON.stringify(data)
-  });
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      referrerPolicy: 'no-referrer', //opcional, para ocultar quien envía la peticion
+      body: JSON.stringify(data)
+    });
     if (!response.ok) {
       throw new Error(
         `Network response was not ok \nStatus: ${response.status} - ${response.statusText}`
@@ -102,22 +119,22 @@ function createNewCookie(name, value, cookieAttributes = {}) {
   if (cookieAttributes.expires instanceof Date) {
     cookieAttributes.expires = cookieAttributes.expires.toUTCString();
   }
-let newCookie =
-  encodeURIComponent(name) + "=" + encodeURIComponent(value);  for (let attributeKey in cookieAttributes) {
-    newCookie += "; " + attributeKey;
-    let attributeValue = cookieAttributes[attributeKey];
-    if (attributeValue !== true) {
-      newCookie += "=" + attributeValue;
+  let newCookie =
+    encodeURIComponent(name) + "=" + encodeURIComponent(value); for (let attributeKey in cookieAttributes) {
+      newCookie += "; " + attributeKey;
+      let attributeValue = cookieAttributes[attributeKey];
+      if (attributeValue !== true) {
+        newCookie += "=" + attributeValue;
+      }
     }
-  }
   document.cookie = newCookie;
 }
 function getCookie(name) {
   let matches = document.cookie.match(
     new RegExp(
       "(?:^|; )" +
-        name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, "\\$1") +
-        "=([^;]*)"
+      name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, "\\$1") +
+      "=([^;]*)"
     )
   );
   return matches ? decodeURIComponent(matches[1]) : undefined;
@@ -126,16 +143,21 @@ function updateCookie(name, newDataObj, jsonAttributes = {}) {
   let oldCookieData = {};
   let currentCookieData = getCookie(name);
   if (!currentCookieData) createNewCookie(name, JSON.stringify(newDataObj), attributes = {})
-  else{
+  else {
     oldCookieData = JSON.parse(currentCookieData);
     const updatedObj = { ...oldCookieData, ...newDataObj };
     createNewCookie(name, JSON.stringify(newDataObj), jsonAttributes);
-  }}
+  }
+}
 function deleteCookie(name) {
   updateCookie(name, "", {
     'max-age': -1
   })
 }
+function goToLogin(){
+  console.log("Go to log");
+}
+
 fillMainUser();
 goProfile();
 backHome();

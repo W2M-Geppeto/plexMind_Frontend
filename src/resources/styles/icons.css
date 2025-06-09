@@ -24,6 +24,7 @@
 
 #linkIconForum{
   color: white;
+  cursor: pointer;
 }
 
 #closeIcon {
@@ -69,6 +70,17 @@
 color: white;
 }
 
+.favoriteForumIcon {
+  color: transparent;
+  -webkit-text-stroke: 2px white;
+  cursor: pointer;
+}
+.favoriteForumIcon:hover {
+color: white;
+}
+.favoriteForumIconLiked{
+  color: white !important;
+}
 #exitIcon {
   color: var(--primary-color);
   font-size: 40px !important;

@@ -28,6 +28,7 @@ async function fillTrending() {
                 `;
 
             });
+            
             document.querySelectorAll('.btn-trend').forEach(btn => {
   btn.addEventListener('click', function(e) {
     e.preventDefault();

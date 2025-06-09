@@ -39,30 +39,51 @@ function backHome() {
 function goProfile() {
   document.querySelectorAll(".goProfile").forEach(icon => {
     icon.addEventListener("click", function (e) {
-      if (getCookie('user') === undefined) {
-        fetch('/src/pages/login/login.html')
-          .then(response => response.text())
-          .then(html => {
-            const bodyContent = html.match(/<body[^>]*>([\s\S]*?)<\/body>/i);
-            document.getElementById('loginModal').style.display = "block";
-            document.getElementById('loginModalContent').innerHTML = bodyContent ? bodyContent[1] : html;
-            const script = document.createElement('script');
-            script.src = '/src/pages/login/login.js';
-            script.onload = function () {
-              initLogin();
-            };
-            document.body.appendChild(script);
-          });
-      } else {
-        if (e.target.tagName === "I") {
-          e.preventDefault();
-          window.location.href = "/src/pages/profile/profile.html";
-        }
+      if (e.target.tagName === "I" && e.target.classList.contains("personIcon")) {
+        e.preventDefault();
+        window.location.href = "/src/pages/profile/profile.html";
       }
-
     });
   });
+
 }
+function login() {
+  fetch('/src/pages/login/login.html')
+    .then(response => response.text())
+    .then(html => {
+      const bodyContent = html.match(/<body[^>]*>([\s\S]*?)<\/body>/i);
+      document.getElementById('loginModal').style.display = "block";
+      document.getElementById('loginModalContent').innerHTML = bodyContent ? bodyContent[1] : html;
+      const script = document.createElement('script');
+      script.src = '/src/pages/login/login.js';
+      script.onload = function () {
+        initLogin();
+      };
+      document.body.appendChild(script);
+    });
+}
+
+function checkLogin() {
+  console.log('llamando al login');
+  let personIconStyle = 'personIconDisabled';
+  let loginStyle = 'loginIcon';
+  let loginType = 'login';
+  if (getCookie('user') !== undefined) {
+    personIconStyle = 'personIcon';
+    loginStyle = 'logoutIcon';
+    loginType = 'logout';
+  }
+  const personIconContent = `<i class="material-symbols-outlined nv-personIcon ${personIconStyle}">person</i>`;
+  const loginIconContent = `<i class="material-symbols-outlined nv-personIcon mx-0 ${loginStyle}">${loginType}</i>`;
+  document.getElementById('personIconcontainer').innerHTML = personIconContent;
+  document.getElementById('loginIconcontainer').innerHTML = loginIconContent;
+  document.querySelector(".loginIcon").addEventListener('click', function (e) {
+    login();
+  } )
+
+}
+
+
 async function getData(url) {
   try {
     const response = await fetch(url, {
@@ -154,7 +175,7 @@ function deleteCookie(name) {
     'max-age': -1
   })
 }
-function goToLogin(){
+function goToLogin() {
   console.log("Go to log");
 }
 

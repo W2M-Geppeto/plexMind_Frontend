@@ -1,9 +1,10 @@
 const mockOrdered = '/src/resources/data/mocks/trending_topic_orderByLike.json';
-const url = 'https://micro-resource.onrender.com/api/resources/top-by-likes'
+const url = 'https://plexmind.onrender.com/api/resources/top-by-likes';
+
 let data = null;
 async function fillTrending() {
     try {
-        data = await getData(mockOrdered);
+        data = await getData(urlMock);
         const trendingRow = document.querySelector('.trendingRow');
         if (data && data.length > 0) {
             trendingRow.innerHTML = "";

@@ -1,12 +1,12 @@
 let username = document.getElementById("usernameInput");
-let password = document.getElementById("passwordInput");
-let button = document.getElementById("loginButton");
+    let password = document.getElementById("passwordInput");
+    let button = document.getElementById("loginButton");
 //habra que cambiar despues a un regex mas restrictivo
 const usernameRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const passwordRegex = /^.{4,}$/;
 let users = null;
 
-function usernameValidation() {
+window.usernameValidation = function () {
     if (!usernameRegex.test(username.value)) {
         return false;
     } else {
@@ -15,7 +15,7 @@ function usernameValidation() {
     }
 }
 
-function passwordValidation() {
+window.passwordValidation = function () {
     if (!passwordRegex.test(password.value)) {
         return false;
     } else {
@@ -25,7 +25,7 @@ function passwordValidation() {
 }
 
 /* Cambia boton LOGIN entre disable y enable dependiendo de regex sobre los campos username y password. */
-function buttonUpdate() {
+window.buttonUpdate = function () {
     if (passwordValidation() && usernameValidation()) {
         button.disabled = false;
     } else {
@@ -62,11 +62,14 @@ async function enviarDatos() {
 
 }
 
-username.addEventListener('input', buttonUpdate);
-password.addEventListener('input', buttonUpdate);
-buttonUpdate();
+function initLogin() {
+    
+    username.addEventListener('input', window.buttonUpdate);
+    password.addEventListener('input', window.buttonUpdate);
+    window.buttonUpdate();
 
-button.addEventListener('click', function (e) {
-    e.preventDefault();
-    enviarDatos();
-})
+    button.addEventListener('click', function (e) {
+        e.preventDefault();
+        enviarDatos();
+    })
+}

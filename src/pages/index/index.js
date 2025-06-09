@@ -28,7 +28,7 @@ async function fillTrending() {
                 `;
 
             });
-            
+
             document.querySelectorAll('.btn-trend').forEach(btn => {
                 btn.addEventListener('click', function (e) {
                     e.preventDefault();
@@ -50,25 +50,11 @@ async function fillTrending() {
 
 }
 
-document.addEventListener("DOMContentLoaded", function() {
-    // Load login.html content into the modal
-    fetch('/src/pages/login/login.html')
-      .then(response => response.text())
-      .then(html => {
-        // Extract only the <body> content from login.html
-        const bodyContent = html.match(/<body[^>]*>([\s\S]*?)<\/body>/i);
-        document.getElementById('loginModalContent').innerHTML = bodyContent ? bodyContent[1] : html;
-      });
 
-    // Prevent closing the modal by clicking outside or pressing ESC
-    document.body.classList.add('modal-open');
-    document.body.style.overflow = 'hidden';
-});
 
 document.addEventListener('DOMContentLoaded', async function () {
     goProfile();
     await fillTrending();
-
 });
 
 

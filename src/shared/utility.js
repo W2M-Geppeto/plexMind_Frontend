@@ -65,7 +65,7 @@ function login() {
 
 function checkLogin() {
   console.log('llamando al login');
-  let personIconStyle = 'personIconDisabled';
+  let personIconStyle = 'disabled';
   let loginStyle = 'loginIcon';
   let loginType = 'login';
   if (getCookie('user') !== undefined) {

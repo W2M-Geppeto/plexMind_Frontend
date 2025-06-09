@@ -136,6 +136,10 @@ function deleteCookie(name) {
     'max-age': -1
   })
 }
+function goToLogin(){
+  console.log("Go to log");
+}
+
 fillMainUser();
 goProfile();
 backHome();

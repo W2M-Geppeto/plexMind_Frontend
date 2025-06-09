@@ -3,19 +3,20 @@ let categoryforum = document.querySelector('.categoryForum');
 let resourceList = document.getElementById('resourceList');
 const emptyList = document.querySelector('.emptyList');
 const backBtn = document.getElementById('exitIcon');
-let idTopic = null;
+let topicData = null;
+let idUser = -1;
 try {
-  idTopic = JSON.parse(getCookie('topic'));
+  topicData = JSON.parse(getCookie('topic'));
 } catch (error) {
   console.error("Error al parsear la cookie:", error);
-  idTopic = null;
+  topicData = null;
 }
-  try {
-  let user = JSON.parse(getCookie("user"));
-  idUser = user ? user.id : null;
-  } catch (error) {
-     console.error("Error al parsear la cookie:", error);
-     idUser = null;}
+try {
+let user = JSON.parse(getCookie("user"));
+idUser = user ? user.id : null;  
+} catch (error) {
+  console.error("Error al parsear la cookie:", error);
+  idUser = -1;}
 
 function emptyResources() {
   if (resourceList && resourceList.children.length === 0) {
@@ -25,14 +26,20 @@ function emptyResources() {
   }
 }
 
-function fillData(data){
-  console.log("data", data);
-  titleForum.textContent =  data[1].nameTopic.toUpperCase();
-  categoryforum.textContent = (data[1].idCategory + "end").toUpperCase();
+function fillData(){
+  if(topicData.nameTopic && topicData.nameCategory){
+    titleForum.textContent =  topicData.nameTopic.toUpperCase();
+    categoryforum.textContent = topicData.nameCategory.toUpperCase();
+  }else{
+    titleForum.textContent =  "NO DATA";
+    categoryforum.textContent = "NO DATA";
+  }
+  // posible cambio nombre datos json
 }
 
 function fillList(likedDataUser, listElements) {
   resourceList.innerHTML = ""; 
+  console.log("listElements", listElements);
   for (let i = 0; i < listElements.length; i++) {
     const resource = listElements[i];
     let icon = getIcon(resource.type);   
@@ -40,7 +47,7 @@ function fillList(likedDataUser, listElements) {
     const li = document.createElement('li');
     li.className = 'list-group-item';
     li.id = 'list-item';
-    let idStyle = isLiked ? "favoriteForumIconLiked" : "favoriteForumIcon";
+    let classStyle = isLiked ? "favoriteForumIcon favoriteForumIconLiked" : "favoriteForumIcon";
     li.innerHTML = `
       <div class="row">
         <div class="col-2"></div>
@@ -50,7 +57,7 @@ function fillList(likedDataUser, listElements) {
           </a>
         </div>
         <div class="col-1 d-flex justify-content-end">
-          <i class="material-icons" id=${idStyle} data-id="${resource.id}">favorite</i>
+          <i class="material-icons ${classStyle}" data-id="${resource.id}">favorite</i>
         </div>
         <div class="col-1 d-flex justify-content-end">
           <i class="material-icons" id="linkIconForum">${icon}</i>
@@ -89,29 +96,37 @@ async function removeLike(idResource) {
 }
 
 document.addEventListener('DOMContentLoaded', async function() {
-  let data = await getData('/src/resources/data/mocks/topic.json');  
-  if (data) fillData(data);
-  let listElements = await sendGetData('https://micro-resource.onrender.com/api/resources/topic/${idTopic}/details', idTopic);
-  let likedDataUser =  await sendGetData(' ', idUser);
+  fillData(); 
+  let topicId = topicData.idTopic ? topicData.idTopic : -1;
+  //let listElements = await sendGetData(`https://plexmind.onrender.com/api/resources/topic/%7BidTopic%7D/details`, topicId);
+  let listElements = await getData("http://127.0.0.1:5500/src/resources/data/mocks/recursos_id_topic_3.json");  
+  //let likedDataUser =  await sendGetData(' ', idUser);
+  let likedDataUser = [3,27,88];
   if (listElements) fillList(likedDataUser, listElements);
   else  emptyResources();
   backBtn.addEventListener('click', function(e) {
     e.preventDefault();
     goBack();
   });
-
   resourceList.addEventListener('click', function(e) {
-    if (e.target && e.target.id === 'favoriteForumIcon' || e.target.id === 'favoriteForumIconLiked') {
-      e.preventDefault();
-      e.target.id = 'favoriteForumIconLiked';
-      addLike(e.target.getAttribute('data-id'));
-      if(e.target.id === 'favoriteForumIcon'){}
-      else{
-         e.target.id = 'favoriteForumIcon';
-      removeLike(e.target.getAttribute('data-id'));
+      if (e.target && e.target.classList.contains('favoriteForumIcon')) {
+          e.preventDefault();
+          e.target.classList.toggle('favoriteForumIconLiked');
+          if (e.target.classList.contains('favoriteForumIconLiked')) {
+              // addLike(e.target.getAttribute('data-id'));
+          } else {
+              // removeLike(e.target.getAttribute('data-id'));
+          }
+          console.log(e.target.classList)
       }
-    }    
-});
+      if (e.target && e.target.id === "linkIconForum") {
+          e.preventDefault();
+          if(idUser === -1)
+            goToLogin();
+          else
+          console.log("Aún no implementado");
+      }
+  });
 
 document.querySelector(".personIcon").addEventListener("click", function (e) {
   e.preventDefault();

@@ -3,17 +3,12 @@ let categoryforum = document.querySelector('.categoryForum');
 let resourceList = document.getElementById('resourceList');
 const emptyList = document.querySelector('.emptyList');
 const backBtn = document.getElementById('exitIcon');
-let likedArr = [];
-let data = null;
-let likedDataUser = []
-let listElements = [];
 try {
-  idTopic = JSON.parse(getCookie('topic'));
+ let idTopic = JSON.parse(getCookie('topic'));
 } catch (error) {
   console.error("Error al parsear la cookie:", error);
   idTopic = null;
 }
- let idUser;
   try {
   let user = JSON.parse(getCookie("user"));
   idUser = user ? user.id : null;
@@ -28,12 +23,14 @@ function emptyResources() {
     emptyList.style.display = 'none';
   }
 }
-function fillData(){
+
+function fillData(data){
   console.log("data", data);
   titleForum.textContent =  data[1].nameTopic.toUpperCase();
   categoryforum.textContent = (data[1].idCategory + "end").toUpperCase();
 }
-function fillList(likedDataUser) {
+
+function fillList(likedDataUser, listElements) {
   resourceList.innerHTML = ""; 
   for (let i = 0; i < listElements.length; i++) {
     const resource = listElements[i];
@@ -73,54 +70,46 @@ function getIcon(type){
       return 'link';
   }
 }
-function giveLike(idResource) { 
-  let sendlikesCookie = getCookie("toSendLikes");
-  likedArr = sendlikesCookie ? JSON.parse(sendlikesCookie) : [];
+async function addLike(idResource) { 
   idResource = Number(idResource);
-  if (!likedArr.includes(idResource)) likedArr.push(idResource);
-  createNewCookie(
-    "toSendLikes",
-     JSON.stringify(likedArr),{}
-  );
-}
-async function sendLikes() {
-  if (Array.isArray(likedArr) && likedArr.length > 0) {
-    try {
-      await sendData("", {idUser: idUser, likes: likedArr});
-      deleteCookie("toSendLikes");
-      likedArr.length = 0;
+  try {
+      await sendData("", idResource);
     } catch (error) {
       console.error("Error al enviar likes:", error);
     }
-  }
 }
+async function removeLike(idResource) {
+  idResource = Number(idResource);
+  try {
+      await sendData("", idResource);
+    } catch (error) {
+      console.error("Error al enviar likes:", error);
+    }
+}
+
 document.addEventListener('DOMContentLoaded', async function() {
-  data = await sendFGetData('/src/resources/data/mocks/topic.json', idTopic);  
-  if (data) fillData();
-  
-  listElements = await sendGetData('https://micro-resource.onrender.com/api/resources/topic/${idTopic}/details', idTopic);
-  // likedDataUser =  sendGetData(' ', idUser);
-  if (listElements) fillList(likedDataUser);
+  let data = await getData('/src/resources/data/mocks/topic.json');  
+  if (data) fillData(data);
+  let listElements = await sendGetData('https://micro-resource.onrender.com/api/resources/topic/${idTopic}/details', idTopic);
+  let likedDataUser =  await sendGetData(' ', idUser);
+  if (listElements) fillList(likedDataUser, listElements);
   else  emptyResources();
   backBtn.addEventListener('click', function(e) {
     e.preventDefault();
     goBack();
   });
 
-  window.addEventListener("beforeunload", async function () {
-    console.log("Sending likes before leaving the page...");
-    //navigator.sendBeacon("/api/sendLikes");
-     await sendLikes();
-  });
-
   resourceList.addEventListener('click', function(e) {
-    if (e.target && e.target.id === 'favoriteForumIcon') {
+    if (e.target && e.target.id === 'favoriteForumIcon' || e.target.id === 'favoriteForumIconLiked') {
       e.preventDefault();
-      e.target.removeAttribute('id');
-      giveLike(e.target.getAttribute('data-id'));
-      console.log(document.cookie);
-    }
-    
+      e.target.id = 'favoriteForumIconLiked';
+      addLike(e.target.getAttribute('data-id'));
+      if(e.target.id === 'favoriteForumIcon'){}
+      else{
+         e.target.id = 'favoriteForumIcon';
+      removeLike(e.target.getAttribute('data-id'));
+      }
+    }    
 });
 
 document.querySelector(".personIcon").addEventListener("click", function (e) {

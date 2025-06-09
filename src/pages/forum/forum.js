@@ -2,13 +2,21 @@ let titleForum = document.querySelector('.titleForum');
 let categoryforum = document.querySelector('.categoryForum');
 let resourceList = document.getElementById('resourceList');
 const emptyList = document.querySelector('.emptyList');
-let backBtn = document.getElementById('exitIcon');
-let data = null;
-let idTopic = {idTopic: getCookie('topic')};
-console.log(idTopic);
-//let data = await sendFGetData('/src/resources/data/mocks/topic.json', idTopic);
-let listElements = null;
-//let listElements = await sendFGetData('/src/resources/data/mocks/topic.json', idTopic);
+const backBtn = document.getElementById('exitIcon');
+let idTopic = null;
+try {
+  idTopic = JSON.parse(getCookie('topic'));
+} catch (error) {
+  console.error("Error al parsear la cookie:", error);
+  idTopic = null;
+}
+  try {
+  let user = JSON.parse(getCookie("user"));
+  idUser = user ? user.id : null;
+  } catch (error) {
+     console.error("Error al parsear la cookie:", error);
+     idUser = null;}
+
 function emptyResources() {
   if (resourceList && resourceList.children.length === 0) {
     emptyList.style.display = '';      
@@ -16,18 +24,19 @@ function emptyResources() {
     emptyList.style.display = 'none';
   }
 }
-function fillData(){
+
+function fillData(data){
+  console.log("data", data);
   titleForum.textContent =  data[1].nameTopic.toUpperCase();
-  categoryforum.textContent = (data[1].idCategory + " - stack").toUpperCase();
+  categoryforum.textContent = (data[1].idCategory + "end").toUpperCase();
 }
-function fillList() {
+
+function fillList(likedDataUser, listElements) {
   resourceList.innerHTML = ""; 
-  let likedCookie = getCookie("liked_prueba");
-  let likedArr = likedCookie ? JSON.parse(likedCookie) : [];
   for (let i = 0; i < listElements.length; i++) {
     const resource = listElements[i];
     let icon = getIcon(resource.type);   
-    let isLiked = likedArr.includes(resource.id);    
+    let isLiked = likedDataUser.includes(resource.id);    
     const li = document.createElement('li');
     li.className = 'list-group-item';
     li.id = 'list-item';
@@ -36,7 +45,7 @@ function fillList() {
       <div class="row">
         <div class="col-2"></div>
         <div class="col-8">
-          <a href="#" target="_blank" class="text-decoration-none text-reset text-truncate txt-color link">
+          <a href="${resource.link} " target="_blank" class="text-decoration-none text-reset text-truncate txt-color link">
             ${resource.name} 
           </a>
         </div>
@@ -62,42 +71,50 @@ function getIcon(type){
       return 'link';
   }
 }
-function giveLike(idResource) {
-  let likedCookie = getCookie("liked_prueba");
-  let likedArr = likedCookie ? JSON.parse(likedCookie) : [];
+async function addLike(idResource) { 
   idResource = Number(idResource);
-  if (!likedArr.includes(idResource)) likedArr.push(idResource);
-  createNewCookie(
-    "liked_prueba",
-     JSON.stringify(likedArr),
-    { expires: new Date(Date.now() + 10 * 365 * 24 * 60 * 60 * 1000) }
-  );
+  try {
+      await sendData("", idResource);
+    } catch (error) {
+      console.error("Error al enviar likes:", error);
+    }
 }
+async function removeLike(idResource) {
+  idResource = Number(idResource);
+  try {
+      await sendData("", idResource);
+    } catch (error) {
+      console.error("Error al enviar likes:", error);
+    }
+}
+
 document.addEventListener('DOMContentLoaded', async function() {
-  data = await getData('/src/resources/data/mocks/topic.json');  
-  console.log(data);
-  if (data) fillData();
-  else console.log('No data found for the forum');
-  listElements = await getData('/src/resources/data/mocks/recursos_id_topic_3.json');
-  console.log(listElements);
-  if (listElements) fillList();
+  let data = await getData('/src/resources/data/mocks/topic.json');  
+  if (data) fillData(data);
+  let listElements = await sendGetData('https://micro-resource.onrender.com/api/resources/topic/${idTopic}/details', idTopic);
+  let likedDataUser =  await sendGetData(' ', idUser);
+  if (listElements) fillList(likedDataUser, listElements);
   else  emptyResources();
- 
   backBtn.addEventListener('click', function(e) {
     e.preventDefault();
     goBack();
   });
+
   resourceList.addEventListener('click', function(e) {
-    if (e.target && e.target.id === 'favoriteForumIcon') {
+    if (e.target && e.target.id === 'favoriteForumIcon' || e.target.id === 'favoriteForumIconLiked') {
       e.preventDefault();
-      e.target.removeAttribute('id');
-      giveLike(e.target.getAttribute('data-id'));
-    }
+      
+      if(e.target.id === 'favoriteForumIcon'){e.target.id = 'favoriteForumIconLiked';
+      addLike(e.target.getAttribute('data-id'));}
+      else{
+         e.target.id = 'favoriteForumIcon';
+        removeLike(e.target.getAttribute('data-id'));
+      }
+    }    
 });
 
-document.getElementById("personIcon").addEventListener("click", function (e) {
+document.querySelector(".personIcon").addEventListener("click", function (e) {
   e.preventDefault();
   createNewCookie("previousPage", window.location.pathname, {});
-  
 });
 });

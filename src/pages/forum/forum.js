@@ -127,7 +127,6 @@ document.addEventListener('DOMContentLoaded', async function() {
           console.log("Aún no implementado");
       }
   });
-
 document.querySelector(".personIcon").addEventListener("click", function (e) {
   e.preventDefault();
   createNewCookie("previousPage", window.location.pathname, {});

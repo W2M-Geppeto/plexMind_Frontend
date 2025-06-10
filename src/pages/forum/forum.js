@@ -96,10 +96,12 @@ document.addEventListener('DOMContentLoaded', async function() {
   goProfile();
   fillData(); 
   let idTopic = topicData ? topicData.id : -1;
-  console.log(idTopic)
   let listElements = await getData(`https://plexmind.onrender.com/api/resources/topic/${idTopic}/details`);  
   let idUser = user ? user.id : -1;  
-  let likedDataUser = await getData(`https://plexmind.onrender.com/api/users/likes/${idUser}/${idTopic}`);
+  console.log("usar Java")
+  if(idTopic != -1 && idUser != -1){
+    likedDataUser = await getData(`https://plexmind.onrender.com/api/users/likes/${idUser}/${idTopic}`);
+  }  
   if (listElements) fillList(listElements,likedDataUser); 
   else  emptyResources();
   backBtn.addEventListener('click', function(e) {

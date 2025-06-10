@@ -51,7 +51,7 @@ async function enviarDatos() {
     if (esValido) {
         password.value = "";
         passwordError.style.display = "none";
-        window.location.href = '/src/pages/index/index.html';
+        window.location.reload();
     } else {
         password.value = "";
         username.style.borderColor = "red";

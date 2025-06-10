@@ -4,19 +4,16 @@ let resourceList = document.getElementById('resourceList');
 const emptyList = document.querySelector('.emptyList');
 const backBtn = document.getElementById('exitIcon');
 let topicData = null;
-let idUser = -1;
+let user = null;
 try {
   topicData = JSON.parse(getCookie('topic'));
 } catch (error) {
-  console.error("Error al parsear la cookie:", error);
   topicData = null;
 }
 try {
-let user = JSON.parse(getCookie("user"));
-idUser = user ? user.id : null;  
+user = JSON.parse(getCookie("user"));
 } catch (error) {
-  console.error("Error al parsear la cookie:", error);
-  idUser = -1;}
+  user= null;}
 
 function emptyResources() {
   if (resourceList && resourceList.children.length === 0) {
@@ -27,19 +24,18 @@ function emptyResources() {
 }
 
 function fillData(){
-  if(topicData.nameTopic && topicData.nameCategory){
+  console.log(topicData)
+  if(topicData){
     titleForum.textContent =  topicData.nameTopic.toUpperCase();
     categoryforum.textContent = topicData.nameCategory.toUpperCase();
   }else{
     titleForum.textContent =  "NO DATA";
     categoryforum.textContent = "NO DATA";
   }
-  // posible cambio nombre datos json
 }
 
-function fillList(likedDataUser, listElements) {
+function fillList(listElements,likedDataUser) {
   resourceList.innerHTML = ""; 
-  console.log("listElements", listElements);
   for (let i = 0; i < listElements.length; i++) {
     const resource = listElements[i];
     let icon = getIcon(resource.type);   
@@ -98,12 +94,12 @@ async function removeLike(idResource) {
 document.addEventListener('DOMContentLoaded', async function() {
   checkLogin();
   fillData(); 
-  let topicId = topicData.idTopic ? topicData.idTopic : -1;
-  //let listElements = await sendGetData(`https://plexmind.onrender.com/api/resources/topic/%7BidTopic%7D/details`, topicId);
-  let listElements = await getData("https://plexmind.onrender.com/api/resources/topic/1/details");  
-  //let likedDataUser =  await sendGetData(' ', idUser);
-  let likedDataUser = [3,27,88];
-  if (listElements) fillList(likedDataUser, listElements);
+  let idTopic = topicData ? topicData.id : -1;
+  console.log(idTopic)
+  let listElements = await getData(`https://plexmind.onrender.com/api/resources/topic/${idTopic}/details`);  
+  let idUser = user ? user.id : -1;  
+  let likedDataUser =  [1,2,3];
+  if (listElements) fillList(listElements,likedDataUser); 
   else  emptyResources();
   backBtn.addEventListener('click', function(e) {
     e.preventDefault();
@@ -112,25 +108,33 @@ document.addEventListener('DOMContentLoaded', async function() {
   resourceList.addEventListener('click', function(e) {
       if (e.target && e.target.classList.contains('favoriteForumIcon')) {
           e.preventDefault();
-          e.target.classList.toggle('favoriteForumIconLiked');
-          if (e.target.classList.contains('favoriteForumIconLiked')) {
-              // addLike(e.target.getAttribute('data-id'));
-          } else {
-              // removeLike(e.target.getAttribute('data-id'));
-          }
+           if(idUser === -1){
+            console.log("mostrar modal")
+           }else{
+            e.target.classList.toggle('favoriteForumIconLiked');
+            if (e.target.classList.contains('favoriteForumIconLiked')) {
+                //addLike(e.target.getAttribute('data-id'));
+            } else {
+                //removeLike(e.target.getAttribute('data-id'));
+            }
+           }
+         
           console.log(e.target.classList)
       }
+      
       if (e.target && e.target.id === "linkIconForum") {
-          e.preventDefault();
+          e.preventDefault()
           if(idUser === -1)
-            goToLogin();
+            console.log("mostrar modal")
           else
           console.log("Aún no implementado");
       }
-  });
+  })
 
-document.querySelector(".personIcon").addEventListener("click", function (e) {
+  if(getCookie("user")){
+    document.querySelector(".personIcon").addEventListener("click", function (e) {
   e.preventDefault();
   createNewCookie("previousPage", window.location.pathname, {});
-});
+  });
+  }
 });

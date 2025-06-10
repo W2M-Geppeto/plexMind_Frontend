@@ -1,6 +1,6 @@
 let username = document.getElementById("usernameInput");
-    let password = document.getElementById("passwordInput");
-    let button = document.getElementById("loginButton");
+let password = document.getElementById("passwordInput");
+let button = document.getElementById("loginButton");
 //habra que cambiar despues a un regex mas restrictivo
 const usernameRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const passwordRegex = /^.{4,}$/;
@@ -63,7 +63,8 @@ async function enviarDatos() {
 }
 
 function initLogin() {
-    
+    const loginButton = document.getElementById('loginButton');
+    if (loginButton) loginButton.disabled = true;
     username.addEventListener('input', window.buttonUpdate);
     password.addEventListener('input', window.buttonUpdate);
     window.buttonUpdate();

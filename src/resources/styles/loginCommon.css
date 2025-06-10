@@ -1,0 +1,43 @@
+.modal-backdrop,
+#loginModal {
+  z-index: 2000 !important;
+}
+#loginModalContent {
+    padding: 50px;
+}
+
+body {
+  margin-top: 10vh;
+}
+
+#loginHead {
+  margin-bottom: 25px;
+
+  img {
+    margin-top: -10px;
+  }
+}
+
+#loginButton {
+  margin-bottom: 10px;
+}
+
+#textFields {
+  margin-bottom: 25px;
+}
+
+#usernameInput, #passwordInput{
+  margin-top: 5px;
+  margin-bottom: 20px;
+}
+
+.textField-m,
+.label {
+  width: 100%;
+  max-width: 300px;
+  margin: 0 auto;
+}
+
+#loginButton {
+  margin-bottom: 30px;
+}

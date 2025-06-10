@@ -46,7 +46,7 @@
   margin-left: 15px !important; /* Ajusta el valor según lo que necesites */
 }
 
-.nav-item.disabled .nav-link {
+.nav-item.disabled .nav-link, .disabled {
   color: #bdbdbd !important;
   cursor: not-allowed !important;
 }

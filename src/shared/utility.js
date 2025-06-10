@@ -57,23 +57,24 @@ function login() {
       script.src = '/src/pages/login/login.js';
       script.onload = function () {
         initLogin();
+
       };
       document.body.appendChild(script);
     });
 }
 
 function checkLogin() {
-  console.log('llamando al login');
-  let personIconStatus = 'disabled';
-  let personIconClass = '';
+  let personIconStatus = 'disabled'; /*  */
+  let personIconClass = ''; /*  */
   let loginStyle = 'loginIcon';
   let loginType = 'login';
   if (getCookie('user') !== undefined) {
-    personIconStatus = 'enable';
+    personIconStatus = 'enable'; /*  */
+    personIconClass = 'personIcon'; /*  */
     loginStyle = 'logoutIcon';
     loginType = 'logout';
-    personIconClass = 'personIcon';
   }
+  console.log(personIconStatus)
   const personIconContent = `<a class="nav-link ${personIconStatus} goProfile"  aria-disabled="true" href="#">
                             <i class="material-symbols-outlined nv-personIcon ${personIconClass}">person</i>
                         </a>`;
@@ -81,11 +82,19 @@ function checkLogin() {
   document.getElementById('personIconcontainer').innerHTML = personIconContent;
   document.getElementById('loginIconcontainer').innerHTML = loginIconContent;
   console.log(loginStyle);
-  if(loginStyle === 'loginIcon'){document.querySelector(".loginIcon").addEventListener('click', function (e) {
-    console.log('llamando al login 2');
-    login();
-  })}
-  
+  if (loginStyle === 'loginIcon') {
+    document.querySelector(".loginIcon").addEventListener('click', function (e) {
+      login();
+    })
+  } else {
+    document.querySelectorAll('.logoutIcon').forEach(icon => {
+      icon.addEventListener('click', function (e) {
+        e.preventDefault();
+        logout(); // Llama a la función de utility.js
+      });
+    });
+  }
+
 
 }
 
@@ -181,9 +190,7 @@ function deleteCookie(name) {
     'max-age': -1
   })
 }
-function goToLogin() {
-  console.log("Go to log");
-}
+
 function logout() {
   // Borra todas las cookies relevantes (puedes añadir más si usas otras)
   deleteCookie('user');

@@ -100,7 +100,7 @@ document.addEventListener('DOMContentLoaded', async function() {
   fillData(); 
   let topicId = topicData.idTopic ? topicData.idTopic : -1;
   //let listElements = await sendGetData(`https://plexmind.onrender.com/api/resources/topic/%7BidTopic%7D/details`, topicId);
-  let listElements = await getData("http://127.0.0.1:5500/src/resources/data/mocks/recursos_id_topic_3.json");  
+  let listElements = await getData("https://plexmind.onrender.com/api/resources/topic/1/details");  
   //let likedDataUser =  await sendGetData(' ', idUser);
   let likedDataUser = [3,27,88];
   if (listElements) fillList(likedDataUser, listElements);

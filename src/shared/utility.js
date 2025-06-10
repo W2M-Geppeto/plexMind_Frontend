@@ -57,7 +57,7 @@ async function login() {
       const script = document.createElement('script');
       script.src = '/src/pages/login/login.js';
       script.onload = function () {
-        if (typeof initLogin === "function") initLogin();
+        if (typeof initLogin === "function") { initLogin() };
         const modalEl = document.getElementById('loginModal');
         const modal = bootstrap.Modal.getOrCreateInstance(modalEl);
         modal.show();

@@ -74,18 +74,18 @@ function getIcon(type){
       return 'link';
   }
 }
-async function addLike(idResource) { 
+async function addLike(idResource,idUser) { 
   idResource = Number(idResource);
   try {
-      await sendData("", idResource);
+      await sendData(`https://plexmind.onrender.com/api/resources/like/${idResource}/${idUser}`);
     } catch (error) {
       console.error("Error al enviar likes:", error);
     }
 }
-async function removeLike(idResource) {
+async function removeLike(idResource,idUser) {
   idResource = Number(idResource);
   try {
-      await sendData("", idResource);
+      await sendData(`https://plexmind.onrender.com/api/resources/dislike/${idResource}/${idUser}`);
     } catch (error) {
       console.error("Error al enviar likes:", error);
     }
@@ -99,7 +99,7 @@ document.addEventListener('DOMContentLoaded', async function() {
   console.log(idTopic)
   let listElements = await getData(`https://plexmind.onrender.com/api/resources/topic/${idTopic}/details`);  
   let idUser = user ? user.id : -1;  
-  let likedDataUser =  [1,2,3];
+  let likedDataUser = await getData(`https://plexmind.onrender.com/api/users/likes/${idUser}/${idTopic}`);
   if (listElements) fillList(listElements,likedDataUser); 
   else  emptyResources();
   backBtn.addEventListener('click', function(e) {
@@ -115,9 +115,9 @@ document.addEventListener('DOMContentLoaded', async function() {
                 }else{
                   e.target.classList.toggle('favoriteForumIconLiked');
                   if (e.target.classList.contains('favoriteForumIconLiked')) {
-                      //addLike(e.target.getAttribute('data-id'));
+                      addLike(e.target.getAttribute('data-id'),idUser);
                   } else {
-                      //removeLike(e.target.getAttribute('data-id'));
+                      removeLike(e.target.getAttribute('data-id'),idUser);
                   }
                 }
         }

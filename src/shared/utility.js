@@ -81,9 +81,10 @@ function checkLogin() {
   const loginIconContent = `<i class="material-symbols-outlined nv-personIcon mx-0 ${loginStyle}">${loginType}</i>`;
   document.getElementById('personIconcontainer').innerHTML = personIconContent;
   document.getElementById('loginIconcontainer').innerHTML = loginIconContent;
-  document.querySelector(".loginIcon").addEventListener('click', function (e) {
+  if(loginStyle === 'loginIcon'){document.querySelector(".loginIcon").addEventListener('click', function (e) {
     login();
-  })
+  })}
+  
 
 }
 

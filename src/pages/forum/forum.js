@@ -143,8 +143,8 @@ document.addEventListener('DOMContentLoaded', async function() {
 
   if(getCookie("user")){
     document.querySelector(".personIcon").addEventListener("click", function (e) {
-  e.preventDefault();
-  createNewCookie("previousPage", window.location.pathname, {});
+    e.preventDefault();
+    createNewCookie("previousPage", window.location.pathname, {});
   });
   }
 });

@@ -5,6 +5,7 @@ const emptyList = document.querySelector('.emptyList');
 const backBtn = document.getElementById('exitIcon');
 let topicData = null;
 let user = null;
+let likedDataUser = [];
 try {
   topicData = JSON.parse(getCookie('topic'));
 } catch (error) {

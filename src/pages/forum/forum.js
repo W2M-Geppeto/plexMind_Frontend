@@ -96,6 +96,7 @@ async function removeLike(idResource) {
 }
 
 document.addEventListener('DOMContentLoaded', async function() {
+  checkLogin();
   fillData(); 
   let topicId = topicData.idTopic ? topicData.idTopic : -1;
   //let listElements = await sendGetData(`https://plexmind.onrender.com/api/resources/topic/%7BidTopic%7D/details`, topicId);

@@ -53,7 +53,26 @@ async function fillTrending() {
   }
 }
 
-document.addEventListener("DOMContentLoaded", async function () {
-  goProfile();
-  await fillTrending();
+
+
+document.addEventListener('DOMContentLoaded', async function () {
+    checkLogin();
+    goProfile();
+    await fillTrending();
+
+
+document.querySelectorAll('.logoutIcon').forEach(icon => {
+    icon.addEventListener('click', function(e) {
+        e.preventDefault();
+        logoutAndRedirect();
+        });
+    });
 });
+
+
+
+
+
+
+
+

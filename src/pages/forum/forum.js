@@ -48,7 +48,7 @@ function fillList(listElements,likedDataUser) {
       <div class="row">
         <div class="col-2"></div>
         <div class="col-8">
-          <a href="${resource.link} " target="_blank" class="text-decoration-none text-reset text-truncate txt-color link">
+          <a href="${resource.link}" class="text-decoration-none text-reset text-truncate txt-color link" id="link">
             ${resource.name} 
           </a>
         </div>
@@ -107,29 +107,35 @@ document.addEventListener('DOMContentLoaded', async function() {
     goBack();
   });
   resourceList.addEventListener('click', function(e) {
-      if (e.target && e.target.classList.contains('favoriteForumIcon')) {
-          e.preventDefault();
-           if(idUser === -1){
-            console.log("mostrar modal")
-           }else{
-            e.target.classList.toggle('favoriteForumIconLiked');
-            if (e.target.classList.contains('favoriteForumIconLiked')) {
-                //addLike(e.target.getAttribute('data-id'));
-            } else {
-                //removeLike(e.target.getAttribute('data-id'));
-            }
-           }
-         
-          console.log(e.target.classList)
-      }
-      
-      if (e.target && e.target.id === "linkIconForum") {
+      if (e.target){
+      if(e.target.classList.contains('favoriteForumIcon')) {
+                e.preventDefault();
+                if(idUser === -1){
+                  login();
+                }else{
+                  e.target.classList.toggle('favoriteForumIconLiked');
+                  if (e.target.classList.contains('favoriteForumIconLiked')) {
+                      //addLike(e.target.getAttribute('data-id'));
+                  } else {
+                      //removeLike(e.target.getAttribute('data-id'));
+                  }
+                }
+        }
+      if (e.target.id === "linkIconForum") {
           e.preventDefault()
           if(idUser === -1)
-            console.log("mostrar modal")
+            login();
           else
           console.log("Aún no implementado");
       }
+      if(e.target.id === "link"){
+            e.preventDefault();
+           if(idUser === -1){
+          login();
+           }
+          else
+        window.open(e.target.href, "_blank");      }
+   }
   })
 
   if(getCookie("user")){

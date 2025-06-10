@@ -35,8 +35,6 @@ function mostrarDescripcionDesdeCookie() {
         console.error("Error mostrando la descripción desde la cookie:", error);
     }
 }
-
-
 // Ejecuta al cargar la página
 document.addEventListener('DOMContentLoaded', function() {
     mostrarDescripcionDesdeCookie();

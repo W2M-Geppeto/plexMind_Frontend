@@ -39,7 +39,6 @@ function fillData(){
 
 function fillList(likedDataUser, listElements) {
   resourceList.innerHTML = ""; 
-  console.log("listElements", listElements);
   for (let i = 0; i < listElements.length; i++) {
     const resource = listElements[i];
     let icon = getIcon(resource.type);   
@@ -97,9 +96,8 @@ async function removeLike(idResource) {
 
 document.addEventListener('DOMContentLoaded', async function() {
   fillData(); 
-  let topicId = topicData.idTopic ? topicData.idTopic : -1;
-  //let listElements = await sendGetData(`https://plexmind.onrender.com/api/resources/topic/%7BidTopic%7D/details`, topicId);
-  let listElements = await getData("http://127.0.0.1:5500/src/resources/data/mocks/recursos_id_topic_3.json");  
+  let idTopic = topicData ? topicData.idTopic : -1;
+  let listElements = await sendGetData(`https://plexmind.onrender.com/api/resources/topic/${idTopic}/details`, idTopic);
   //let likedDataUser =  await sendGetData(' ', idUser);
   let likedDataUser = [3,27,88];
   if (listElements) fillList(likedDataUser, listElements);

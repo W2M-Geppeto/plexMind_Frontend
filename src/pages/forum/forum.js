@@ -4,17 +4,16 @@ let resourceList = document.getElementById('resourceList');
 const emptyList = document.querySelector('.emptyList');
 const backBtn = document.getElementById('exitIcon');
 let topicData = null;
-let idUser = -1;
+let user = null;
 try {
   topicData = JSON.parse(getCookie('topic'));
 } catch (error) {
   topicData = null;
 }
 try {
-let user = JSON.parse(getCookie("user"));
-idUser = user ? user.id : -1;  
+user = JSON.parse(getCookie("user"));
 } catch (error) {
-  idUser = -1;}
+  user= null;}
 
 function emptyResources() {
   if (resourceList && resourceList.children.length === 0) {
@@ -35,7 +34,7 @@ function fillData(){
   }
 }
 
-function fillList(likedDataUser, listElements) {
+function fillList(listElements,likedDataUser) {
   resourceList.innerHTML = ""; 
   for (let i = 0; i < listElements.length; i++) {
     const resource = listElements[i];
@@ -96,9 +95,11 @@ document.addEventListener('DOMContentLoaded', async function() {
   checkLogin();
   fillData(); 
   let idTopic = topicData ? topicData.id : -1;
-  let listElements = await sendGetData(`https://plexmind.onrender.com/api/resources/topic/${idTopic}/details`, idTopic); /**/
-  let likedDataUser =  await sendGetData(' ', idUser); /**/
-  if (listElements) fillList(likedDataUser, listElements);
+  console.log(idTopic)
+  let listElements = await getData(`https://plexmind.onrender.com/api/resources/topic/${idTopic}/details`);  
+  let idUser = user ? user.id : -1;  
+  let likedDataUser =  [1,2,3];
+  if (listElements) fillList(listElements,likedDataUser); 
   else  emptyResources();
   backBtn.addEventListener('click', function(e) {
     e.preventDefault();
@@ -107,22 +108,28 @@ document.addEventListener('DOMContentLoaded', async function() {
   resourceList.addEventListener('click', function(e) {
       if (e.target && e.target.classList.contains('favoriteForumIcon')) {
           e.preventDefault();
-          e.target.classList.toggle('favoriteForumIconLiked');
-          if (e.target.classList.contains('favoriteForumIconLiked')) {
-              addLike(e.target.getAttribute('data-id')); /**/
-          } else {
-              removeLike(e.target.getAttribute('data-id')); /**/
-          }
+           if(idUser === -1){
+            console.log("mostrar modal")
+           }else{
+            e.target.classList.toggle('favoriteForumIconLiked');
+            if (e.target.classList.contains('favoriteForumIconLiked')) {
+                //addLike(e.target.getAttribute('data-id'));
+            } else {
+                //removeLike(e.target.getAttribute('data-id'));
+            }
+           }
+         
           console.log(e.target.classList)
       }
+      
       if (e.target && e.target.id === "linkIconForum") {
-          e.preventDefault();
+          e.preventDefault()
           if(idUser === -1)
-            goToLogin();
+            console.log("mostrar modal")
           else
           console.log("Aún no implementado");
       }
-  });
+  })
 
   if(getCookie("user")){
     document.querySelector(".personIcon").addEventListener("click", function (e) {

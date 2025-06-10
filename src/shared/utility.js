@@ -74,7 +74,6 @@ function checkLogin() {
     loginStyle = 'logoutIcon';
     loginType = 'logout';
   }
-  console.log(personIconStatus)
   const personIconContent = `<a class="nav-link ${personIconStatus} goProfile"  aria-disabled="true" href="#">
                             <i class="material-symbols-outlined nv-personIcon ${personIconClass}">person</i>
                         </a>`;
@@ -193,11 +192,8 @@ function deleteCookie(name) {
 }
 
 function logout() {
-  // Borra todas las cookies relevantes (puedes añadir más si usas otras)
   deleteCookie('user');
-  // Redirige al index
   window.location.href = "/src/pages/index/index.html";
 }
-
 fillMainUser();
 backHome();

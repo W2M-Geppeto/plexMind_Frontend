@@ -8,14 +8,12 @@ let idUser = -1;
 try {
   topicData = JSON.parse(getCookie('topic'));
 } catch (error) {
-  console.error("Error al parsear la cookie:", error);
   topicData = null;
 }
 try {
 let user = JSON.parse(getCookie("user"));
 idUser = user ? user.id : -1;  
 } catch (error) {
-  console.error("Error al parsear la cookie:", error);
   idUser = -1;}
 
 function emptyResources() {
@@ -27,14 +25,14 @@ function emptyResources() {
 }
 
 function fillData(){
-  if(topicData.nameTopic && topicData.nameCategory){
+  console.log(topicData)
+  if(topicData){
     titleForum.textContent =  topicData.nameTopic.toUpperCase();
     categoryforum.textContent = topicData.nameCategory.toUpperCase();
   }else{
     titleForum.textContent =  "NO DATA";
     categoryforum.textContent = "NO DATA";
   }
-  // posible cambio nombre datos json
 }
 
 function fillList(likedDataUser, listElements) {
@@ -97,6 +95,7 @@ async function removeLike(idResource) {
 document.addEventListener('DOMContentLoaded', async function() {
   fillData(); 
   let idTopic = topicData ? topicData.idTopic : -1;
+  console.log(idTopic)
   let listElements = await sendGetData(`https://plexmind.onrender.com/api/resources/topic/${idTopic}/details`, idTopic);
   //let likedDataUser =  await sendGetData(' ', idUser);
   let likedDataUser = [3,27,88];

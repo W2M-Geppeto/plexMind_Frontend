@@ -5,7 +5,6 @@ function fillMainUser() {
     document.getElementById("user").textContent =
       userInfo && userInfo.email ? userInfo.email.split("@")[0] : "User";
   } catch (error) {
-    console.error("Error al parsear la cookie 'user':", error);
     document.getElementById("user").textContent = "User";
   }
 }

@@ -93,6 +93,7 @@ async function removeLike(idResource) {
 
 document.addEventListener('DOMContentLoaded', async function() {
   checkLogin();
+  goProfile();
   fillData(); 
   let idTopic = topicData ? topicData.id : -1;
   console.log(idTopic)

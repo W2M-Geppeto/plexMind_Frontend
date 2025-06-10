@@ -127,6 +127,7 @@ async function sendData(url = '', data) {
     body: JSON.stringify(data)
   });
 }
+
 async function sendGetData(url = '', data = {}) {
   try {
     const response = await fetch(url, {
@@ -199,5 +200,4 @@ function logout() {
 }
 
 fillMainUser();
-goProfile();
 backHome();

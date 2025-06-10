@@ -157,6 +157,12 @@ function deleteCookie(name) {
 function goToLogin(){
   console.log("Go to log");
 }
+function logout() {
+  // Borra todas las cookies relevantes (puedes añadir más si usas otras)
+  deleteCookie('user');
+  // Redirige al index
+  window.location.href = "/src/pages/index/index.html";
+}
 
 fillMainUser();
 goProfile();

@@ -52,12 +52,10 @@ async function login() {
     .then(html => {
       const bodyContent = html.match(/<body[^>]*>([\s\S]*?)<\/body>/i);
       document.getElementById('loginModalContent').innerHTML = bodyContent ? bodyContent[1] : html;
-
-      // Carga el JS del login y ejecuta initLogin
       const script = document.createElement('script');
       script.src = '/src/pages/login/login.js';
       script.onload = function () {
-        if (typeof initLogin === "function") { initLogin() };
+        initLogin();
         const modalEl = document.getElementById('loginModal');
         const modal = bootstrap.Modal.getOrCreateInstance(modalEl);
         modal.show();

@@ -85,21 +85,14 @@ function checkLogin() {
   document.getElementById('loginIconcontainer').innerHTML = loginIconContent;
   console.log(loginStyle);
   if (loginStyle === 'loginIcon') {
-  setTimeout(() => {
-    const loginBtn = document.querySelector(".loginIcon");
-    if (loginBtn) {
-      loginBtn.addEventListener('click', function (e) {
-        console.log('llamando al login 2');
-        login();
-      });
-    }
-  }, 0);
-}
-  
-  if (loginStyle === 'loginIcon') {
-    document.querySelector(".loginIcon").addEventListener('click', function (e) {
-      login();
-    })
+    setTimeout(() => {
+      const loginBtn = document.querySelector(".loginIcon");
+      if (loginBtn) {
+        loginBtn.addEventListener('click', function (e) {
+          login();
+        });
+      }
+    }, 0);
   } else {
     document.querySelectorAll('.logoutIcon').forEach(icon => {
       icon.addEventListener('click', function (e) {

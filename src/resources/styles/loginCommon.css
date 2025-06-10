@@ -1,7 +1,4 @@
-/* .modal-backdrop,
-#loginModal {
-  z-index: 2000 !important;
-} */
+
 #loginModalContent {
     padding: 50px;
 }

@@ -95,11 +95,9 @@ async function removeLike(idResource) {
 document.addEventListener('DOMContentLoaded', async function() {
   checkLogin();
   fillData(); 
-  let idTopic = topicData ? topicData.idTopic : -1;
-  console.log(idTopic)
-  let listElements = await sendGetData(`https://plexmind.onrender.com/api/resources/topic/${idTopic}/details`, idTopic);
-  //let likedDataUser =  await sendGetData(' ', idUser);
-  let likedDataUser = [3,27,88];
+  let idTopic = topicData ? topicData.id : -1;
+  let listElements = await sendGetData(`https://plexmind.onrender.com/api/resources/topic/${idTopic}/details`, idTopic); /**/
+  let likedDataUser =  await sendGetData(' ', idUser); /**/
   if (listElements) fillList(likedDataUser, listElements);
   else  emptyResources();
   backBtn.addEventListener('click', function(e) {
@@ -111,9 +109,9 @@ document.addEventListener('DOMContentLoaded', async function() {
           e.preventDefault();
           e.target.classList.toggle('favoriteForumIconLiked');
           if (e.target.classList.contains('favoriteForumIconLiked')) {
-              // addLike(e.target.getAttribute('data-id'));
+              addLike(e.target.getAttribute('data-id')); /**/
           } else {
-              // removeLike(e.target.getAttribute('data-id'));
+              removeLike(e.target.getAttribute('data-id')); /**/
           }
           console.log(e.target.classList)
       }
@@ -125,8 +123,11 @@ document.addEventListener('DOMContentLoaded', async function() {
           console.log("Aún no implementado");
       }
   });
-document.querySelector(".personIcon").addEventListener("click", function (e) {
+
+  if(getCookie("user")){
+    document.querySelector(".personIcon").addEventListener("click", function (e) {
   e.preventDefault();
   createNewCookie("previousPage", window.location.pathname, {});
-});
+  });
+  }
 });

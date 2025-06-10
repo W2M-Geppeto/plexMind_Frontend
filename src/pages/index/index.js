@@ -56,6 +56,7 @@ async function fillTrending() {
 
 
 document.addEventListener('DOMContentLoaded', async function () {
+  
     checkLogin();
     goProfile();
     await fillTrending();

@@ -46,18 +46,21 @@ function goProfile() {
   });
 
 }
-function login() {
-  fetch('/src/pages/login/login.html')
+async function login() {
+  await fetch('/src/pages/login/login.html')
     .then(response => response.text())
     .then(html => {
       const bodyContent = html.match(/<body[^>]*>([\s\S]*?)<\/body>/i);
-      document.getElementById('loginModal').style.display = "block";
       document.getElementById('loginModalContent').innerHTML = bodyContent ? bodyContent[1] : html;
+
+      // Carga el JS del login y ejecuta initLogin
       const script = document.createElement('script');
       script.src = '/src/pages/login/login.js';
       script.onload = function () {
-        initLogin();
-
+        if (typeof initLogin === "function") initLogin();
+        const modalEl = document.getElementById('loginModal');
+        const modal = bootstrap.Modal.getOrCreateInstance(modalEl);
+        modal.show();
       };
       document.body.appendChild(script);
     });
@@ -81,6 +84,18 @@ function checkLogin() {
   document.getElementById('personIconcontainer').innerHTML = personIconContent;
   document.getElementById('loginIconcontainer').innerHTML = loginIconContent;
   console.log(loginStyle);
+  if (loginStyle === 'loginIcon') {
+  setTimeout(() => {
+    const loginBtn = document.querySelector(".loginIcon");
+    if (loginBtn) {
+      loginBtn.addEventListener('click', function (e) {
+        console.log('llamando al login 2');
+        login();
+      });
+    }
+  }, 0);
+}
+  
   if (loginStyle === 'loginIcon') {
     document.querySelector(".loginIcon").addEventListener('click', function (e) {
       login();

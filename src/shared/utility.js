@@ -65,21 +65,25 @@ function login() {
 
 function checkLogin() {
   console.log('llamando al login');
-  let personIconStyle = 'disabled';
+  let personIconStatus = 'disabled';
+  let personIconClass = '';
   let loginStyle = 'loginIcon';
   let loginType = 'login';
   if (getCookie('user') !== undefined) {
-    personIconStyle = 'personIcon';
+    personIconStatus = 'enable';
     loginStyle = 'logoutIcon';
     loginType = 'logout';
+    personIconClass = 'personIcon';
   }
-  const personIconContent = `<i class="material-symbols-outlined nv-personIcon ${personIconStyle}">person</i>`;
+  const personIconContent = `<a class="nav-link ${personIconStatus} goProfile"  aria-disabled="true" href="#">
+                            <i class="material-symbols-outlined nv-personIcon ${personIconClass}">person</i>
+                        </a>`;
   const loginIconContent = `<i class="material-symbols-outlined nv-personIcon mx-0 ${loginStyle}">${loginType}</i>`;
   document.getElementById('personIconcontainer').innerHTML = personIconContent;
   document.getElementById('loginIconcontainer').innerHTML = loginIconContent;
   document.querySelector(".loginIcon").addEventListener('click', function (e) {
     login();
-  } )
+  })
 
 }
 

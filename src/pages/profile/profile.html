@@ -26,14 +26,22 @@
       </div>
       <div class="col-8">
       </div>
-      <div class="col-2 d-flex flex-column align-items-end justify-content-between mt-1">
+      <div class="col-2 d-flex flex-column align-items-end  mt-3">
         <div>
-          <div class="w-100 d-flex justify-content-end userInfo" id="nav">
-            <h4 class="d-inline ms-2 mb-0 my-auto mb-2" id="user"></h4>
-            <i class="material-symbols-outlined nv-personIcon mx-0 personIcon">person</i>
-             <i class="material-symbols-outlined nv-personIcon mx-0 logoutIcon">logout</i>
-          </div>
-        </div>
+          <ul class="navbar-nav mb-2 mb-lg-0 align-items-center">
+                    
+                    <li class="nav-item" id="personIconcontainer">
+                      <a class="nav-link d-flex enable goProfile"  aria-disabled="true" href="#">
+                            <i class="material-symbols-outlined personIcon">person</i>
+                        </a>
+                        <!-- <a class="nav-link enabled goProfile"  aria-disabled="true" href="#">
+                            <i class="material-symbols-outlined nv-personIcon personIcon">person</i>
+                        </a> -->
+                    </li>
+                    <li class="nav-item" id="loginIconcontainer">
+                        <i class="material-symbols-outlined d-flex logoutIcon">logout</i>
+                    </li>
+                </ul>
       </div>
     </div>
   </nav>

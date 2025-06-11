@@ -43,10 +43,6 @@
   opacity: 1;
 }
 
-.navbar {
-  background-color: #fff !important; /* O el color que prefieras */
-  opacity: 1 !important;
-}
 
 @media (max-width: 400px) {
 

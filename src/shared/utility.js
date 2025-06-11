@@ -77,10 +77,10 @@ function checkLogin() {
   console.log('llamando al login check');
   
   if (getCookie('user') !== undefined) {
-  personIconContent = `<a class="nav-link enable goProfile"  aria-disabled="true" href="#">
-                            <i class="material-symbols-outlined nv-personIcon personIcon">person</i>
+  personIconContent = `<a class="nav-link d-flex enable goProfile"  aria-disabled="true" href="#">
+                            <i class="material-symbols-outlined personIcon">person</i>
                         </a>`;
-  loginIconContent = `<i class="material-symbols-outlined nv-personIcon mx-0 logoutIcon">logout</i>`;
+  loginIconContent = `<i class="material-symbols-outlined d-flex logoutIcon">logout</i>`;
 
   document.getElementById('personIconcontainer').innerHTML = personIconContent;
   document.getElementById('loginIconcontainer').innerHTML = loginIconContent;
@@ -95,7 +95,7 @@ function checkLogin() {
 
 
 }else{
-  loginIconContent = `<button class="btn btn-login">Iniciar sesión</button>`;
+  loginIconContent = `<button class="btn btn-login">Log in</button>`;
   document.getElementById('loginIconcontainer').innerHTML = loginIconContent;
   document.querySelector(".btn-login").addEventListener('click', function (e) {
     login();

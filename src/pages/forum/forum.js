@@ -67,6 +67,7 @@ function fillList(listElements, likedDataUser) {
   }
   emptyResources();
 }
+
 function getIcon(type) {
   switch (type) {
     case "VIDEO":
@@ -77,6 +78,7 @@ function getIcon(type) {
       return "link";
   }
 }
+
 async function addLike(idResource, idUser) {
   idResource = Number(idResource);
   try {
@@ -87,6 +89,7 @@ async function addLike(idResource, idUser) {
     console.error("Error al enviar likes:", error);
   }
 }
+
 async function removeLike(idResource, idUser) {
   idResource = Number(idResource);
   try {

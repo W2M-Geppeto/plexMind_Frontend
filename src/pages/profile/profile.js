@@ -35,15 +35,23 @@ function mostrarDescripcionDesdeCookie() {
         console.error("Error mostrando la descripción desde la cookie:", error);
     }
 }
-
-
 // Ejecuta al cargar la página
-document.addEventListener('DOMContentLoaded', mostrarDescripcionDesdeCookie);
-document.addEventListener('DOMContentLoaded', async function() {
-    backBtn.addEventListener('click', function(e) {
-        e.preventDefault();
-        goBack();
+document.addEventListener('DOMContentLoaded', function() {
+    mostrarDescripcionDesdeCookie();
+
+    // Evento para el botón de volver
+    if (backBtn) {
+        backBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            goBack();
+        });
+    }
+
+    // Evento para el icono de logout
+    document.querySelectorAll('.logoutIcon').forEach(icon => {
+        icon.addEventListener('click', function(e) {
+            e.preventDefault();
+            logout(); // Llama a la función de utility.js
+        });
     });
-
-
 });

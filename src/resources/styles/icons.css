@@ -43,7 +43,6 @@
   background-color: var(--primary-color);
   border-radius: 50px;
   cursor: pointer;
-  margin-left: 15px !important; /* Ajusta el valor según lo que necesites */
 }
 
 .nav-item.disabled .nav-link, .disabled {
@@ -104,8 +103,8 @@
   font-weight: bolder;
 }
 
-.nv-personIcon {
-  font-size: 50px !important;
+.nv-icon {
+  font-size: 30px !important;
 }
 
 .nv-favouriteUserIcon {
@@ -114,7 +113,7 @@
 }
 
 .logoutIcon {
-  color: rgb(255, 0, 0);
+  color: var(--primary-color);
 }
 .loginIcon {
   color: rgb(0, 221, 0);
@@ -125,6 +124,11 @@
 }
 .logoutIcon,
 .loginIcon {
-  padding-left: 15px;
+  margin-left: 5px;
   cursor: pointer;
+}
+.logoutIcon:hover{
+  background-color: var(--secondary-color);
+  color: var(--tertiary-color);
+  border-radius: 5px;
 }

@@ -41,6 +41,7 @@ function goProfile() {
       if (e.target.tagName === "I" && e.target.classList.contains("personIcon")) {
         e.preventDefault();
         window.location.href = "/src/pages/profile/profile.html";
+        console.log("llamando a perfil");
       }
     });
   });
@@ -61,47 +62,48 @@ async function login() {
         modal.show();
       };
       document.body.appendChild(script);
+      checkLogin();
+      console.log("llamando al login");
+      return true;
     });
 }
 
 function checkLogin() {
-  let personIconStatus = 'disabled'; /*  */
-  let personIconClass = ''; /*  */
-  let loginStyle = 'loginIcon';
-  let loginType = 'login';
+  let personIconContent = '';
+  let loginIconContent = '';
+  console.log('llamando al login check');
+  
   if (getCookie('user') !== undefined) {
-    personIconStatus = 'enable'; /*  */
-    personIconClass = 'personIcon'; /*  */
-    loginStyle = 'logoutIcon';
-    loginType = 'logout';
-  }
-  const personIconContent = `<a class="nav-link ${personIconStatus} goProfile"  aria-disabled="true" href="#">
-                            <i class="material-symbols-outlined nv-personIcon ${personIconClass}">person</i>
+  personIconContent = `<a class="nav-link d-flex enable goProfile"  aria-disabled="true" href="#">
+                            <i class="material-symbols-outlined personIcon nv-icon">person</i>
                         </a>`;
-  const loginIconContent = `<i class="material-symbols-outlined nv-personIcon mx-0 ${loginStyle}">${loginType}</i>`;
+  loginIconContent = `<i class="material-symbols-outlined d-flex logoutIcon nv-icon">logout</i>`;
+
   document.getElementById('personIconcontainer').innerHTML = personIconContent;
   document.getElementById('loginIconcontainer').innerHTML = loginIconContent;
-  console.log(loginStyle);
-  if (loginStyle === 'loginIcon') {
-    setTimeout(() => {
-      const loginBtn = document.querySelector(".loginIcon");
-      if (loginBtn) {
-        loginBtn.addEventListener('click', function (e) {
-          login();
-        });
-      }
-    }, 0);
-  } else {
-    document.querySelectorAll('.logoutIcon').forEach(icon => {
-      icon.addEventListener('click', function (e) {
-        e.preventDefault();
-        logout(); // Llama a la función de utility.js
-      });
-    });
-  }
+  document.querySelector('.personIcon').addEventListener('click', function (e) {
+       e.preventDefault();
+       goProfile();
+   });
+  document.querySelector('.logoutIcon').addEventListener('click', function (e) {
+    e.preventDefault();
+    logout();
+  });
 
 
+}else{
+  loginIconContent = `<button class="btn btn-login">Log in</button>`;
+  document.getElementById('loginIconcontainer').innerHTML = loginIconContent;
+  document.querySelector(".btn-login").addEventListener('click', function (e) {
+    login();
+  }); 
+  
 }
+
+
+   
+  
+} 
 
 
 async function getData(url) {
@@ -198,7 +200,9 @@ function deleteCookie(name) {
 }
 
 function logout() {
+ 
   deleteCookie('user');
+
   window.location.href = "/src/pages/index/index.html";
 }
 fillMainUser();

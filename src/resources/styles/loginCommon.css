@@ -18,6 +18,9 @@ body {
 #loginButton {
   margin-bottom: 10px;
 }
+.btn-login {
+  margin-left: 10px;
+}
 
 #textFields {
   margin-bottom: 25px;
@@ -35,6 +38,3 @@ body {
   margin: 0 auto;
 }
 
-#loginButton {
-  margin-bottom: 30px;
-}

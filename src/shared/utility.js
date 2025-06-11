@@ -78,9 +78,9 @@ function checkLogin() {
   
   if (getCookie('user') !== undefined) {
   personIconContent = `<a class="nav-link d-flex enable goProfile"  aria-disabled="true" href="#">
-                            <i class="material-symbols-outlined personIcon">person</i>
+                            <i class="material-symbols-outlined personIcon nv-icon">person</i>
                         </a>`;
-  loginIconContent = `<i class="material-symbols-outlined d-flex logoutIcon">logout</i>`;
+  loginIconContent = `<i class="material-symbols-outlined d-flex logoutIcon nv-icon">logout</i>`;
 
   document.getElementById('personIconcontainer').innerHTML = personIconContent;
   document.getElementById('loginIconcontainer').innerHTML = loginIconContent;

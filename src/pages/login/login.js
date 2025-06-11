@@ -35,7 +35,7 @@ window.buttonUpdate = function () {
 
 async function validarDatos() {
     const sendData = { email: username.value, password: password.value };
-    const receivedData = await sendGetData('https://micro-user-m5dv.onrender.com/api/users/login', sendData);
+    const receivedData = await sendGetData('https://plexmind.onrender.com/api/users/login', sendData);
     if (receivedData && receivedData.id && receivedData.email) {
         createNewCookie('user', JSON.stringify(receivedData), {});
         console.log(getCookie('user'));

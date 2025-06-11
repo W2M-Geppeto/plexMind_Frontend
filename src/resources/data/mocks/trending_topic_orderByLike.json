@@ -2,46 +2,46 @@
     {
         "id": 932,
         "nameTopic": "python",
-        "sumLikes": 9987
+        "numLikes": 9987
     },
     {
         "id": 745,
         "nameTopic": "csharp",
-        "sumLikes": 6789
+        "numLikes": 6789
     },
     {
         "id": 1,
         "nameTopic": "javascript",
-        "sumLikes": 5234
+        "numLikes": 5234
     },
     {
         "id": 487,
         "nameTopic": "css",
-        "sumLikes": 4521
+        "numLikes": 4521
     },
     {
         "id": 604,
         "nameTopic": "php",
-        "sumLikes": 1456
+        "numLikes": 1456
     },
     {
         "id": 888,
         "nameTopic": "sql",
-        "sumLikes": 789
+        "numLikes": 789
     },
     {
         "id": 512,
         "nameTopic": "typescript",
-        "sumLikes": 234
+        "numLikes": 234
     },
     {
         "id": 3,
         "nameTopic": "html",
-        "sumLikes": 76
+        "numLikes": 76
     },
     {
         "id": 2,
         "nameTopic": "java",
-        "sumLikes": 8
+        "numLikes": 8
     }
 ]

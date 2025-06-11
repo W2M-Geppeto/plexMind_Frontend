@@ -1,59 +1,75 @@
-const mockOrdered = '/src/resources/data/mocks/trending_topic_orderByLike.json';
-const url = 'https://micro-resource.onrender.com/api/resources/top-by-likes'
+// const mockOrdered = "/src/resources/data/mocks/trending_topic_orderByLike.json";
+const url = "https://plexmind.onrender.com/api/resources/top-by-likes";
 let data = null;
+
 async function fillTrending() {
-    try {
-        data = await getData(mockOrdered);
-        const trendingRow = document.querySelector('.trendingRow');
-        if (data && data.length > 0) {
-            trendingRow.innerHTML = "";
-            data.forEach(item => {
-                // Construye la URL al foro usando el id
-                const forumUrl = `/src/pages/forum/forum.html?id=${item.id}`;
+  try {
+    data = await getData(url);
+    const trendingRow = document.querySelector(".trendingRow");
+    if (data && data.length > 0) {
+      trendingRow.innerHTML = "";
+      data.forEach((item) => {
+        // Construye la URL al foro usando el id
+        const forumUrl = `/src/pages/forum/forum.html?id=${item.id}`;
 
-
-                trendingRow.innerHTML += `
+        trendingRow.innerHTML += `
                 <div class="col-md-6 col-lg-4">
                     <a href="${forumUrl}" class="btn btn-trend w-100 text-start mb-3" data-id="${item.id}">
                         <div class="row align-items-center">
                             <div class="col-7 fs-4 forum-title">${item.nameTopic.toUpperCase()}</div>
                             <div class="col-5 d-flex justify-content-end align-items-center">
-                                <span class="me-2 mb-0 align-middle d-md-none d-xl-inline" style="font-size:1.2rem">${item.sumLikes}</span>
+                                <span class="me-2 mb-0 align-middle d-md-none d-xl-inline" style="font-size:1.2rem">
+                                ${item.numLikes}</span>
                                 <i class="material-icons align-middle" style="font-size:2.5rem;">favorite</i>
                             </div>
                         </div>
                     </a>
                 </div>
                 `;
+      });
 
-            });
-            document.querySelectorAll('.btn-trend').forEach(btn => {
-  btn.addEventListener('click', function(e) {
-    e.preventDefault();
-    const idTopic = btn.getAttribute('data-id');
-    createNewCookie('topic', idTopic, {});
-    window.location.href = btn.href;
-console.log(`Navigating to forum with ID: ${idTopic}`);
-});   
-}); 
-            return data;
-        } else {
-            trendingRow.innerHTML = "<p>No hay temas trending.</p>";
-            return null;
-        }
-    } catch (error) {
-        console.error('Error loading trending data:', error);
-        return null;
+      document.querySelectorAll(".btn-trend").forEach((btn) => {
+        btn.addEventListener("click", function (e) {
+          e.preventDefault();
+          const idTopic = btn.getAttribute("data-id");
+          const topicObj = data.find(item => String(item.id) === idTopic);
+          if (topicObj) {
+            createNewCookie("topic", JSON.stringify(topicObj), {});
+            console.log(getCookie("topic"));
+          };
+
+          window.location.href = btn.href;
+          console.log(`Navigating to forum with ID: ${idTopic}`);
+        });
+      });
+      return data;
+    } else {
+      trendingRow.innerHTML = "<p>No hay temas trending.</p>";
+      return null;
     }
-
+  } catch (error) {
+    console.error("Error loading trending data:", error);
+    return null;
+  }
 }
 
 
-document.addEventListener('DOMContentLoaded', async function (){
+
+document.addEventListener('DOMContentLoaded', async function () {
+  
+    checkLogin();
     goProfile();
     await fillTrending();
- 
+
+
+document.querySelectorAll('.logoutIcon').forEach(icon => {
+    icon.addEventListener('click', function(e) {
+        e.preventDefault();
+        logoutAndRedirect();
+        });
+    });
 });
+
 
 
 

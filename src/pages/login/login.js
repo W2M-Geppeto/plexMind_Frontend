@@ -6,7 +6,7 @@ const usernameRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const passwordRegex = /^.{4,}$/;
 let users = null;
 
-function usernameValidation() {
+window.usernameValidation = function () {
     if (!usernameRegex.test(username.value)) {
         return false;
     } else {
@@ -15,7 +15,7 @@ function usernameValidation() {
     }
 }
 
-function passwordValidation() {
+window.passwordValidation = function () {
     if (!passwordRegex.test(password.value)) {
         return false;
     } else {
@@ -25,7 +25,7 @@ function passwordValidation() {
 }
 
 /* Cambia boton LOGIN entre disable y enable dependiendo de regex sobre los campos username y password. */
-function buttonUpdate() {
+window.buttonUpdate = function () {
     if (passwordValidation() && usernameValidation()) {
         button.disabled = false;
     } else {
@@ -35,7 +35,7 @@ function buttonUpdate() {
 
 async function validarDatos() {
     const sendData = { email: username.value, password: password.value };
-    const receivedData = await sendGetData('https://plexmind.onrender.com/api/users/login', sendData);
+    const receivedData = await sendGetData('https://micro-user-m5dv.onrender.com/api/users/login', sendData);
     if (receivedData && receivedData.id && receivedData.email) {
         createNewCookie('user', JSON.stringify(receivedData), {});
         console.log(getCookie('user'));
@@ -51,7 +51,7 @@ async function enviarDatos() {
     if (esValido) {
         password.value = "";
         passwordError.style.display = "none";
-        window.location.href = '/src/pages/index/index.html';
+        window.location.reload();
     } else {
         password.value = "";
         username.style.borderColor = "red";
@@ -62,11 +62,15 @@ async function enviarDatos() {
 
 }
 
-username.addEventListener('input', buttonUpdate);
-password.addEventListener('input', buttonUpdate);
-buttonUpdate();
+function initLogin() {
+    const loginButton = document.getElementById('loginButton');
+    if (loginButton) loginButton.disabled = true;
+    username.addEventListener('input', window.buttonUpdate);
+    password.addEventListener('input', window.buttonUpdate);
+    window.buttonUpdate();
 
-button.addEventListener('click', function (e) {
-    e.preventDefault();
-    enviarDatos();
-})
+    button.addEventListener('click', function (e) {
+        e.preventDefault();
+        enviarDatos();
+    })
+}

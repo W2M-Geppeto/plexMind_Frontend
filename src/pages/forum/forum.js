@@ -2,13 +2,19 @@ let titleForum = document.querySelector('.titleForum');
 let categoryforum = document.querySelector('.categoryForum');
 let resourceList = document.getElementById('resourceList');
 const emptyList = document.querySelector('.emptyList');
-let backBtn = document.getElementById('exitIcon');
-let data = null;
-let idTopic = {idTopic: getCookie('topic')};
-console.log(idTopic);
-//let data = await sendFGetData('/src/resources/data/mocks/topic.json', idTopic);
-let listElements = null;
-//let listElements = await sendFGetData('/src/resources/data/mocks/topic.json', idTopic);
+const backBtn = document.getElementById('exitIcon');
+let topicData = null;
+let user = null;
+try {
+  topicData = JSON.parse(getCookie('topic'));
+} catch (error) {
+  topicData = null;
+}
+try {
+user = JSON.parse(getCookie("user"));
+} catch (error) {
+  user= null;}
+
 function emptyResources() {
   if (resourceList && resourceList.children.length === 0) {
     emptyList.style.display = '';      
@@ -16,32 +22,38 @@ function emptyResources() {
     emptyList.style.display = 'none';
   }
 }
+
 function fillData(){
-  titleForum.textContent =  data[1].nameTopic.toUpperCase();
-  categoryforum.textContent = (data[1].idCategory + " - stack").toUpperCase();
+  console.log(topicData)
+  if(topicData){
+    titleForum.textContent =  topicData.nameTopic.toUpperCase();
+    categoryforum.textContent = topicData.nameCategory.toUpperCase();
+  }else{
+    titleForum.textContent =  "NO DATA";
+    categoryforum.textContent = "NO DATA";
+  }
 }
-function fillList() {
+
+function fillList(listElements,likedDataUser) {
   resourceList.innerHTML = ""; 
-  let likedCookie = getCookie("liked_prueba");
-  let likedArr = likedCookie ? JSON.parse(likedCookie) : [];
   for (let i = 0; i < listElements.length; i++) {
     const resource = listElements[i];
     let icon = getIcon(resource.type);   
-    let isLiked = likedArr.includes(resource.id);    
+    let isLiked = likedDataUser.includes(resource.id);    
     const li = document.createElement('li');
     li.className = 'list-group-item';
     li.id = 'list-item';
-    let idStyle = isLiked ? "favoriteForumIconLiked" : "favoriteForumIcon";
+    let classStyle = isLiked ? "favoriteForumIcon favoriteForumIconLiked" : "favoriteForumIcon";
     li.innerHTML = `
       <div class="row">
         <div class="col-2"></div>
         <div class="col-8">
-          <a href="#" target="_blank" class="text-decoration-none text-reset text-truncate txt-color link">
+          <a href="${resource.link}" class="text-decoration-none text-reset text-truncate txt-color link" id="link">
             ${resource.name} 
           </a>
         </div>
         <div class="col-1 d-flex justify-content-end">
-          <i class="material-icons" id=${idStyle} data-id="${resource.id}">favorite</i>
+          <i class="material-icons ${classStyle}" data-id="${resource.id}">favorite</i>
         </div>
         <div class="col-1 d-flex justify-content-end">
           <i class="material-icons" id="linkIconForum">${icon}</i>
@@ -62,42 +74,74 @@ function getIcon(type){
       return 'link';
   }
 }
-function giveLike(idResource) {
-  let likedCookie = getCookie("liked_prueba");
-  let likedArr = likedCookie ? JSON.parse(likedCookie) : [];
+async function addLike(idResource,idUser) { 
   idResource = Number(idResource);
-  if (!likedArr.includes(idResource)) likedArr.push(idResource);
-  createNewCookie(
-    "liked_prueba",
-     JSON.stringify(likedArr),
-    { expires: new Date(Date.now() + 10 * 365 * 24 * 60 * 60 * 1000) }
-  );
+  try {
+      await sendData(`https://plexmind.onrender.com/api/resources/like/${idResource}/${idUser}`);
+    } catch (error) {
+      console.error("Error al enviar likes:", error);
+    }
 }
+async function removeLike(idResource,idUser) {
+  idResource = Number(idResource);
+  try {
+      await sendData(`https://plexmind.onrender.com/api/resources/dislike/${idResource}/${idUser}`);
+    } catch (error) {
+      console.error("Error al enviar likes:", error);
+    }
+}
+
 document.addEventListener('DOMContentLoaded', async function() {
-  data = await getData('/src/resources/data/mocks/topic.json');  
-  console.log(data);
-  if (data) fillData();
-  else console.log('No data found for the forum');
-  listElements = await getData('/src/resources/data/mocks/recursos_id_topic_3.json');
-  console.log(listElements);
-  if (listElements) fillList();
+  checkLogin();
+  goProfile();
+  fillData(); 
+  let idTopic = topicData ? topicData.id : -1;
+  console.log(idTopic)
+  let listElements = await getData(`https://plexmind.onrender.com/api/resources/topic/${idTopic}/details`);  
+  let idUser = user ? user.id : -1;  
+  let likedDataUser = await getData(`https://plexmind.onrender.com/api/users/likes/${idUser}/${idTopic}`);
+  if (listElements) fillList(listElements,likedDataUser); 
   else  emptyResources();
- 
   backBtn.addEventListener('click', function(e) {
     e.preventDefault();
     goBack();
   });
   resourceList.addEventListener('click', function(e) {
-    if (e.target && e.target.id === 'favoriteForumIcon') {
-      e.preventDefault();
-      e.target.removeAttribute('id');
-      giveLike(e.target.getAttribute('data-id'));
-    }
-});
+      if (e.target){
+      if(e.target.classList.contains('favoriteForumIcon')) {
+                e.preventDefault();
+                if(idUser === -1){
+                  login();
+                }else{
+                  e.target.classList.toggle('favoriteForumIconLiked');
+                  if (e.target.classList.contains('favoriteForumIconLiked')) {
+                      addLike(e.target.getAttribute('data-id'),idUser);
+                  } else {
+                      removeLike(e.target.getAttribute('data-id'),idUser);
+                  }
+                }
+        }
+      if (e.target.id === "linkIconForum") {
+          e.preventDefault()
+          if(idUser === -1)
+            login();
+          else
+          console.log("Aún no implementado");
+      }
+      if(e.target.id === "link"){
+            e.preventDefault();
+           if(idUser === -1){
+          login();
+           }
+          else
+        window.open(e.target.href, "_blank");      }
+   }
+  })
 
-document.querySelector(".personIcon").addEventListener("click", function (e) {
+  if(getCookie("user")){
+    document.querySelector(".personIcon").addEventListener("click", function (e) {
   e.preventDefault();
   createNewCookie("previousPage", window.location.pathname, {});
-  
-});
+  });
+  }
 });

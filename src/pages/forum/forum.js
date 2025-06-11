@@ -113,11 +113,11 @@ document.addEventListener("DOMContentLoaded", async function () {
   let likedDataUser = [];
   if (idTopic != -1 && idUser != -1) {
     likedDataUser = await getData(
+      `https://plexmind.onrender.com/api/users/check/likes/${idUser}/${idTopic}`
+    );
+    likedDataUser = await getData(
       `https://plexmind.onrender.com/api/users/likes/${idUser}/${idTopic}`
     );
-    if(likedDataUser == undefined){
-      likedDataUser = [];
-    }
   }
   if (listElements) fillList(listElements, likedDataUser);
   else emptyResources();

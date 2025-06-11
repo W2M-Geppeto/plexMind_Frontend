@@ -107,7 +107,6 @@ document.addEventListener("DOMContentLoaded", async function () {
     `https://plexmind.onrender.com/api/resources/topic/${idTopic}/details`
   );
   let idUser = user ? user.id : -1;
-  console.log("usar Java");
   let likedDataUser = [];
   if (idTopic != -1 && idUser != -1) {
     likedDataUser = await getData(
@@ -127,7 +126,6 @@ document.addEventListener("DOMContentLoaded", async function () {
     if (e.target) {
       e.preventDefault();
       let iconType = e.target.id;
-      console.log(iconType)
       if (idUser != -1) {
         switch (iconType) {
           case "link":

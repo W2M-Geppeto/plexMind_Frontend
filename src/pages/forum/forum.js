@@ -5,11 +5,13 @@ const emptyList = document.querySelector(".emptyList");
 const backBtn = document.getElementById("exitIcon");
 let topicData = null;
 let user = null;
+
 try {
   topicData = JSON.parse(getCookie("topic"));
 } catch (error) {
   topicData = null;
 }
+
 try {
   user = JSON.parse(getCookie("user"));
 } catch (error) {
@@ -59,7 +61,7 @@ function fillList(listElements, likedDataUser) {
           <i class="material-icons ${classStyle}" data-id="${resource.id}" id="favIcon">favorite</i>
         </div>
         <div class="col-1 d-flex justify-content-end">
-          <i class="material-icons" id="linkIconForum">${icon}</i>
+          <i class="material-icons" id="linkIconForum" >${icon}</i>
         </div>
       </div>
     `;
@@ -118,6 +120,9 @@ document.addEventListener("DOMContentLoaded", async function () {
     likedDataUser = await getData(
       `https://plexmind.onrender.com/api/users/likes/${idUser}/${idTopic}`
     );
+    if(likedDataUser== undefined){
+      likedDataUser = [];
+    }
   }
   if (listElements) fillList(listElements, likedDataUser);
   else emptyResources();
@@ -135,21 +140,25 @@ document.addEventListener("DOMContentLoaded", async function () {
             window.open(e.target.href, "_blank");
             break;
           case "favIcon":
-          e.target.classList.toggle("favoriteForumIconLiked");
-          if (e.target.classList.contains("favoriteForumIconLiked")) {
-            addLike(e.target.getAttribute("data-id"), idUser);
-          } else {
-            removeLike(e.target.getAttribute("data-id"), idUser);
-          }
+            e.target.classList.toggle("favoriteForumIconLiked");
+            if (e.target.classList.contains("favoriteForumIconLiked")) {
+              addLike(e.target.getAttribute("data-id"), idUser);
+            } else {
+              removeLike(e.target.getAttribute("data-id"), idUser);
+            }
             break;
           case "linkIconForum":
-            console.log("Aún no implementado");
+              const modalElement = document.getElementById("exampleModal");
+              const modalInstance = new bootstrap.Modal(modalElement, {
+                backdrop: true,
+              });
+              modalInstance.show();
             break;
         }
-      }else{
+      } else {
         login();
       }
-     }
+    }
   });
 
   if (getCookie("user")) {

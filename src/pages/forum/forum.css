@@ -50,7 +50,7 @@ font-weight: bolder;
   background: var(--primary-color);
   border-radius: 8px;
 }
-#list-item{
+#list-item, .list-item{
     border: 2px solid var(--primary-color);
     margin-bottom: 6px;
     color: var(--tertiary-color);
@@ -79,4 +79,11 @@ font-weight: bolder;
   font-size: 1.1rem;
   text-align: center;
   width: 100%;
+}
+.modal {
+  margin-top: 12vh;
+  z-index: 1050 !important;
+}
+.modal-backdrop {
+  z-index: 1000 !important;
 }

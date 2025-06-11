@@ -1,12 +1,13 @@
-let username = document.getElementById("usernameInput");
-let password = document.getElementById("passwordInput");
-let button = document.getElementById("loginButton");
-//habra que cambiar despues a un regex mas restrictivo
+// let username = document.getElementById("usernameInput");
+// let password = document.getElementById("passwordInput");
+// let button = document.getElementById("loginButton");
+// let passwordError = document.getElementById("passwordError");
+
 const usernameRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const passwordRegex = /^.{4,}$/;
 let users = null;
 
-window.usernameValidation = function () {
+function usernameValidation(username) {
     if (!usernameRegex.test(username.value)) {
         return false;
     } else {
@@ -15,7 +16,7 @@ window.usernameValidation = function () {
     }
 }
 
-window.passwordValidation = function () {
+function passwordValidation(password) {
     if (!passwordRegex.test(password.value)) {
         return false;
     } else {
@@ -24,16 +25,15 @@ window.passwordValidation = function () {
     }
 }
 
-/* Cambia boton LOGIN entre disable y enable dependiendo de regex sobre los campos username y password. */
-window.buttonUpdate = function () {
-    if (passwordValidation() && usernameValidation()) {
+function buttonUpdate(username, password, button) {
+    if (passwordValidation(password) && usernameValidation(username)) {
         button.disabled = false;
     } else {
         button.disabled = true;
     }
 }
 
-async function validarDatos() {
+async function validarDatos(username, password) {
     const sendData = { email: username.value, password: password.value };
     const receivedData = await sendGetData('https://plexmind.onrender.com/api/users/login', sendData);
     if (receivedData && receivedData.id && receivedData.email) {
@@ -45,8 +45,8 @@ async function validarDatos() {
     }
 }
 
-async function enviarDatos() {
-    let esValido = await validarDatos();
+async function enviarDatos(username, password, passwordError, button) {
+    let esValido = await validarDatos(username, password);
     console.log("Login: " + esValido);
     if (esValido) {
         password.value = "";
@@ -59,18 +59,21 @@ async function enviarDatos() {
         passwordError.style.display = "block";
         button.disabled = true;
     }
-
 }
 
 function initLogin() {
-    const loginButton = document.getElementById('loginButton');
-    if (loginButton) loginButton.disabled = true;
-    username.addEventListener('input', window.buttonUpdate);
-    password.addEventListener('input', window.buttonUpdate);
-    window.buttonUpdate();
+     const username = document.getElementById("usernameInput");
+    const password = document.getElementById("passwordInput");
+    const button = document.getElementById("loginButton");
+    const passwordError = document.getElementById("passwordError");
+
+    button.disabled = true;
+    username.addEventListener('input', function() {buttonUpdate(username, password, button);});
+    password.addEventListener('input', function() {buttonUpdate(username, password, button);});
+    buttonUpdate(username, password, button);
 
     button.addEventListener('click', function (e) {
         e.preventDefault();
-        enviarDatos();
+        enviarDatos(username, password, passwordError, button);
     })
 }

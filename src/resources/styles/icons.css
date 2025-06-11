@@ -43,7 +43,7 @@
   background-color: var(--primary-color);
   border-radius: 50px;
   cursor: pointer;
-  margin-left: 15px !important; /* Ajusta el valor según lo que necesites */
+  margin-left: 15px !important; 
 }
 
 .nav-item.disabled .nav-link {

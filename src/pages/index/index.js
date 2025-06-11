@@ -56,19 +56,19 @@ async function fillTrending() {
 
 
 document.addEventListener('DOMContentLoaded', async function () {
-  
-    checkLogin();
-    goProfile();
-    await fillTrending();
+  checkLogin()
 
+  await fillTrending();
+    goProfile();
+});
 
 document.querySelectorAll('.logoutIcon').forEach(icon => {
     icon.addEventListener('click', function(e) {
         e.preventDefault();
-        logoutAndRedirect();
+        logout();
         });
-    });
-});
+   });
+
 
 
 

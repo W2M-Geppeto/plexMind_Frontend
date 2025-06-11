@@ -6,7 +6,7 @@ function fillMainUser() {
       userInfo && userInfo.email ? userInfo.email.split("@")[0] : "User";
   } catch (error) {
     console.error("Error al parsear la cookie 'user':", error);
-    document.getElementById("user").textContent = "Invitado";
+    document.getElementById("user").textContent = '';
   }
 }
 function goBack() {
@@ -42,6 +42,7 @@ function goProfile() {
       if (e.target.tagName === "I" && e.target.classList.contains("personIcon")) {
         e.preventDefault();
         window.location.href = "/src/pages/profile/profile.html";
+        console.log("llamando a perfil");
       }
     });
   });
@@ -64,42 +65,48 @@ async function login() {
         modal.show();
       };
       document.body.appendChild(script);
+      checkLogin();
+      console.log("llamando al login");
+      return true;
     });
 }
 
 function checkLogin() {
-  console.log('llamando al login');
-  let personIconStatus = 'disabled';
-  let personIconClass = '';
-  let loginStyle = 'loginIcon';
-  let loginType = 'login';
+  let personIconContent = '';
+  let loginIconContent = '';
+  console.log('llamando al login check');
+  
   if (getCookie('user') !== undefined) {
-    personIconStatus = 'enable';
-    loginStyle = 'logoutIcon';
-    loginType = 'logout';
-    personIconClass = 'personIcon';
-  }
-  const personIconContent = `<a class="nav-link ${personIconStatus} goProfile"  aria-disabled="true" href="#">
-                            <i class="material-symbols-outlined nv-personIcon ${personIconClass}">person</i>
+  personIconContent = `<a class="nav-link enable goProfile"  aria-disabled="true" href="#">
+                            <i class="material-symbols-outlined nv-personIcon personIcon">person</i>
                         </a>`;
-  const loginIconContent = `<i class="material-symbols-outlined nv-personIcon mx-0 ${loginStyle}">${loginType}</i>`;
+  loginIconContent = `<i class="material-symbols-outlined nv-personIcon mx-0 logoutIcon">logout</i>`;
+
   document.getElementById('personIconcontainer').innerHTML = personIconContent;
   document.getElementById('loginIconcontainer').innerHTML = loginIconContent;
-  console.log(loginStyle);
-  if (loginStyle === 'loginIcon') {
-  setTimeout(() => {
-    const loginBtn = document.querySelector(".loginIcon");
-    if (loginBtn) {
-      loginBtn.addEventListener('click', function (e) {
-        console.log('llamando al login 2');
-        login();
-      });
-    }
-  }, 0);
-}
-  
+  document.querySelector('.personIcon').addEventListener('click', function (e) {
+       e.preventDefault();
+       goProfile();
+   });
+  document.querySelector('.logoutIcon').addEventListener('click', function (e) {
+    e.preventDefault();
+    logout();
+  });
 
+
+}else{
+  loginIconContent = `<button class="btn btn-login">Iniciar sesión</button>`;
+  document.getElementById('loginIconcontainer').innerHTML = loginIconContent;
+  document.querySelector(".btn-login").addEventListener('click', function (e) {
+    login();
+  }); 
+  
 }
+
+
+   
+  
+} 
 
 
 async function getData(url) {
@@ -197,9 +204,9 @@ function goToLogin() {
   console.log("Go to log");
 }
 function logout() {
-  // Borra todas las cookies relevantes (puedes añadir más si usas otras)
+ 
   deleteCookie('user');
-  // Redirige al index
+
   window.location.href = "/src/pages/index/index.html";
 }
 

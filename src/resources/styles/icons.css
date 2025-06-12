@@ -101,6 +101,7 @@
 #exitIcon {
   color: var(--primary-color);
   font-size: 40px !important;
+  cursor: pointer;
 }
 #exitIcon:hover {
   color: var(--secondary-color);

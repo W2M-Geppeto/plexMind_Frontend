@@ -2,12 +2,14 @@ import { initLogin } from '/src/pages/login/login.js';
 
 function fillMainUser() {
   const cookieValue = getCookie("user");
+  const userElem = document.getElementById("user");
+  if (!userElem) return; // Evita el error si no existe el elemento
   try {
     const userInfo = JSON.parse(cookieValue);
     document.getElementById("user").textContent =
       userInfo.email ? userInfo.email.split("@")[0] : "User";
   } catch (error) {
-    document.getElementById("user").textContent = "User";
+    userElem.textContent = "User";
   }
 }
 export function goBack() {
@@ -201,18 +203,29 @@ export function deleteCookie(name) {
   })
 }
 
-export function logout() {
+function logout() {
   deleteCookie('user');
   window.location.href = "/index.html";
 }
-
 backHome();
-window.checkLogin = checkLogin;
-window.getData = getData;
-window.sendData = sendData;
-window.sendGetData = sendGetData;
+
+export { 
+  logout, 
+  createNewCookie, 
+  getCookie,  
+  sendGetData, 
+  fillMainUser, 
+  setPreviousPage, 
+  goBack, 
+  backHome, 
+  sendData 
+};
+
+window.login = login;
+window.logout = logout;
 window.createNewCookie = createNewCookie;
 window.getCookie = getCookie;
-window.updateCookie = updateCookie;
-window.deleteCookie = deleteCookie;
-window.logout = logout;
+window.sendGetData = sendGetData;
+window.fillMainUser = fillMainUser;
+window.checkLogin = checkLogin;
+window.goProfile = goProfile;

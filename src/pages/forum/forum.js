@@ -1,4 +1,13 @@
-import { goBack, goProfile, login, checkLogin, getData, sendData, createNewCookie, getCookie } from '/src/shared/utility.js';
+import { 
+  checkLogin, 
+  goProfile,  
+  createNewCookie, 
+  getCookie, 
+  getData, 
+  sendData, 
+  goBack, 
+} from '/src/shared/utility.js';
+
 
 let titleForum = document.querySelector(".titleForum");
 let categoryforum = document.querySelector(".categoryForum");

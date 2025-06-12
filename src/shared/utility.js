@@ -14,7 +14,7 @@ function goBack() {
   if (previous && previous !== window.location.pathname) {
     window.location.href = previous;
   } else {
-    window.location.href = "/src/index.html";
+    window.location.href = "/index.html";
   }
 }
 function setPreviousPage(selector) {
@@ -31,8 +31,8 @@ function backHome() {
     .querySelector(".logo-navbar")
     .addEventListener("click", function (e) {
       e.preventDefault();
-      createNewCookie("previousPage", "/src/index.html", {});
-      window.location.href = "/src/index.html";
+      createNewCookie("previousPage", "/index.html", {});
+      window.location.href = "/index.html";
     });
 }
 function goProfile() {
@@ -203,7 +203,11 @@ function logout() {
  
   deleteCookie('user');
 
-  window.location.href = "/src/pages/index/index.html";
+  window.location.href = "/index.html";
 }
 fillMainUser();
 backHome();
+window.checkLogin = checkLogin;
+window.login = login;
+window.logout = logout;
+window.goProfile = goProfile;

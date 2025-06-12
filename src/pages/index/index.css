@@ -1,6 +1,8 @@
 @import url("/src/resources/styles/main.css");
 
-
+.navbar{
+    /* border: 2px solid green; */
+}
 .hero {
     background:
         radial-gradient(
@@ -13,6 +15,7 @@
    padding-top: 82px !important;
    margin-top: 0;
    display: flex;
+   /* border: 2px solid red; */
 }
 .forum-title {
   white-space: nowrap;

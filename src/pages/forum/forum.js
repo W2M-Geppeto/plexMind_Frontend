@@ -115,7 +115,7 @@ document.addEventListener("DOMContentLoaded", async function () {
   let likedDataUser = [];
   if (idTopic != -1 && idUser != -1) {
     likedDataUser = await getData(
-      `https://plexmind.onrender.com/api/users/check/likes/${idUser}/${idTopic}`
+      `https://plexmind.onrender.com/api/users/likes/check/${idUser}/${idTopic}`
     );
     likedDataUser = await getData(
       `https://plexmind.onrender.com/api/users/likes/${idUser}/${idTopic}`

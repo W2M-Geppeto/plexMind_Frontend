@@ -18,35 +18,34 @@
 
 <body>
   <!-- Navbar -->
-  <nav class="navbar navbar-expand-md bg-body-primary fixed-top shadow-sm w-100">
-    <div class="row" style="width: 100%;">
-      <div class="col-2 ">
-        <div class="d-flex align-items-center ms-3 mt-1">
-          <img src="/src/resources/img/logo.png" alt="Logo PlexMind" class="logo-navbar">
-        </div>
-      </div>
-      <div class="col-8">
-      </div>
-      <div class="col-2 d-flex flex-column align-items-end  mt-3" id="nv-icon">
-        <div>
-          <ul class="navbar-nav mb-2 mb-lg-0 align-items-center">
-                    <h4 class="d-inline ms-2 mb-0 my-auto mb-2" id="user"></h4>
-                    <li class="nav-item" id="personIconcontainer">
-                      <a class="nav-link d-flex enable goProfile"  aria-disabled="true" href="#">
-                            <i class="material-symbols-outlined personIcon nv-icon">person</i>
-                        </a>
-                        <!-- <a class="nav-link enabled goProfile"  aria-disabled="true" href="#">
-                            <i class="material-symbols-outlined nv-personIcon personIcon">person</i>
-                        </a> -->
+       <nav class="navbar navbar-expand-md fixed-top shadow-sm w-100">
+        <div class="container-fluid">
+            <div class="d-flex align-items-center ms-1 mt-1">
+                <a class="navbar-brand img-fluid"> <img src="/src/resources/img/logo.png"
+                        alt="Logo PlexMind" class="logo-navbar"> </a>
+            </div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" 
+              data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" 
+              aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+          </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+            <ul class="navbar-nav mb-2 mb-lg-0 align-items-md-center align-items-end mt-1">                    
+              <li class="nav-item">
+                     <h4 class="d-inline ms-2 mb-0 my-auto mb-2" id="user"></h4>
                     </li>
-                    <li class="nav-item" id="loginIconcontainer">
-                        <i class="material-symbols-outlined d-flex logoutIcon nv-icon">logout</i>
+                    <li class="nav-item">
+                      <a class="nav-link d-flex"  aria-disabled="true">
+                            <i class="material-symbols-outlined personIcon-nh nv-icon">person</i>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                      <i class="material-symbols-outlined d-flex logoutIcon nv-icon">logout</i>
                     </li>
                 </ul>
-      </div>
-    </div>
-  </nav>
-
+            </div>
+        </div>
+    </nav>
   <!-- Contenido principal -->
   <div class="main-content justify-content-center align-items-center">
     <div class="container-fluidpt-3 d-flex justify-content-between align-items-center">
@@ -73,6 +72,9 @@
     </div>
   </div>
 
+  <div class="bg-author text-white text-center py-3 small fixed-bottom">
+      PlexMind &reg; 2025
+    </div>
   <!-- Scripts -->
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
     integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"

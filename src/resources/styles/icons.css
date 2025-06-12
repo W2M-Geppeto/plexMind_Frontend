@@ -32,8 +32,8 @@
   background-color: var(--primary-color);
   border-radius: 5px;
 }
-#closeIcon:hover,
-.personIcon:hover {
+#closeIcon:hover
+ {
   background-color: var(--secondary-color);
   transform: scale(1.3);
 }

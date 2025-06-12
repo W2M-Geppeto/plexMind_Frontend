@@ -92,7 +92,7 @@ function checkLogin() {
 
 
 }else{
-  loginIconContent = `<button class="btn btn-login">Log in</button>`;
+  loginIconContent = `<button class="btn btn-login mb-1 ">Log in</button>`;
   document.getElementById('loginIconcontainer').innerHTML = loginIconContent;
   document.querySelector(".btn-login").addEventListener('click', function (e) {
     login();

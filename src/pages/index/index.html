@@ -22,7 +22,7 @@
 
 <body>
     <!-- NAVBAR -->
-   <nav class="navbar navbar-expand-md fixed-top shadow-sm bg-navbar bg-primary">
+   <nav class="navbar navbar-expand-md fixed-top shadow-sm bg-navbar bg-body-primary">
         <div class="container-fluid">
             <a class="navbar-brand img-fluid" href="#"> <img src="/src/resources/img/logo.png" alt="Logo PlexMind"
                     class="logo-navbar"> </a>
@@ -31,10 +31,15 @@
                 aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0 pe-3 py-3 align-items-end justify-content-center">
 
                 <!-- Campo de búsqueda desde librería Material Components -->
-                <div class="me-3">
+                
+                
+                    <li class="me-3 pb-2">
+                    
                     <label class="mdc-text-field mdc-text-field--with-trailing-icon">
                         <input type="text" class="mdc-text-field__input" placeholder="Search" aria-label="Search">
 
@@ -42,9 +47,9 @@
                             role="button">search</i>
                         <span class="mdc-line-ripple"></span>
                     </label>
-                </div>
+               
+                </li>
 
-                <ul class="navbar-nav mb-2 mb-lg-0">
                     <li class="nav-item">
                         <a class="nav-link d-flex active" aria-current="page" href="#Home">
                             <i class="material-symbols-outlined nv-icon" id="homeIcon">home</i>
@@ -68,7 +73,7 @@
         </div>
     </nav>
                     
-                
+          
 
     <main class="flex-grow-1">
         <!-- Sección Hero -->

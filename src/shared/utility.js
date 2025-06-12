@@ -208,8 +208,18 @@ function logout() {
 }
 
 
-backHome();
-window.checkLogin = checkLogin;
-window.login = login;
-window.logout = logout;
+window.fillMainUser = fillMainUser;
+window.goBack = goBack;
+window.setPreviousPage = setPreviousPage;
+window.backHome = backHome;
 window.goProfile = goProfile;
+window.login = login;
+window.checkLogin = checkLogin;
+window.getData = getData;
+window.sendData = sendData;
+window.sendGetData = sendGetData;
+window.createNewCookie = createNewCookie;
+window.getCookie = getCookie;
+window.updateCookie = updateCookie;
+window.deleteCookie = deleteCookie;
+window.logout = logout;

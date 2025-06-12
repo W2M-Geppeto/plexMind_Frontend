@@ -22,26 +22,22 @@
 
 <body>
     <!-- NAVBAR -->
-   <nav class="navbar navbar-expand-md fixed-top shadow-sm bg-navbar bg-body-primary">
+    <nav class="navbar navbar-expand-md fixed-top shadow-sm w-100">
         <div class="container-fluid">
-            <a class="navbar-brand img-fluid" href="#"> <img src="/src/resources/img/logo.png" alt="Logo PlexMind"
-                    class="logo-navbar"> </a>
+            <div class="d-flex align-items-center ms-1 mt-1">
+                <a class="navbar-brand img-fluid" href="#Home"> <img src="/src/resources/img/logo.png" alt="Logo PlexMind" class="logo-navbar"> </a>
+            </div>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                 aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      
-                <ul class="navbar-nav ms-auto mb-2 mb-lg-0 pe-3 py-3 align-items-end justify-content-center">
-
-                <!-- Campo de búsqueda desde librería Material Components -->
-                
-                
-                    <li class="me-3 pb-2">
-                    
-                    <label class="mdc-text-field mdc-text-field--with-trailing-icon">
-                        <input type="text" class="mdc-text-field__input" placeholder="Search" aria-label="Search">
+            <div class="collapse navbar-collapse justify-content-end " id="navbarSupportedContent">
+            <ul class="navbar-nav mb-2 mb-lg-0 align-items-md-center align-items-end mt-1">                    
+                    <li class="nav-item">
+                        <div class="me-3">
+                            <label class="mdc-text-field mdc-text-field--with-trailing-icon">
+                                <input type="text" class="mdc-text-field__input">
 
                         <i class="material-icons mdc-text-field__icon mdc-text-field__icon--trailing p-0" tabindex="0"
                             role="button">search</i>
@@ -61,12 +57,9 @@
                         </a>
                     </li>
                     <li class="nav-item" id="personIconcontainer">
-                        <!-- <a class="nav-link enabled goProfile"  aria-disabled="true" href="#">
-                            <i class="material-symbols-outlined nv-personIcon personIcon">person</i>
-                        </a> -->
+                     
                     </li>
                     <li class="nav-item" id="loginIconcontainer">
-                        <!-- <i class="material-symbols-outlined nv-personIcon mx-0 loginIcon">login</i> -->
                     </li>
                 </ul>
             </div>

@@ -14,28 +14,31 @@
   <link rel="icon" type="logo" href="/src/resources/img/logo.png">
 </head>
 <body>
-  <nav class="navbar navbar-expand-md bg-body-primary fixed-top shadow-sm w-100">
-    <div class="row" style="width: 100%;">
-      <div class="col-2 ">
-        <div class="d-flex align-items-center ms-3 mt-1">
-          <img src="/src/resources/img/logo.png" alt="Logo PlexMind" class="logo-navbar">
-        </div>
-      </div>
-      <div class="col-8">
-      </div>
-      <div class="col-2 d-flex flex-column align-items-end justify-content-between">
-        <div>
-          <div class="navbar-nav mb-2 mb-lg-0 align-items-center" id="nav">
-            <h4 class="d-inline ms-2 mb-0 my-auto mb-2" id="user"></h4>
-            <div id="personIconcontainer">
+      <nav class="navbar navbar-expand-md fixed-top shadow-sm w-100">
+        <div class="container-fluid">
+            <div class="d-flex align-items-center ms-1 mt-1">
+                <a class="navbar-brand img-fluid"> <img src="/src/resources/img/logo.png"
+                        alt="Logo PlexMind" class="logo-navbar"> </a>
             </div>
-            <div id="loginIconcontainer">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" 
+              data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" 
+              aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+          </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+            <ul class="navbar-nav mb-2 mb-lg-0 align-items-md-center align-items-end mt-1">                    
+              <li class="nav-item">
+                     <h4 class="d-inline ms-2 mb-0 my-auto mb-2" id="user"></h4>
+                    </li>
+                    <li class="nav-item" id="personIconcontainer">
+                    </li>
+                    <li class="nav-item" id="loginIconcontainer">
+                    </li>
+                </ul>
             </div>
-          </div>
         </div>
-      </div>
-    </div>
-  </nav>
+    </nav>
+
   <div class="main-content justify-content-center align-items-center">
     <div class="container-fluidpt-3 d-flex justify-content-between align-items-center">
       <a id="back-link" href="#">
@@ -75,14 +78,6 @@
             </div>
         </div>
     </div>
-  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
-    integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
-    crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.min.js"
-    integrity="sha384-RuyvpeZCxMJCqVUGFI0Do1mQrods/hhxYlcVfGPOfQtPJh0JCw12tUAZ/Mv10S7D"
-    crossorigin="anonymous"></script>
-  <script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"></script>
 
   <div class="modal fade" id="loginModal" tabindex="-1" aria-modal="true">
     <div class="modal-dialog modal-dialog-centered">
@@ -91,14 +86,15 @@
       </div>
     </div>
   </div>
-
+  
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+    integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.min.js"
+    integrity="sha384-RuyvpeZCxMJCqVUGFI0Do1mQrods/hhxYlcVfGPOfQtPJh0JCw12tUAZ/Mv10S7D"
+    crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
   <script src="/src/shared/utility.js"></script>
   <script src="/src/pages/forum/forum.js"></script>
-  <script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO" crossorigin="anonymous">
-    </script>
-
-
 </body>
 </html>

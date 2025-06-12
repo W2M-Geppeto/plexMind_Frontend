@@ -194,6 +194,11 @@ export function logout() {
 
 backHome();
 window.checkLogin = checkLogin;
-window.login = login;
+window.getData = getData;
+window.sendData = sendData;
+window.sendGetData = sendGetData;
+window.createNewCookie = createNewCookie;
+window.getCookie = getCookie;
+window.updateCookie = updateCookie;
+window.deleteCookie = deleteCookie;
 window.logout = logout;
-window.goProfile = goProfile;

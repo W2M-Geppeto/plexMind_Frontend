@@ -62,7 +62,7 @@ async function enviarDatos(username, password, passwordError, button) {
     }
 }
 
-function initLogin() {
+export function initLogin() {
      const username = document.getElementById("usernameInput");
     const password = document.getElementById("passwordInput");
     const button = document.getElementById("loginButton");

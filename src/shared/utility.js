@@ -1,9 +1,11 @@
+import { initLogin } from '/src/pages/login/login.js';
+
 function fillMainUser() {
   const cookieValue = getCookie("user");
   try {
     const userInfo = JSON.parse(cookieValue);
     document.getElementById("user").textContent =
-      userInfo && userInfo.email ? userInfo.email.split("@")[0] : "User";
+      userInfo.email ? userInfo.email.split("@")[0] : "User";
   } catch (error) {
     document.getElementById("user").textContent = "User";
   }
@@ -55,6 +57,7 @@ export async function login() {
       document.getElementById('loginModalContent').innerHTML = bodyContent ? bodyContent[1] : html;
       const script = document.createElement('script');
       script.src = '/src/pages/login/login.js';
+      script.type = "module";
       script.onload = function () {
         initLogin();
         const modalEl = document.getElementById('loginModal');
@@ -72,36 +75,38 @@ export function checkLogin() {
   let personIconContent = '';
   let loginIconContent = '';
   console.log('llamando al login check');
-  
+
   if (getCookie('user') !== undefined) {
-    fillMainUser();
-  personIconContent = `<a class="nav-link d-flex enable goProfile"  aria-disabled="true" href="#">
+    personIconContent = `<a class="nav-link d-flex enable goProfile"  aria-disabled="true" href="#">
                             <i class="material-symbols-outlined personIcon nv-icon">person</i>
                         </a>`;
-  loginIconContent = `<i class="material-symbols-outlined d-flex logoutIcon nv-icon">logout</i>`;
+    loginIconContent = `<i class="material-symbols-outlined d-flex logoutIcon nv-icon">logout</i>`;
 
-  document.getElementById('personIconcontainer').innerHTML = personIconContent;
-  document.getElementById('loginIconcontainer').innerHTML = loginIconContent;
-  document.querySelector('.personIcon').addEventListener('click', function (e) {
-       e.preventDefault();
-       goProfile();
-   });
-  document.querySelector('.logoutIcon').addEventListener('click', function (e) {
-    e.preventDefault();
-    logout();
-  });
+    document.getElementById('personIconcontainer').innerHTML = personIconContent;
+    document.getElementById('loginIconcontainer').innerHTML = loginIconContent;
+    if (getCookie("user") !== undefined) {
+      fillMainUser();
+    }
+    document.querySelector('.personIcon').addEventListener('click', function (e) {
+      e.preventDefault();
+      goProfile();
+    });
+    document.querySelector('.logoutIcon').addEventListener('click', function (e) {
+      e.preventDefault();
+      logout();
+    });
 
 
-}else{
-  loginIconContent = `<button class="btn btn-login mb-1 ">Log in</button>`;
-  document.getElementById('loginIconcontainer').innerHTML = loginIconContent;
-  document.querySelector(".btn-login").addEventListener('click', function (e) {
-    login();
-  }); 
-  
+  } else {
+    loginIconContent = `<button class="btn btn-login mb-1 ">Log in</button>`;
+    document.getElementById('loginIconcontainer').innerHTML = loginIconContent;
+    document.querySelector(".btn-login").addEventListener('click', function (e) {
+      login();
+    });
+
+  }
+
 }
-
-} 
 
 export async function getData(url) {
   try {

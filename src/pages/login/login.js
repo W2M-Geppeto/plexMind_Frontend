@@ -2,6 +2,7 @@
 // let password = document.getElementById("passwordInput");
 // let button = document.getElementById("loginButton");
 // let passwordError = document.getElementById("passwordError");
+import { sendGetData, getCookie, createNewCookie} from '/src/shared/utility.js';
 
 const usernameRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const passwordRegex = /^.{4,}$/;

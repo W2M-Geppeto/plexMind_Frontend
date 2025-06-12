@@ -1,3 +1,5 @@
+import { goBack, goProfile, login, checkLogin, getData, sendData, createNewCookie, getCookie } from '/src/shared/utility.js';
+
 let titleForum = document.querySelector(".titleForum");
 let categoryforum = document.querySelector(".categoryForum");
 let resourceList = document.getElementById("resourceList");

@@ -8,7 +8,7 @@ function fillMainUser() {
     document.getElementById("user").textContent = "User";
   }
 }
-function goBack() {
+export function goBack() {
   const previous = getCookie("previousPage");
   console.log(previous);
   if (previous && previous !== window.location.pathname) {
@@ -17,7 +17,7 @@ function goBack() {
     window.location.href = "/index.html";
   }
 }
-function setPreviousPage(selector) {
+export function setPreviousPage(selector) {
   document.querySelectorAll(selector).forEach((element) => {
     element.addEventListener("click", function (e) {
       e.preventDefault(); // Evita la navegación automática
@@ -47,7 +47,7 @@ export function goProfile() {
   });
 
 }
-async function login() {
+export async function login() {
   await fetch('/src/pages/login/login.html')
     .then(response => response.text())
     .then(html => {
@@ -101,11 +101,7 @@ export function checkLogin() {
   
 }
 
-
-   
-  
 } 
-
 
 export async function getData(url) {
   try {
@@ -125,7 +121,7 @@ export async function getData(url) {
     console.error("There has been a problem with your fetch operation:", error);
   }
 }
-async function sendData(url = '', data) {
+export async function sendData(url = '', data) {
   const response = await fetch(url, {
     method: 'POST',
     headers: {
@@ -136,7 +132,7 @@ async function sendData(url = '', data) {
   });
 }
 
-async function sendGetData(url = '', data = {}) {
+export async function sendGetData(url = '', data = {}) {
   try {
     const response = await fetch(url, {
       method: 'POST',
@@ -156,7 +152,7 @@ async function sendGetData(url = '', data = {}) {
     console.error("There has been a problem with your fetch operation:", error);
   }
 }
-function createNewCookie(name, value, cookieAttributes = {}) {
+export function createNewCookie(name, value, cookieAttributes = {}) {
   cookieAttributes = {
     path: "/",
     ...cookieAttributes,
@@ -174,7 +170,7 @@ function createNewCookie(name, value, cookieAttributes = {}) {
     }
   document.cookie = newCookie;
 }
-function getCookie(name) {
+export function getCookie(name) {
   let matches = document.cookie.match(
     new RegExp(
       "(?:^|; )" +
@@ -184,29 +180,17 @@ function getCookie(name) {
   );
   return matches ? decodeURIComponent(matches[1]) : undefined;
 }
-function updateCookie(name, newDataObj, jsonAttributes = {}) {
-  let oldCookieData = {};
-  let currentCookieData = getCookie(name);
-  if (!currentCookieData) createNewCookie(name, JSON.stringify(newDataObj), attributes = {})
-  else {
-    oldCookieData = JSON.parse(currentCookieData);
-    const updatedObj = { ...oldCookieData, ...newDataObj };
-    createNewCookie(name, JSON.stringify(newDataObj), jsonAttributes);
-  }
-}
-function deleteCookie(name) {
+
+export function deleteCookie(name) {
   updateCookie(name, "", {
     'max-age': -1
   })
 }
 
-function logout() {
- 
+export function logout() {
   deleteCookie('user');
-
   window.location.href = "/index.html";
 }
-
 
 backHome();
 window.checkLogin = checkLogin;

@@ -187,7 +187,7 @@ export function getCookie(name) {
   );
   return matches ? decodeURIComponent(matches[1]) : undefined;
 }
-function updateCookie(name, newDataObj, jsonAttributes = {}) {
+export function updateCookie(name, newDataObj, jsonAttributes = {}) {
   let oldCookieData = {};
   let currentCookieData = getCookie(name);
   if (!currentCookieData) createNewCookie(name, JSON.stringify(newDataObj), attributes = {})
@@ -203,23 +203,13 @@ export function deleteCookie(name) {
   })
 }
 
-function logout() {
+export function logout() {
   deleteCookie('user');
   window.location.href = "/index.html";
 }
 backHome();
 
-export { 
-  logout, 
-  createNewCookie, 
-  getCookie,  
-  sendGetData, 
-  fillMainUser, 
-  setPreviousPage, 
-  goBack, 
-  backHome, 
-  sendData 
-};
+
 
 window.login = login;
 window.logout = logout;

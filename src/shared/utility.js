@@ -1,11 +1,13 @@
 function fillMainUser() {
   const cookieValue = getCookie("user");
+  const userElem = document.getElementById("user");
+  if (!userElem) return; // Evita el error si no existe el elemento
   try {
     const userInfo = JSON.parse(cookieValue);
-    document.getElementById("user").textContent =
+    userElem.textContent =
       userInfo && userInfo.email ? userInfo.email.split("@")[0] : "User";
   } catch (error) {
-    document.getElementById("user").textContent = "User";
+    userElem.textContent = "User";
   }
 }
 function goBack() {
@@ -201,25 +203,28 @@ function deleteCookie(name) {
 }
 
 function logout() {
- 
   deleteCookie('user');
-
   window.location.href = "/index.html";
 }
 
 
-window.fillMainUser = fillMainUser;
-window.goBack = goBack;
-window.setPreviousPage = setPreviousPage;
-window.backHome = backHome;
-window.goProfile = goProfile;
+export { 
+  logout, 
+  createNewCookie, 
+  getCookie,  
+  sendGetData, 
+  fillMainUser, 
+  setPreviousPage, 
+  goBack, 
+  backHome, 
+  sendData 
+};
+
 window.login = login;
-window.checkLogin = checkLogin;
-window.getData = getData;
-window.sendData = sendData;
-window.sendGetData = sendGetData;
+window.logout = logout;
 window.createNewCookie = createNewCookie;
 window.getCookie = getCookie;
-window.updateCookie = updateCookie;
-window.deleteCookie = deleteCookie;
-window.logout = logout;
+window.sendGetData = sendGetData;
+window.fillMainUser = fillMainUser;
+window.checkLogin = checkLogin;
+window.goProfile = goProfile;

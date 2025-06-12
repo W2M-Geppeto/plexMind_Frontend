@@ -1,7 +1,5 @@
-// let username = document.getElementById("usernameInput");
-// let password = document.getElementById("passwordInput");
-// let button = document.getElementById("loginButton");
-// let passwordError = document.getElementById("passwordError");
+
+
 
 const usernameRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const passwordRegex = /^.{4,}$/;
@@ -79,3 +77,4 @@ function initLogin() {
 }
 window.validarDatos = validarDatos;
 window.enviarDatos = enviarDatos;
+window.initLogin = initLogin;

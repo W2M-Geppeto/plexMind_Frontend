@@ -1,8 +1,13 @@
-// const mockOrdered = "/src/resources/data/mocks/trending_topic_orderByLike.json";
-import { checkLogin } from '/src/shared/utility.js';
-import { getData } from '/src/shared/utility.js';
-import { goProfile } from '/src/shared/utility.js';
+import { 
+  checkLogin, 
+  goProfile, 
+  logout,  
+  createNewCookie, 
+  getCookie, 
+  getData
+} from '/src/shared/utility.js';
 
+// const mockOrdered = "/src/resources/data/mocks/trending_topic_orderByLike.json";
 const url = "https://plexmind.onrender.com/api/resources/top-by-likes";
 let data = null;
 
@@ -60,7 +65,7 @@ async function fillTrending() {
 
 
 document.addEventListener('DOMContentLoaded', async function () {
-  checkLogin();
+  checkLogin()
 
   await fillTrending();
     goProfile();

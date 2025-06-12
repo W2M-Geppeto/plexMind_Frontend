@@ -1,3 +1,9 @@
+import { 
+  logout,
+  getCookie,
+  goBack
+} from '/src/shared/utility.js';
+
 let backBtn = document.getElementById('exitIcon');
 
 

@@ -180,7 +180,16 @@ export function getCookie(name) {
   );
   return matches ? decodeURIComponent(matches[1]) : undefined;
 }
-
+function updateCookie(name, newDataObj, jsonAttributes = {}) {
+  let oldCookieData = {};
+  let currentCookieData = getCookie(name);
+  if (!currentCookieData) createNewCookie(name, JSON.stringify(newDataObj), attributes = {})
+  else {
+    oldCookieData = JSON.parse(currentCookieData);
+    const updatedObj = { ...oldCookieData, ...newDataObj };
+    createNewCookie(name, JSON.stringify(newDataObj), jsonAttributes);
+  }
+}
 export function deleteCookie(name) {
   updateCookie(name, "", {
     'max-age': -1

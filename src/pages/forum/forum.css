@@ -87,3 +87,8 @@ font-weight: bolder;
 .modal-backdrop {
   z-index: 1000 !important;
 }
+.personIcon:hover
+ {
+  background-color: var(--secondary-color);
+  transform: scale(1.3);
+}

@@ -51,3 +51,8 @@
   padding-top: 0 !important;
   padding-bottom: 0 !important;
 }
+.personIcon:hover
+ {
+  background-color: var(--secondary-color);
+  transform: scale(1.3);
+}

@@ -44,7 +44,11 @@
   border-radius: 50px;
   cursor: pointer;
 }
-
+.personIcon-nh {
+  color: var(--tertiary-color);
+  background-color: var(--primary-color);
+  border-radius: 50px;
+}
 .nav-item.disabled .nav-link, .disabled {
   color: #bdbdbd !important;
   cursor: not-allowed !important;

@@ -74,6 +74,7 @@ function checkLogin() {
   console.log('llamando al login check');
   
   if (getCookie('user') !== undefined) {
+    fillMainUser();
   personIconContent = `<a class="nav-link d-flex enable goProfile"  aria-disabled="true" href="#">
                             <i class="material-symbols-outlined personIcon nv-icon">person</i>
                         </a>`;
@@ -205,5 +206,6 @@ function logout() {
 
   window.location.href = "/src/pages/index/index.html";
 }
-fillMainUser();
+
+
 backHome();

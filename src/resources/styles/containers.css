@@ -32,3 +32,8 @@ main {
   }
 }
 
+.bg-author {
+  background: var(--primary-color);
+ 
+}
+

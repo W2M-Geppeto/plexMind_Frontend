@@ -14,7 +14,7 @@ function goBack() {
   if (previous && previous !== window.location.pathname) {
     window.location.href = previous;
   } else {
-    window.location.href = "/src/pages/index/index.html";
+    window.location.href = "/src/index.html";
   }
 }
 function setPreviousPage(selector) {
@@ -31,8 +31,8 @@ function backHome() {
     .querySelector(".logo-navbar")
     .addEventListener("click", function (e) {
       e.preventDefault();
-      createNewCookie("previousPage", "/src/pages/index/index.html", {});
-      window.location.href = "/src/pages/index/index.html";
+      createNewCookie("previousPage", "/src/index.html", {});
+      window.location.href = "/src/index.html";
     });
 }
 function goProfile() {

@@ -35,7 +35,7 @@ function backHome() {
       window.location.href = "/src/index.html";
     });
 }
-function goProfile() {
+export function goProfile() {
   document.querySelectorAll(".goProfile").forEach(icon => {
     icon.addEventListener("click", function (e) {
       if (e.target.tagName === "I" && e.target.classList.contains("personIcon")) {
@@ -68,7 +68,7 @@ async function login() {
     });
 }
 
-function checkLogin() {
+export function checkLogin() {
   let personIconContent = '';
   let loginIconContent = '';
   console.log('llamando al login check');
@@ -107,7 +107,7 @@ function checkLogin() {
 } 
 
 
-async function getData(url) {
+export async function getData(url) {
   try {
     const response = await fetch(url, {
       method: 'GET',

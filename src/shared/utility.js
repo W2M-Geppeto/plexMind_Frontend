@@ -50,7 +50,7 @@ export function goProfile() {
 
 }
 export async function login() {
-  await fetch('/login.html')
+  await fetch('login.html')
     .then(response => response.text())
     .then(html => {
       const bodyContent = html.match(/<body[^>]*>([\s\S]*?)<\/body>/i);

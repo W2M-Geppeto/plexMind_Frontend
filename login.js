@@ -1,6 +1,3 @@
-
-
-
 const usernameRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const passwordRegex = /^.{4,}$/;
 let users = null;

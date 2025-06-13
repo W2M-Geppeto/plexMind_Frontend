@@ -50,13 +50,13 @@ export function goProfile() {
 
 }
 export async function login() {
-  await fetch('login.html')
+  await fetch('/login.html')
     .then(response => response.text())
     .then(html => {
       const bodyContent = html.match(/<body[^>]*>([\s\S]*?)<\/body>/i);
       document.getElementById('loginModalContent').innerHTML = bodyContent ? bodyContent[1] : html;
       const script = document.createElement('script');
-      script.src = '/src/pages/login/login.js';
+      script.src = '/login.js';
       script.onload = function () {
         initLogin();
         const modalEl = document.getElementById('loginModal');

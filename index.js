@@ -15,6 +15,10 @@ async function fillTrending() {
   try {
     data = await getData(url);
     const trendingRow = document.querySelector(".trendingRow");
+     if (!trendingRow) {
+    console.error("No se encontró el contenedor .trendingRow en el DOM.");
+    return null;
+  }
     if (data && data.length > 0) {
       trendingRow.innerHTML = "";
       data.forEach((item) => {

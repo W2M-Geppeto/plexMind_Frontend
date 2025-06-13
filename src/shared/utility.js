@@ -42,7 +42,7 @@ export function goProfile() {
     icon.addEventListener("click", function (e) {
       if (e.target.tagName === "I" && e.target.classList.contains("personIcon")) {
         e.preventDefault();
-        window.location.href = "/src/pages/profile/profile.html";
+        window.location.href = "/profile.html";
         console.log("llamando a perfil");
       }
     });
@@ -50,7 +50,7 @@ export function goProfile() {
 
 }
 export async function login() {
-  await fetch('/src/pages/login/login.html')
+  await fetch('/login.html')
     .then(response => response.text())
     .then(html => {
       const bodyContent = html.match(/<body[^>]*>([\s\S]*?)<\/body>/i);

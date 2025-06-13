@@ -75,6 +75,4 @@ function initLogin() {
         enviarDatos(username, password, passwordError, button);
     })
 }
-window.validarDatos = validarDatos;
-window.enviarDatos = enviarDatos;
 window.initLogin = initLogin;

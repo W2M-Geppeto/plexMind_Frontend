@@ -19,7 +19,7 @@ async function fillTrending() {
       trendingRow.innerHTML = "";
       data.forEach((item) => {
         // Construye la URL al foro usando el id
-        const forumUrl = `/src/pages/forum/forum.html?id=${item.id}`;
+        const forumUrl = `/forum.html?id=${item.id}`;
 
         trendingRow.innerHTML += `
                 <div class="col-md-6 col-lg-4">

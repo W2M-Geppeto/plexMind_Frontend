@@ -7,18 +7,6 @@ import {
 let backBtn = document.getElementById('exitIcon');
 
 
-//Funcion para leer los datos del usuario
-async function getUserData() {
-    try{
-        const response = await fetch('/src/resources/data/mocks/user.json');
-        if (!response.ok) {
-            throw new Error('Network response was not ok');
-        }
-        return await response.json();
-    } catch (error) {
-        console.error('There has been a problem with your fetch operation:', error);
-    }
-}
 // Extrae la descripción del usuario desde la cookie y la muestra en el About me
 function mostrarDescripcionDesdeCookie() {
     try {

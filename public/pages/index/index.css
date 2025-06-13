@@ -1,0 +1,41 @@
+@import url("/src/resources/styles/main.css");
+
+
+.hero {
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(255,255,255, 0.02) 0%,
+            rgb(28, 103, 132, 0.9) 60%,
+            var(--primary-color) 100%
+        ),
+        url("/src/resources/img/logo.png") center/38% auto no-repeat;
+   padding-top: 82px !important;
+   margin-top: 0;
+   display: flex;
+}
+.forum-title {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: block;
+  max-width: 100%;
+}
+#footer {
+    background-color: #19789eab;
+    color: var(--secondary-color);
+    padding: 1rem;
+    text-align: center;
+}
+
+#arrowIcon {
+    font-size: 3rem;
+    color: rgb(65, 64, 64);
+}
+
+#arrowIcon:hover {
+    color: white;
+    background-color: rgb(65, 64, 64);
+    border-radius: 50%;
+    transform: scale(0.8);
+}

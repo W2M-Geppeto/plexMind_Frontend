@@ -1,0 +1,64 @@
+.main-content {
+  margin-top: 100px;
+}
+
+#nomUsuario {
+  color: var(--tertiary-color);
+  font-family: var(--p-font);
+}
+
+.ct-forum {
+  background-color: var(--secondary-color);
+  border-radius: 10px;
+  padding: 10px;
+  margin: 5px;
+
+  a {
+    color: white;
+    text-decoration: none;
+  }
+
+  a:hover {
+    color: var(--tertiary-color);
+  }
+
+  a:visited {
+    color: var(--tertiary-color);
+  }
+}
+
+.wrap-text, .main-content, .container, p, .ct-forum {
+  word-break: break-word;
+  overflow-wrap: break-word;
+}
+
+.section-divider {
+  border: none;
+  border-top: 4px solid #111;
+  width: 15%;           /* Responsive: ocupa el 15% del ancho del contenedor */
+  max-width: 130px;     /* Nunca será más ancha de 130px */
+  min-width: 60px;      /* Nunca será más estrecha de 60px */
+  margin: 32px auto;
+  border-radius: 2px;
+  opacity: 1;
+}
+
+
+@media (max-width: 400px) {
+
+  h2{
+    justify-content: center;
+    align-items: center;
+  }
+  .main-content,
+  .main-content .container,
+  .ct-forum {
+    text-align: center;
+  }
+  .ct-forum {
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+

@@ -129,7 +129,7 @@ export async function sendData(url = '', data) {
     headers: {
       'Content-Type': 'application/json'
     },
-    referrerPolicy: 'no-referrer', //opcional, para ocultar quien envía la peticion
+    referrerPolicy: 'no-referrer', 
     body: JSON.stringify(data)
   });
 }
@@ -141,7 +141,7 @@ export async function sendGetData(url = '', data = {}) {
       headers: {
         'Content-Type': 'application/json'
       },
-      referrerPolicy: 'no-referrer', //opcional, para ocultar quien envía la peticion
+      referrerPolicy: 'no-referrer',
       body: JSON.stringify(data)
     });
     if (!response.ok) {
@@ -198,23 +198,12 @@ export function deleteCookie(name) {
   })
 }
 
-function logout() {
+export function logout() {
   deleteCookie('user');
   window.location.href = "/index.html";
 }
 backHome();
 
-export { 
-  logout, 
-  createNewCookie, 
-  getCookie,  
-  sendGetData, 
-  fillMainUser, 
-  setPreviousPage, 
-  goBack, 
-  backHome, 
-  sendData 
-};
 
 window.login = login;
 window.logout = logout;

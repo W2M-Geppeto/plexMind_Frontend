@@ -26,27 +26,29 @@
                 <img src="/src/resources/img/logo.png" class="img-fluid logo-login">
             </div>
             <div class="container" id="textFields">
-            <div class="textfield mx-auto">
-                <div class="text-start label">User:</div>
-                <input class="text-start textField-m" id="usernameInput" placeholder="Enter your email."></input>
+                <div class="textfield mx-auto">
+                    <div class="text-start label">User:</div>
+                    <input class="text-start textField-m" id="usernameInput" placeholder="Enter your email."></input>
+                </div>
+                <div class="textfield mx-auto">
+                    <div class="text-start label">Password:</div>
+                    <input class="text-start textField-m" id="passwordInput" type="password"
+                        placeholder="Enter your password"></input>
+                    <div id="passwordError" class="text-danger small pt-3" style="display:none;">Invalid username or
+                        password</div>
+                </div>
             </div>
-            <div class="textfield mx-auto">
-                <div class="text-start label">Password:</div>
-                <input class="text-start textField-m" id="passwordInput" type="password" placeholder="Enter your password"></input>
-                <div id="passwordError" class="text-danger small pt-3" style="display:none;">Invalid username or password</div>
+
+            <div class="container">
+                <button class="btn btn-m" id="loginButton">Log in</button>
+                <div class="text-center">Don't you have an account?</div>
+                <div><span class="text-center link-st">Sign up</span></div>
+
             </div>
         </div>
 
-        <div class="container">
-            <button class="btn btn-m" id="loginButton">Log in</button>
-            <div class="text-center">Don't you have an account?</div>
-            <div ><span class="text-center link-st">Sign up</span></div>
-
-        </div>
-    </div>
-
-     <!-- <script type="module" src="/src/shared/utility.js"></script> -->
-  <script type="module" src="/src/pages/forum/forum.js"></script>
+        <!-- <script type="module" src="/src/shared/utility.js"></script> -->
+        <!-- <script type="module" src="/src/pages/forum/forum.js"></script> -->
 </body>
 
 </html>

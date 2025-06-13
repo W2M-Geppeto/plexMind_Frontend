@@ -1,11 +1,11 @@
-import { 
-  checkLogin, 
-  goProfile,  
-  createNewCookie, 
-  getCookie, 
-  getData, 
-  sendData, 
-  goBack, 
+import {
+  checkLogin,
+  goProfile,
+  createNewCookie,
+  getCookie,
+  getData,
+  sendData,
+  goBack,
 } from '/src/shared/utility.js';
 
 
@@ -131,7 +131,7 @@ document.addEventListener("DOMContentLoaded", async function () {
     likedDataUser = await getData(
       `https://plexmind.onrender.com/api/users/likes/${idUser}/${idTopic}`
     );
-    if(likedDataUser== undefined){
+    if (likedDataUser == undefined) {
       likedDataUser = [];
     }
   }
@@ -159,11 +159,11 @@ document.addEventListener("DOMContentLoaded", async function () {
             }
             break;
           case "linkIconForum":
-              const modalElement = document.getElementById("exampleModal");
-              const modalInstance = new bootstrap.Modal(modalElement, {
-                backdrop: true,
-              });
-              modalInstance.show();
+            const modalElement = document.getElementById("exampleModal");
+            const modalInstance = new bootstrap.Modal(modalElement, {
+              backdrop: true,
+            });
+            modalInstance.show();
             break;
         }
       } else {

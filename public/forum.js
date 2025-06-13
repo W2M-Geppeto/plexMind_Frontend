@@ -6,7 +6,7 @@ import {
   getData, 
   sendData, 
   goBack, 
-} from '/src/shared/utility.js';
+} from '/public/utility.js';
 
 
 let titleForum = document.querySelector(".titleForum");

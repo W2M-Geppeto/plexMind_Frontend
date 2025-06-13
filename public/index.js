@@ -5,7 +5,7 @@ import {
   createNewCookie, 
   getCookie, 
   getData
-} from '/src/shared/utility.js';
+} from '/public/utility.js';
 
 // const mockOrdered = "/src/resources/data/mocks/trending_topic_orderByLike.json";
 const url = "https://plexmind.onrender.com/api/resources/top-by-likes";
@@ -23,7 +23,7 @@ async function fillTrending() {
       trendingRow.innerHTML = "";
       data.forEach((item) => {
         // Construye la URL al foro usando el id
-        const forumUrl = `/forum.html?id=${item.id}`;
+        const forumUrl = `/public/forum.html?id=${item.id}`;
 
         trendingRow.innerHTML += `
                 <div class="col-md-6 col-lg-4">

@@ -2,7 +2,7 @@ import {
   logout,
   getCookie,
   goBack
-} from '/src/shared/utility.js';
+} from '/public/utility.js';
 
 let backBtn = document.getElementById('exitIcon');
 

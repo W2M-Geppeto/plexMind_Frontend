@@ -16,7 +16,7 @@ export function goBack() {
   if (previous && previous !== window.location.pathname) {
     window.location.href = previous;
   } else {
-    window.location.href = "/index.html";
+    window.location.href = "/public/index.html";
   }
 }
 export function setPreviousPage(selector) {
@@ -33,8 +33,8 @@ function backHome() {
     .querySelector(".logo-navbar")
     .addEventListener("click", function (e) {
       e.preventDefault();
-      createNewCookie("previousPage", "/index.html", {});
-      window.location.href = "/index.html";
+      createNewCookie("previousPage", "/public/index.html", {});
+      window.location.href = "/public/index.html";
     });
 }
 export function goProfile() {
@@ -42,7 +42,7 @@ export function goProfile() {
     icon.addEventListener("click", function (e) {
       if (e.target.tagName === "I" && e.target.classList.contains("personIcon")) {
         e.preventDefault();
-        window.location.href = "/profile.html";
+        window.location.href = "/public/profile.html";
         console.log("llamando a perfil");
       }
     });
@@ -50,13 +50,13 @@ export function goProfile() {
 
 }
 export async function login() {
-  await fetch('/login.html')
+  await fetch('/public/login.html')
     .then(response => response.text())
     .then(html => {
       const bodyContent = html.match(/<body[^>]*>([\s\S]*?)<\/body>/i);
       document.getElementById('loginModalContent').innerHTML = bodyContent ? bodyContent[1] : html;
       const script = document.createElement('script');
-      script.src = '/login.js';
+      script.src = '/public/login.js';
       script.onload = function () {
         initLogin();
         const modalEl = document.getElementById('loginModal');
@@ -200,7 +200,7 @@ export function deleteCookie(name) {
 
 export function logout() {
   deleteCookie('user');
-  window.location.href = "/index.html";
+  window.location.href = "/public/index.html";
 }
 backHome();
 
